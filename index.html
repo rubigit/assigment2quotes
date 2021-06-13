@@ -2,18 +2,130 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random quote</title>
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <main>
-        <h1>starting</h1>
-    </main>
-    <script src="./js/script.js"></script>
+	<!-- main containter -->
+	<main class="mainly">
+		<!-- :::::: Container for quote generator section :::::: -->
+
+
+		<section class="quote-stion">
+			<!-- header for logo -->
+			<header class="quoteHeader">
+				<h1 class="logo">logo</h1>
+				<h1 class="title">Randon quotes</h1>
+			</header>
+			<!-- Section to generate the quote -->
+			<section class="generate">
+				<!-- container for languages supported -->
+				<div class=selectContainer>
+					<label class="select-label">Laguage</label>
+					<!-- list of language supported -->
+					<select class="lang-quote" name="lang-quote" id="lang-quote">
+					</select>
+				</div>
+				<button type="button" value="generateBtn" class="generateBtn">Gen</button>
+			</section>
+			<!-- Section to display the quote -->
+			<blockquote class="result">
+				<!-- quote picture bg  -->
+				<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
+				<!-- text content of the quote -->
+				<p class="quoteText"><span class="q-open">"</span>Here is the quote text Lorem ipsum dolor
+					sit
+					amet consectetur
+					adipisicing elit.
+					Ratione
+					nihil fugit magni id dicta repellat eaque nostrum error earum vel? Consectetur, aperiam
+					repellendus.
+					Sapiente ea eligendi, eius voluptates repellat autem.<span class="q-close">"</span></p>
+				<!-- footer of the quotation and cite for the author-->
+				<footer class="author"><cite class="cite">Author name</cite></footer>
+			</blockquote>
+			<!-- Buttons for historical and save quote -->
+			<footer class="quoteFooter">
+				<button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button>
+				<button type="button" value="saveQuoteBtn" class="saveQuoteBtn">Save</button>
+			</footer>
+		</section>
+
+
+
+
+
+		<!-- :::::: Container for historical section :::::: -->
+		<section class="histo-stion">
+			<!-- historical header for subheading and closing button -->
+			<header class=histoHeader>
+				<h2 class="histoHeading">Historical</h2>
+				<button type="button" value="closeHistoBtn" class="closeHistoBtn">Close</button>
+			</header>
+			<!-- historical filters and clear all button -->
+			<section class="Filters">
+				<div class="selectContainer">
+					<label class="select-label">Laguage</label>
+					<!-- list of language supported -->
+					<select class="lang-historial" name="lang-historial" id="lang-historial">
+					</select>
+				</div>
+				<div class="selectContainer">
+					<label class="select-label">Order by</label>
+					<select class="orderBy" name="orderBy" id="orderBy">
+						<option value="quote">Quote</option>
+						<option value="author">Author</option>
+					</select>
+				</div>
+				<button id="clearAllQuotes" type="button" value="clearAllQuotes" class="clearAllQuotes">Clear</button>
+			</section>
+			<section class="deleteConfirm">
+				<p class="deleteParagraph"><span>Delete all quotes?</span><span>This action will erase everything you
+						have saved</span></p>
+				<div class="BtnCollectionDelete">
+					<button id="cancelDeleteQuote" type="button" value="cancelDeleteQuote"
+						class="cancelDeleteQuote">cancel</button>
+					<button id="DeleteAllQuote" type="button" value="DeleteAllQuote"
+						class="DeleteAllQuote">Delete</button>
+				</div>
+
+			</section>
+			<!-- Msj when there is no information to display -->
+			<p class="EmptyDB">There are no previous quotes</p>
+
+			<!-- Display hitorical quotes -->
+			<section class="historicalResult">
+				<div class="histo-item">
+					<div class="quoteRow">
+						<p class="quoteRowTxt">Quote text here ...</p>
+						<p class="quoteRowAuthor">Author name</p>
+					</div>
+					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
+						class="deleteRowQuote">Delete</button>
+				</div>
+
+				<div class="histo-item">
+					<div class="quoteRow">
+						<p class="quoteRowTxt">Quote text here ...</p>
+						<p class="quoteRowAuthor">Author name</p>
+					</div>
+					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
+						class="deleteRowQuote">Delete</button>
+				</div>
+			</section>
+
+
+
+
+
+		</section>
+
+	</main>
+	<script src="./js/script.js"></script>
 </body>
 
 </html>
