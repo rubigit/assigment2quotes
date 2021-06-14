@@ -75,7 +75,7 @@ html{
 	margin: 0 auto;
 	box-shadow: 0 0.3em 0.7em grey;
 	background-color: rgba(255, 255, 255, 0.459);
-	gap: calc(var(--pad-gap)*3);
+	gap: var(--pad-gap);
 
 	color:rgb(90, 90, 90);
 	font-size: 1em;
@@ -94,22 +94,23 @@ html{
 /* -------------Container for quote generator section----------- */
 .quote-stion{
 	display: grid;
-
+	border-bottom:0.02em solid rgb(168, 168, 168);
 }
 .quote-stion, .histo-stion{
-	border-radius: 5px;
-	background-color: rgba(255, 255, 255, 0.356);
-	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
 	gap: var(--pad-gap);
-	padding:0  var(--pad-gap);
+	padding:0  var(--pad-gap)  var(--pad-gap) var(--pad-gap);
 	color:inherit;
 	font-size: inherit;
 	font-weight: bold;
+	
 }
 
 /* ------------------------- header for logo ------------*/
 .quoteHeader{
 	display: flex;
+	align-items: center;
+	gap: var(--pad-gap);
+	
 }
 
 .quoteHeader, .histoHeader{
@@ -122,11 +123,13 @@ html{
 
 /* picture logo */
 .logo{
-/* color:rgb(0, 0, 0) */
+width: 2em;
+height: auto;
 }
 /* text logo */
 .title{
-	/* color:rgb(0, 0, 0) */
+	color: rgb(49, 49, 49);
+	font-size: 1.3em;
 }
 
 
@@ -168,6 +171,7 @@ html{
 
 .generateBtn:focus{
 	color: rgb(71, 15, 228);
+	background: url("./img/logo.svg") no repeat;
 }
 
 
@@ -406,9 +410,9 @@ justify-self: flex-end;
 	color: rgb(71, 15, 228);
 }
 
-@media screen and (min-width: 55em) {
+@media screen and (min-width: 45em) {
   .mainly {
-		max-width: 50em;
+		max-width: 45em;
 
   }
 }
@@ -419,5 +423,11 @@ justify-self: flex-end;
 		max-width: 80em;
 		grid-template-columns: 2fr 1fr;
   }
+
+	.quote-stion, .histo-stion{
+		border-radius: 5px;
+		background-color: rgba(255, 255, 255, 0.356);
+		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
+	}
 
 }
