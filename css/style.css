@@ -117,7 +117,7 @@ html{
 
 	border-bottom: 0.2em solid rgb(138, 138, 138);
 	padding: var(--pad-gap);
-	box-shadow: 0px 10px 23px -14px rgba(134, 134, 134, 0.64);
+	box-shadow: 0px 10px 23px -14px rgba(134, 134, 134, 0.4);
 	}
 
 
@@ -137,9 +137,7 @@ height: auto;
 .generate{
 	display: flex;
 	justify-content: flex-end;
-	gap: var(--pad-gap);
-	padding: var(--pad-gap) 0;
-	border-bottom: 0.05em solid rgb(201, 201, 201);
+    gap: calc(var(--pad-gap)*2);
 }
 
 /* container for languages supported */
@@ -148,6 +146,9 @@ height: auto;
 	flex-direction: column;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
+	padding-right: calc(var(--pad-gap)*2);
+	border-right: 0.02em solid rgb(190, 190, 190);
+	height: fit-content;
 }
 /* label for list of languages supported */
 .select-label{
@@ -161,17 +162,25 @@ height: auto;
 	padding-right: var(--pad-gap);
 	outline:none ;
 	border:none;
-	border-bottom: 0.2em solid rgb(163, 163, 163) ;
+    border-bottom: 0.2em solid rgb(163, 163, 163) ;
 	font-size: inherit;
 }
 /* Button to generate random quote */
 .generateBtn{
 	color: springgreen;
+	background: url(../img/generatequoteBtn.svg);
+	background-repeat: no-repeat;
+	width: 3em;
+	height:2.5em ;
+	background-color:none;
+	cursor: pointer;
+	border: none;
+	object-fit: cover;
+	object-position: center center;
 }
 
-.generateBtn:focus{
-	color: rgb(71, 15, 228);
-	background: url("./img/logo.svg") no repeat;
+.generateBtn:hover{
+	background: url(../img/generatequoteBtnhover.svg);
 }
 
 
@@ -221,6 +230,7 @@ height: auto;
 }
 
 
+
 /*------------ footer of the quotation -------------*/
 .author{
 	display: flex;
@@ -242,8 +252,6 @@ height: auto;
 .quoteFooter{
 	display: flex;
 	justify-content: flex-end;
-	gap: var(--pad-gap);
-	border-top: 0.05em solid rgb(201, 201, 201);
 	padding-top: var(--pad-gap);
 }
 
@@ -300,9 +308,7 @@ justify-content: space-between;
 .Filters{
 	display: flex;
 	justify-content: flex-end;
-	gap: var(--pad-gap);
-	border-bottom: 0.05em solid rgb(201, 201, 201);
-	padding: var(--pad-gap) 0;
+	gap: calc(var(--pad-gap)*2);
 	align-items: flex-end;
 }
 
