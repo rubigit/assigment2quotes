@@ -37,14 +37,15 @@
 				<!-- quote picture bg  -->
 				<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
 				<!-- text content of the quote -->
-				<p class="quoteText"><span class="q-open"></span><span id="insertQuote">Welcome to random quo</span><span class="q-close"></span></p>
+				<p id="welcome"class="quoteText">Welcome to random quotes</p>
+				<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span id="insertQuote"></span><span class="q-close"></span></p>
 				<!-- footer of the quotation and cite for the author-->
-				<footer class="author"><cite class="cite">Author name</cite></footer>
+				<footer class="author"><cite class="cite"></cite></footer>
 			</blockquote>
 			<!-- Buttons for historical and save quote -->
 			<footer class="quoteFooter">
 				<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
-				<button type="button" value="saveQuoteBtn" class="saveQuoteBtn">Save</button>
+				<button disabled type="button" value="saveQuoteBtn" id="saveQuoteBtn" class="saveQuoteBtn">Save</button>
 			</footer>
 		</section>
 

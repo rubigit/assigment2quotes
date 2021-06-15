@@ -66,6 +66,14 @@ html{
 
 /* =================GENERATE QUOTE=========================== */
 /*----------------------main containter ------------------*/
+
+.hide{
+	display: none;
+}
+
+
+
+
 .mainly{
 	display: grid;
 	grid-template-columns:1fr;
@@ -271,10 +279,13 @@ height: auto;
 	color: springgreen;
 }
 
-.saveQuoteBtn:focus{
+.saveQuoteBtn:hover{
 	color: rgb(71, 15, 228);
 }
 
+.saveQuoteBtn:disabled{
+opacity: 0.5;
+}
 
 /* =================HISTORICAL SECTION=========================== */
 /* -----------Container for historical section -------- */

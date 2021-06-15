@@ -50,10 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function displayRandomQuote(content, name) {
+
+		document.querySelector(`#quoteText`).classList.remove(`hide`)
+		document.querySelector(`#welcome`).classList.add(`hide`)
+		document.querySelector(`#saveQuoteBtn`).disabled = false
 		document.querySelector(`#insertQuote`).innerHTML = content
 		document.querySelector(`.q-open`).innerHTML = `"`
 		document.querySelector(`.q-close`).innerHTML = `"`
 		document.querySelector(`.cite`).innerHTML = name
+
+	}
+
+
+	function storageQuote() {
+		const contentQuote = document.querySelector(`#insertQuote`).innerHTML
+		const authorName = document.querySelector(`.cite`).innerHTML
+		alert(`saved`)
+
 	}
 
 
@@ -85,6 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	document.querySelector(`.generateBtn`).addEventListener(`click`, quoteAPI)
+	document.querySelector(`#saveQuoteBtn`).addEventListener(`click`, storageQuote)
+
 
 
 	fillLngQuote()
