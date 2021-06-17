@@ -152,7 +152,7 @@ height: auto;
 .generate{
 	display: flex;
 	justify-content: flex-end;
-    gap: calc(var(--pad-gap)*2);
+    gap: calc(var(--pad-gap)*1);
 }
 
 /* container for languages supported */
@@ -512,5 +512,9 @@ gap: var(--pad-gap);
 	.historicalResult {
 		max-height: 30em;
 	}
+
+	.generate{
+
+    gap: calc(var(--pad-gap)*2);
 
 }
