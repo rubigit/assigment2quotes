@@ -31,17 +31,32 @@
 					</select>
 				</div>
 				<button type="button" value="generateBtn" class="generateBtn"></button>
+				<button type="button" value="createyoursBtn" class="createyoursBtn">Create your quote</button>
 			</section>
 			<!-- Section to display the quote -->
-			<blockquote class="result">
+			<blockquote id="result" class="result">
 				<!-- quote picture bg  -->
 				<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
 				<!-- text content of the quote -->
-				<p id="welcome"class="quoteText">Welcome to random quotes</p>
-				<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span id="insertQuote"></span><span class="q-close"></span></p>
+				<p id="welcome" class="quoteText">Welcome to random quotes</p>
+				<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span id="insertQuote"></span><span
+						class="q-close"></span></p>
 				<!-- footer of the quotation and cite for the author-->
 				<footer class="author"><cite class="cite"></cite></footer>
 			</blockquote>
+
+
+			<form id="form-CreateQuote" class="hide">
+				<div class="container-CreateQuote">
+					<label>Your quote</label>
+					<textarea class="yourtext" name="" cols="30" rows="10"></textarea>
+				</div>
+				<div class="container-CreateQuote">
+					<label for="">Your name</label>
+					<input type=" text" name="" class="yourname">
+				</div>
+
+			</form>
 			<!-- Buttons for historical and save quote -->
 			<footer class="quoteFooter">
 				<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
@@ -62,54 +77,29 @@
 			</header>
 			<!-- historical filters and clear all button -->
 			<section class="Filters">
-				<div class="selectContainer">
-					<label class="select-label">Laguage</label>
-					<!-- list of language supported -->
-					<select class="lang-historial" name="lang-historial" id="lang-historial">
-					</select>
-				</div>
+
 				<div class="selectContainer">
 					<label class="select-label">Order by</label>
 					<select class="orderBy" name="orderBy" id="orderBy">
-						<option value="quote">Quote</option>
+						<option value="id">Id</option>
 						<option value="author">Author</option>
 					</select>
 				</div>
-				<button id="clearAllQuotes" type="button" value="clearAllQuotes" class="clearAllQuotes">Clear</button>
 			</section>
-			<section class="deleteConfirm">
-				<p class="deleteParagraph"><span>Delete all quotes?</span><span>This action will erase everything you
-						have saved</span></p>
-				<div class="BtnCollectionDelete">
-					<button id="cancelDeleteQuote" type="button" value="cancelDeleteQuote"
-						class="cancelDeleteQuote">cancel</button>
-					<button id="DeleteAllQuote" type="button" value="DeleteAllQuote"
-						class="DeleteAllQuote">Delete</button>
-				</div>
 
-			</section>
-			<!-- Msj when there is no information to display -->
-			<p class="EmptyDB">There are no previous quotes</p>
 
 			<!-- Display historical quotes -->
 			<section class="historicalResult">
+				<!-- 
 				<div class="histo-item">
 					<div class="quoteRow">
+						<p class="quoteID">ID here</p>
 						<p class="quoteRowTxt">Quote text here ...</p>
 						<p class="quoteRowAuthor">Author name</p>
 					</div>
 					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
 						class="deleteRowQuote">Delete</button>
-				</div>
-
-				<div class="histo-item">
-					<div class="quoteRow">
-						<p class="quoteRowTxt">Quote text here ...</p>
-						<p class="quoteRowAuthor">Author name</p>
-					</div>
-					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
-						class="deleteRowQuote">Delete</button>
-				</div>
+				</div> -->
 			</section>
 
 

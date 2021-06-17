@@ -255,7 +255,37 @@ height: auto;
 	font-size: 1.4em;
 }
 
-/* -----Buttons for copy text and save quote-------- */
+
+
+.form-CreateQuote{
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 1fr;
+	gap: var(--pad-gap);
+	border: 0.2em solid rgb(100, 62, 62);
+		
+}
+
+
+.container-CreateQuote {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad-gap);
+	border: 0.2em solid red;
+	
+}
+
+.yourtext{
+	border: 0.2em solid yellowgreen;
+}
+
+
+.submit{
+	width: fit-content;
+	justify-self: center;
+}
+
+/* -----Button for  save quote-------- */
 
 .quoteFooter{
 	display: flex;
