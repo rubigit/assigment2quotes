@@ -437,7 +437,6 @@ gap: var(--pad-gap);
 	grid-template-columns: 2fr 1fr;
 	gap:var(--pad-gap);
 	padding: var(--pad-gap);
-	
 	border-bottom: 0.05em solid rgb(201, 201, 201);
 }
 
@@ -462,14 +461,21 @@ gap: var(--pad-gap);
 }
 
 .deleteRowQuote{
-	color: springgreen;
-	width: fit-content;
+	background: url(../img/delete.svg);
+	background-repeat: no-repeat;
+	width: 1.6em;
+	height:1.5em;
+	background-color:none;
+	cursor: pointer;
+	border: none;
+	object-fit: cover;
+	object-position: center center;
 	justify-self: flex-end;
-	height: fit-content;
 }
 
-.deleteRowQuote:focus{
-	color: rgb(71, 15, 228);
+.deleteRowQuote:hover{
+	background: url(../img/deleteHover.svg);
+	background-repeat: no-repeat;
 }
 
 .historicalResult {

@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			const deleteQuoteBtn = document.createElement(`button`)
 			deleteQuoteBtn.classList.add(`deleteRowQuote`)
 			deleteQuoteBtn.id = `deleteRowQuote`
-			deleteQuoteBtn.innerHTML = `Delete`
+			// deleteQuoteBtn.innerHTML = `Delete`
 			deleteQuoteBtn.addEventListener(`click`, function () { deleQuote(`${id}`) })
 			quoteTable.appendChild(quoteItem)
 			quoteItem.appendChild(deleteQuoteBtn)
