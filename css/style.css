@@ -78,12 +78,12 @@ html{
 	display: grid;
 	grid-template-columns:1fr;
 	justify-content: center;
-	width: auto;
+	/* width: auto;
 	max-width: 80em;
-	margin: 0 auto;
-	box-shadow: 0 0.3em 0.7em grey;
-	background-color: rgba(255, 255, 255, 0.459);
-	gap: var(--pad-gap);
+	margin: 0 auto; */
+	/* box-shadow: 0 0.3em 0.7em grey;
+	background-color: rgba(255, 255, 255, 0.459); */
+	gap: calc(var(--pad-gap)*4);
 
 	color:rgb(90, 90, 90);
 	font-size: 1em;
@@ -102,7 +102,8 @@ html{
 /* -------------Container for quote generator section----------- */
 .quote-stion{
 	display: grid;
-	border-bottom:0.02em solid rgb(168, 168, 168);
+	/* border-bottom:0.02em solid rgb(168, 168, 168); */
+
 }
 .quote-stion, .histo-stion{
 	gap: var(--pad-gap);
@@ -110,6 +111,12 @@ html{
 	color:inherit;
 	font-size: inherit;
 	font-weight: bold;
+
+
+		border-radius: 5px;
+		background-color: rgba(255, 255, 255, 0.356);
+		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
+	
 	
 }
 
@@ -277,6 +284,8 @@ height: auto;
 
 .yourtext{
 	border: 0.2em solid yellowgreen;
+	flex-wrap: 1;
+	max-width: 100%;
 }
 
 
@@ -438,9 +447,9 @@ gap: var(--pad-gap);
 
 } */
 .quoteRowTxt{
-	/* color: black;
+	color: rgb(236, 82, 198);
 	font-weight: bold;
-	font-size: 1em; */
+	font-size: 1em;
 }
 
 .quoteRowAuthor{
@@ -450,31 +459,58 @@ gap: var(--pad-gap);
 .deleteRowQuote{
 	color: springgreen;
 	width: fit-content;
-justify-self: flex-end;
+	justify-self: flex-end;
+	height: fit-content;
 }
 
 .deleteRowQuote:focus{
 	color: rgb(71, 15, 228);
 }
 
-@media screen and (min-width: 45em) {
-  .mainly {
-		max-width: 45em;
-
-  }
+.historicalResult {
+	max-height: 60em;
+	overflow: auto;
 }
 
 
-@media screen and (min-width: 65em) {
+
+
+/* 
+@media screen and (min-width: 45em) {
   .mainly {
-		max-width: 80em;
-		grid-template-columns: 2fr 1fr;
+		/max-width: 45em; *
+
+  }
+} */
+
+
+@media screen and (min-width: 60em) {
+  .mainly {
+		/* max-width: 80em;
+		grid-template-columns: 2fr 1fr; */
+		/* max-width: 30em; */
+		justify-content: flex-start;
+	 	max-width: 67%;
+		padding-left: calc(var(--pad-gap)*2);
+		background-color: transparent;
+		box-shadow: none;
   }
 
-	.quote-stion, .histo-stion{
-		border-radius: 5px;
+  .histo-stion{
+	  position: absolute;
+	 	width: 30%;
+	  	max-width: 30%;
+	  	right: 0;
+  }
+
+	/* .quote-stion, .histo-stion{
+		 border-radius: 5px;
 		background-color: rgba(255, 255, 255, 0.356);
-		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
+		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2); 
+	} */
+
+	.historicalResult {
+		max-height: 30em;
 	}
 
 }

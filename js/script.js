@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			quoteItem.innerHTML = `
 				<div class="quoteRow">
 				<p class="quoteID">${id}</p>
-				<p class="quoteRowTxt">${quote}</p>
+				<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
 				<p class="quoteRowAuthor">${author}</p>
 				</div>
 				`
