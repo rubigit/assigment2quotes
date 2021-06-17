@@ -114,10 +114,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 				})
 				.catch(err => console.log(err));
+
+			hideEmpty()
 		}
 	}
 
 	function deleQuote(id) {
+		notifyEmpy()
 		let index = quotes.findIndex(function (o) {
 			return o.id === id;
 		})
@@ -183,12 +186,25 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.log(`loaded`)
 	}
 
+	function hideEmpty() {
+		const emptyNotification = document.querySelector(`#itsEmpty`)
+		emptyNotification.classList.add(`hide`)
+		emptyNotification.classList.remove(`itsEmpty`)
+	}
 
+	function notifyEmpy() {
+		const emptyNotification = document.querySelector(`#itsEmpty`)
 
+		if (quotes.length == 1) {
+			emptyNotification.classList.remove(`hide`)
+			emptyNotification.classList.add(`itsEmpty`)
+		}
+	}
 
 
 
 	function createQuote() {
+
 
 		document.querySelector(`#saveQuoteBtn`).disabled = false
 

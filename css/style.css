@@ -522,6 +522,15 @@ gap: var(--pad-gap);
 }
 
 
+.itsEmpty{
+	display: grid;
+	/* border: 0.2em solid red; */
+	padding: calc(var(--pad-gap)*1.5) var(--pad-gap);
+	gap: var(--pad-gap);
+	justify-content: center;
+	align-items: center;
+}
+
 
 
 /* 
