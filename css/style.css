@@ -153,6 +153,7 @@ height: auto;
 	display: flex;
 	justify-content: flex-end;
     gap: calc(var(--pad-gap)*1);
+	align-items: center;
 }
 
 /* container for languages supported */
@@ -161,8 +162,6 @@ height: auto;
 	flex-direction: column;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
-	padding-right: calc(var(--pad-gap)*2);
-	border-right: 0.02em solid rgb(190, 190, 190);
 	height: fit-content;
 }
 /* label for list of languages supported */
@@ -182,20 +181,49 @@ height: auto;
 }
 /* Button to generate random quote */
 .generateBtn{
-	color: springgreen;
-	background: url(../img/generatequoteBtn.svg);
+	
+	background: url(../img/getInspired.svg);
 	background-repeat: no-repeat;
-	width: 3em;
-	height:2.5em ;
+	width: 2em;
+	height:1.8em ;
 	background-color:none;
 	cursor: pointer;
 	border: none;
 	object-fit: cover;
-	object-position: center center;
+	background-position: center;
+
+	padding: 0 calc(var(--pad-gap)*2);
+	border-right: 0.02em solid rgb(190, 190, 190);
+	border-left: 0.02em solid rgb(190, 190, 190);
+	
+
 }
 
 .generateBtn:hover{
-	background: url(../img/generatequoteBtnhover.svg);
+	background: url(../img/getInspiredHover.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.createyoursBtn{
+	background: url(../img/createyours.svg);
+	background-repeat: no-repeat;
+	width: 1.7em;
+	height:1.8em ;
+	background-color:none;
+	cursor: pointer;
+	border: none;
+	object-fit: cover;
+	background-position: center;
+}
+
+
+
+
+.createyoursBtn:hover{
+	background: url(../img/createyoursHover.svg);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 
@@ -315,11 +343,21 @@ height: auto;
 
 /* save button */
 .saveQuoteBtn{
-	color: springgreen;
+	background: url(../img/save.svg);
+	background-repeat: no-repeat;
+	width: 1.7em;
+	height:1.8em ;
+	background-color:none;
+	cursor: pointer;
+	border: none;
+	object-fit: cover;
+	background-position: center;
 }
 
 .saveQuoteBtn:hover{
-	color: rgb(71, 15, 228);
+	background: url(../img/saveHover.svg);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .saveQuoteBtn:disabled{
