@@ -428,7 +428,7 @@ gap: var(--pad-gap);
 
 .historicalResult{
 	display: grid;
-	gap: var(--pad-gap);
+	/* gap: var(--pad-gap); */
 	
 }
 
@@ -437,7 +437,12 @@ gap: var(--pad-gap);
 	grid-template-columns: 2fr 1fr;
 	gap:var(--pad-gap);
 	padding: var(--pad-gap);
-	border: 0.05em solid rgb(201, 201, 201);
+	
+	border-bottom: 0.05em solid rgb(201, 201, 201);
+}
+
+.histo-item:first-child{
+    border-top: 0.05em solid rgb(201, 201, 201); 
 }
 .histo-item:hover {
 	background-color: rgba(255, 255, 255, 0.253);
