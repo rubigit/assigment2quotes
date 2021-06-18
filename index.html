@@ -24,15 +24,24 @@
 				<section class="quote-stion">
 					<!-- Section to generate the quote -->
 					<section class="generate">
-						<!-- container for languages supported -->
-						<div class=selectContainer>
-							<label class="select-label">Laguage</label>
-							<!-- list of language supported -->
-							<select class="lang-quote" name="lang-quote" id="lang-quote">
-							</select>
+						<div class="generateleftBtn">
+							<!-- container for languages supported -->
+							<div class=selectContainer>
+								<label class="select-label">Laguage</label>
+								<!-- list of language supported -->
+								<select class="lang-quote" name="lang-quote" id="lang-quote">
+								</select>
+							</div>
+							<!-- <div> -->
+							<button type="button" value="generateBtn" class="generateBtn"></button>
+							<button type="button" value="createyoursBtn" class="createyoursBtn"></button>
+							<!-- </div> -->
 						</div>
-						<button type="button" value="generateBtn" class="generateBtn"></button>
-						<button type="button" value="createyoursBtn" class="createyoursBtn"></button>
+						<footer class="quoteFooter">
+							<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
+							<button disabled type="button" value="saveQuoteBtn" id="saveQuoteBtn"
+								class="saveQuoteBtn"></button>
+						</footer>
 					</section>
 					<!-- Section to display the quote -->
 					<blockquote id="result" class="result">
@@ -59,11 +68,7 @@
 
 					</form>
 					<!-- Buttons for historical and save quote -->
-					<footer class="quoteFooter">
-						<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
-						<button disabled type="button" value="saveQuoteBtn" id="saveQuoteBtn"
-							class="saveQuoteBtn"></button>
-					</footer>
+
 				</section>
 			</div>
 			<!-- :::::: Container for historical section :::::: -->
