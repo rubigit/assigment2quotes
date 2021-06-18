@@ -123,8 +123,8 @@ html{
 	display: flex;
 	align-items: center;
 	gap: var(--pad-gap);
-	padding: var(--pad-gap);
-	
+	padding: var(--pad-gap) calc(var(--pad-gap)*2);
+	border: 0.2em solid yellowgreen;
 }
 
 .histoHeader{
@@ -572,7 +572,7 @@ gap: var(--pad-gap);
 .subcontainer{
 	display: grid;
 	grid-template-columns:1fr;
-	gap: 1em;
+	gap: calc(var(--pad-gap)*2);
 	/* border: 0.2em solid red; */
 	
 }
@@ -591,6 +591,7 @@ gap: var(--pad-gap);
 @media screen and (min-width: 60em) {
 	.subcontainer{
 		grid-template-columns: 2fr 1fr;
+		gap:0;
 	}
 
 	.quotewraper{
@@ -601,6 +602,10 @@ gap: var(--pad-gap);
 	.quote-stion, .histo-stion{
 		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
 		}
+
+		.quoteHeader{
+			padding: var(--pad-gap) calc(var(--pad-gap)*5);
+			}
   .mainly {
 		/* max-width: 80em;
 		grid-template-columns: 2fr 1fr; */
