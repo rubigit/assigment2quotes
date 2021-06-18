@@ -77,13 +77,13 @@ html{
 .mainly{
 	display: grid;
 	grid-template-columns:1fr;
-	justify-content: center;
+	/* justify-content: center; */
 	/* width: auto;
 	max-width: 80em;
 	margin: 0 auto; */
 	/* box-shadow: 0 0.3em 0.7em grey;
 	background-color: rgba(255, 255, 255, 0.459); */
-	gap: calc(var(--pad-gap)*4);
+	/* gap: calc(var(--pad-gap)*4); */
 
 	color:rgb(90, 90, 90);
 	font-size: 1em;
@@ -103,20 +103,18 @@ html{
 .quote-stion{
 	display: grid;
 	/* border-bottom:0.02em solid rgb(168, 168, 168); */
+	
 
 }
 .quote-stion, .histo-stion{
 	gap: var(--pad-gap);
-	padding:0  var(--pad-gap)  var(--pad-gap) var(--pad-gap);
+	/* padding:0  var(--pad-gap)  var(--pad-gap) var(--pad-gap); */
 	color:inherit;
 	font-size: inherit;
 	font-weight: bold;
-
-
-		border-radius: 5px;
-		background-color: rgba(255, 255, 255, 0.356);
-		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
-	
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255, 0.356);
+	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
 	
 }
 
@@ -125,10 +123,11 @@ html{
 	display: flex;
 	align-items: center;
 	gap: var(--pad-gap);
+	padding: var(--pad-gap);
 	
 }
 
-.quoteHeader, .histoHeader{
+.histoHeader{
 
 	border-bottom: 0.2em solid rgb(138, 138, 138);
 	padding: var(--pad-gap);
@@ -151,9 +150,13 @@ height: auto;
 /* ------------------Section to generate the quote ------------------ */
 .generate{
 	display: flex;
-	justify-content: flex-end;
-    gap: calc(var(--pad-gap)*1);
+	justify-content: flex-start;
+    gap: var(--pad-gap);
 	align-items: center;
+	padding:  calc(var(--pad-gap)*2);
+	background-color: rgba(0, 0, 0, 0.089);
+	border-bottom: 0.05em solid rgb(201, 201, 201); 
+
 }
 
 /* container for languages supported */
@@ -163,6 +166,8 @@ height: auto;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
 	height: fit-content;
+	
+	
 }
 /* label for list of languages supported */
 .select-label{
@@ -230,16 +235,40 @@ height: auto;
 /* --------Section to display the quote ----------------- */
 .result{
 	display: grid;
+	grid-template-columns: 1fr;
 	grid-template-areas: 
 	"qote"
 	"cite";
 	justify-content: center;
 	align-items: center;
+	/* padding: 0 calc(var(--pad-gap)/2); */
 
-	width: auto;
-	position: relative;
-	padding: 0 var(--pad-gap);
+	
+	/* max-width: 50em; */
+	/* position: relative; */
+	padding: 0 calc(var(--pad-gap)*2);
+	border: 0.2em solid red;
+	/* justify-self: center; */
+	/* flex-grow: var(--pad-gap); */
 }
+
+/* text content of the quote */
+.quoteText{
+	grid-area: qote;
+	font-size: 1.2em;
+	font-family: var(--fCgette);
+	height: auto;
+	/* width: 60em; */
+	max-width:60em;
+	flex:0 1 100%
+	/* padding:var(--pad-gap); */
+	line-height: 2;
+	/* z-index: 2; */
+	border: 0.2em solid red;
+	text-align: center;
+	justify-self:center ;
+}
+
 
 /* open quote */
 .q-open{
@@ -260,17 +289,6 @@ height: auto;
 	max-height: 5em;
 } 
 
-/* text content of the quote */
-.quoteText{
-	grid-area: qote;
-	font-size: 1.2em;
-	font-family: var(--fCgette);
-	height: auto;
-	width: auto;
-	padding:var(--pad-gap);
-	line-height: 2;
-	z-index: 2;
-}
 
 
 
@@ -368,7 +386,10 @@ opacity: 0.5;
 /* -----------Container for historical section -------- */
 .histo-stion{
 display: grid;
-
+flex-grow: 1;
+max-width: 35em;
+align-content: flex-start;
+height: 90vh;
 }
 
 
@@ -533,13 +554,21 @@ gap: var(--pad-gap);
 
 
 
-/* 
-@media screen and (min-width: 45em) {
-  .mainly {
-		/max-width: 45em; *
+.subcontainer{
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	
+}
 
-  }
-} */
+.quotewraper{
+	flex-grow: 2 1 100%;
+	padding: 0 calc(var(--pad-gap)*5);
+	border:0.2em solid red;
+	/* min-width: 60em; */
+	/* max-width: 80em; */
+
+}
+
 
 
 @media screen and (min-width: 60em) {
@@ -547,18 +576,18 @@ gap: var(--pad-gap);
 		/* max-width: 80em;
 		grid-template-columns: 2fr 1fr; */
 		/* max-width: 30em; */
-		justify-content: flex-start;
-	 	max-width: 67%;
-		padding-left: calc(var(--pad-gap)*2);
+		/* justify-content: flex-start; */
+	 	/* max-width: 67%; */
+		/* padding-left: calc(var(--pad-gap)*2); */
 		background-color: transparent;
 		box-shadow: none;
   }
 
   .histo-stion{
-	  position: absolute;
+	  /* position: absolute;
 	 	width: 30%;
 	  	max-width: 30%;
-	  	right: 0;
+	  	right: 0; */
   }
 
 	/* .quote-stion, .histo-stion{

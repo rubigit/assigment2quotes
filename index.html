@@ -13,88 +13,86 @@
 	<!-- main containter -->
 	<main class="mainly">
 		<!-- :::::: Container for quote generator section :::::: -->
+		<!-- header for logo -->
+		<header class="quoteHeader">
+			<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
+			<h1 class="title">Randon quotes</h1>
+		</header>
+
+		<div class="subcontainer">
+			<div class="quotewraper">
+				<section class="quote-stion">
+					<!-- Section to generate the quote -->
+					<section class="generate">
+						<!-- container for languages supported -->
+						<div class=selectContainer>
+							<label class="select-label">Laguage</label>
+							<!-- list of language supported -->
+							<select class="lang-quote" name="lang-quote" id="lang-quote">
+							</select>
+						</div>
+						<button type="button" value="generateBtn" class="generateBtn"></button>
+						<button type="button" value="createyoursBtn" class="createyoursBtn"></button>
+					</section>
+					<!-- Section to display the quote -->
+					<blockquote id="result" class="result">
+						<!-- quote picture bg  -->
+						<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
+						<!-- text content of the quote -->
+						<p id="welcome" class="quoteText">Welcome to random quotes</p>
+						<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span
+								id="insertQuote"></span><span class="q-close"></span></p>
+						<!-- footer of the quotation and cite for the author-->
+						<footer class="author"><cite class="cite"></cite></footer>
+					</blockquote>
 
 
-		<section class="quote-stion">
-			<!-- header for logo -->
-			<header class="quoteHeader">
-				<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
-				<h1 class="title">Randon quotes</h1>
-			</header>
-			<!-- Section to generate the quote -->
-			<section class="generate">
-				<!-- container for languages supported -->
-				<div class=selectContainer>
-					<label class="select-label">Laguage</label>
-					<!-- list of language supported -->
-					<select class="lang-quote" name="lang-quote" id="lang-quote">
-					</select>
-				</div>
-				<button type="button" value="generateBtn" class="generateBtn"></button>
-				<button type="button" value="createyoursBtn" class="createyoursBtn"></button>
-			</section>
-			<!-- Section to display the quote -->
-			<blockquote id="result" class="result">
-				<!-- quote picture bg  -->
-				<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
-				<!-- text content of the quote -->
-				<p id="welcome" class="quoteText">Welcome to random quotes</p>
-				<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span id="insertQuote"></span><span
-						class="q-close"></span></p>
-				<!-- footer of the quotation and cite for the author-->
-				<footer class="author"><cite class="cite"></cite></footer>
-			</blockquote>
+					<form id="form-CreateQuote" class="hide">
+						<div class="container-CreateQuote">
+							<label>Your quote</label>
+							<textarea class="yourtext" name="" cols="30" rows="10"></textarea>
+						</div>
+						<div class="container-CreateQuote">
+							<label for="">Your name</label>
+							<input type=" text" name="" class="yourname">
+						</div>
 
+					</form>
+					<!-- Buttons for historical and save quote -->
+					<footer class="quoteFooter">
+						<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
+						<button disabled type="button" value="saveQuoteBtn" id="saveQuoteBtn"
+							class="saveQuoteBtn"></button>
+					</footer>
+				</section>
+			</div>
+			<!-- :::::: Container for historical section :::::: -->
+			<section class="histo-stion">
+				<!-- historical header for subheading and closing button -->
+				<header class=histoHeader>
+					<h2 class="histoHeading">History</h2>
+					<!-- <button type="button" value="closeHistoBtn" class="closeHistoBtn">Close</button> -->
+				</header>
+				<!-- historical filters and clear all button -->
+				<section class="Filters">
 
-			<form id="form-CreateQuote" class="hide">
-				<div class="container-CreateQuote">
-					<label>Your quote</label>
-					<textarea class="yourtext" name="" cols="30" rows="10"></textarea>
-				</div>
-				<div class="container-CreateQuote">
-					<label for="">Your name</label>
-					<input type=" text" name="" class="yourname">
-				</div>
+					<div class="selectContainer">
+						<label class="select-label">Order by</label>
+						<select class="orderBy" name="orderBy" id="orderBy">
+							<option value="id">Id</option>
+							<option value="author">Author</option>
+						</select>
+					</div>
+				</section>
 
-			</form>
-			<!-- Buttons for historical and save quote -->
-			<footer class="quoteFooter">
-				<!-- <button type="button" value="openHistoBtn" class="openHistoBtn">Historical</button> -->
-				<button disabled type="button" value="saveQuoteBtn" id="saveQuoteBtn" class="saveQuoteBtn"></button>
-			</footer>
-		</section>
+				<section id="itsEmpty" class="itsEmpty">
+					<img src="./img/noquotes.svg" alt="message indicatin no quotes">
+					<p>No quotes saved</p>
+				</section>
 
-
-
-
-
-		<!-- :::::: Container for historical section :::::: -->
-		<section class="histo-stion">
-			<!-- historical header for subheading and closing button -->
-			<header class=histoHeader>
-				<h2 class="histoHeading">History</h2>
-				<!-- <button type="button" value="closeHistoBtn" class="closeHistoBtn">Close</button> -->
-			</header>
-			<!-- historical filters and clear all button -->
-			<section class="Filters">
-
-				<div class="selectContainer">
-					<label class="select-label">Order by</label>
-					<select class="orderBy" name="orderBy" id="orderBy">
-						<option value="id">Id</option>
-						<option value="author">Author</option>
-					</select>
-				</div>
-			</section>
-
-			<section id="itsEmpty" class="itsEmpty">
-				<img src="./img/noquotes.svg" alt="message indicatin no quotes">
-				<p>No quotes saved</p>
-			</section>
-
-			<!-- Display historical quotes -->
-			<section class="historicalResult">
-				<!-- 
+				<!-- Display historical quotes -->
+				<section class="historicalResult">
+					<!-- 
 				<div class="histo-item">
 					<div class="quoteRow">
 						<p class="quoteID">ID here</p>
@@ -104,16 +102,13 @@
 					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
 						class="deleteRowQuote">Delete</button>
 				</div> -->
+				</section>
 			</section>
 
-
-
-
-
-		</section>
-
+		</div>
 	</main>
 	<script src="./js/script.js"></script>
+	<script src="./scripts.js"></script>
 </body>
 
 </html>
