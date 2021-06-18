@@ -112,9 +112,9 @@ html{
 	color:inherit;
 	font-size: inherit;
 	font-weight: bold;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	background-color: rgba(255, 255, 255, 0.356);
-	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
+	box-shadow: 0 -7px 12px -5px rgba(0,0,0,0.2);
 	
 }
 
@@ -173,9 +173,11 @@ height: auto;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
 	height: fit-content;
-	
-	
 }
+
+/* .padd{
+	padding-right: var(--pad-gap);
+} */
 /* label for list of languages supported */
 .select-label{
 	font-weight: bold;
@@ -431,6 +433,7 @@ justify-content: space-between;
 	justify-content: flex-end;
 	gap: calc(var(--pad-gap)*2);
 	align-items: flex-end;
+	padding: 0 calc(var(--pad-gap)*2);
 }
 
 
@@ -507,7 +510,7 @@ gap: var(--pad-gap);
 	display: grid;
 	grid-template-columns: 2fr 1fr;
 	gap:var(--pad-gap);
-	padding: var(--pad-gap);
+	padding: var(--pad-gap)calc(var(--pad-gap)*2);
 	border-bottom: 0.05em solid rgb(201, 201, 201);
 }
 
@@ -594,6 +597,10 @@ gap: var(--pad-gap);
 		padding: 0 calc(var(--pad-gap)*5);
 	
 	}
+
+	.quote-stion, .histo-stion{
+		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
+		}
   .mainly {
 		/* max-width: 80em;
 		grid-template-columns: 2fr 1fr; */
