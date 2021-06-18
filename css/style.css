@@ -386,8 +386,8 @@ opacity: 0.5;
 /* -----------Container for historical section -------- */
 .histo-stion{
 display: grid;
-flex-grow: 1;
-max-width: 35em;
+flex: 1 1 auto;
+/* max-width: 35em; */
 align-content: flex-start;
 height: 90vh;
 }
@@ -557,13 +557,14 @@ gap: var(--pad-gap);
 .subcontainer{
 	display: grid;
 	grid-template-columns: 2fr 1fr;
+	border: 0.2em solid red;
 	
 }
 
 .quotewraper{
-	flex-grow: 2 1 100%;
+	flex-grow: 3 1 100%;
 	padding: 0 calc(var(--pad-gap)*5);
-	border:0.2em solid red;
+	border:0.2em solid rgb(197, 92, 92);
 	/* min-width: 60em; */
 	/* max-width: 80em; */
 
