@@ -568,14 +568,15 @@ gap: var(--pad-gap);
 
 .subcontainer{
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns:1fr;
+	gap: 1em;
 	/* border: 0.2em solid red; */
 	
 }
 
 .quotewraper{
 	flex-grow: 3 1 100%;
-	padding: 0 calc(var(--pad-gap)*5);
+	/* padding: 0 calc(var(--pad-gap)*5); */
 	/* border:0.2em solid rgb(197, 92, 92); */
 	/* min-width: 60em; */
 	/* max-width: 80em; */
@@ -585,6 +586,14 @@ gap: var(--pad-gap);
 
 
 @media screen and (min-width: 60em) {
+	.subcontainer{
+		grid-template-columns: 2fr 1fr;
+	}
+
+	.quotewraper{
+		padding: 0 calc(var(--pad-gap)*5);
+	
+	}
   .mainly {
 		/* max-width: 80em;
 		grid-template-columns: 2fr 1fr; */
@@ -592,7 +601,7 @@ gap: var(--pad-gap);
 		/* justify-content: flex-start; */
 	 	/* max-width: 67%; */
 		/* padding-left: calc(var(--pad-gap)*2); */
-		background-color: transparent;
+		background-color: red;
 		box-shadow: none;
   }
 
