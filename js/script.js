@@ -253,12 +253,42 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 	}
 
+	function openHisto() {
+		const openHistoBtn = document.querySelector(`#openHistoBtn`)
+		openHistoBtn.classList.add(`hide`)
+		openHistoBtn.classList.remove(`openHistoBtn`)
+
+		const quoteStion = document.querySelector(`#quote-stion`)
+		quoteStion.classList.add(`hide`)
+		quoteStion.classList.remove(`dispGrid`)
+
+		const histoStion = document.querySelector(`#histo-stion`)
+		histoStion.classList.remove(`hide`)
+		histoStion.classList.add(`dispGrid`)
+	}
+
+
+	function closeHisto() {
+		console.log(`close histo`)
+		const openHistoBtn = document.querySelector(`#openHistoBtn`)
+		openHistoBtn.classList.remove(`hide`)
+		openHistoBtn.classList.add(`openHistoBtn`)
+
+		const quoteStion = document.querySelector(`#quote-stion`)
+		quoteStion.classList.remove(`hide`)
+		quoteStion.classList.add(`dispGrid`)
+
+		const histoStion = document.querySelector(`#histo-stion`)
+		histoStion.classList.add(`hide`)
+		histoStion.classList.remove(`dispGrid`)
+	}
+
 	document.querySelector(`.generateBtn`).addEventListener(`click`, quoteAPI)
 	document.querySelector(`#saveQuoteBtn`).addEventListener(`click`, saveQuote)
 	document.querySelector(`.createyoursBtn`).addEventListener(`click`, createQuote)
 	document.querySelector(`#orderBy`).addEventListener(`change`, LoadListQuote)
-
-
+	document.querySelector(`#openHistoBtn`).addEventListener(`click`, openHisto)
+	document.querySelector(`#closeHistoBtn`).addEventListener(`click`, closeHisto)
 
 
 	fillLngQuote()

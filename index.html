@@ -23,7 +23,7 @@
 
 		<div class="subcontainer">
 			<div class="quotewraper">
-				<section class="quote-stion">
+				<section id="quote-stion" class="quote-stion dispGrid">
 					<!-- Section to generate the quote -->
 					<section class="generate">
 						<div class="generateleftBtn">
@@ -71,14 +71,17 @@
 					</form>
 					<!-- Buttons for historical and save quote -->
 
+
+
+
 				</section>
 			</div>
 			<!-- :::::: Container for historical section :::::: -->
-			<section class="histo-stion">
+			<section id="histo-stion" class="histo-stion hide">
 				<!-- historical header for subheading and closing button -->
 				<header class=histoHeader>
 					<h2 class="histoHeading">History</h2>
-					<!-- <button type="button" value="closeHistoBtn" class="closeHistoBtn">Close</button> -->
+					<button type="button" value="closeHistoBtn" id="closeHistoBtn" class="closeHistoBtn">Close</button>
 				</header>
 				<!-- historical filters and clear all button -->
 				<section class="Filters">
@@ -112,6 +115,10 @@
 				</section>
 			</section>
 
+		</div>
+
+		<div class="openHistoContainer">
+			<button id="openHistoBtn" class="openHistoBtn">History</button>
 		</div>
 	</main>
 	<script src="./js/script.js"></script>

@@ -97,14 +97,14 @@ html{
 	font-weight: inherit;
 	font-family: inherit;
 }
-
+.dispGrid{
+	display: grid;
+}
 
 /* -------------Container for quote generator section----------- */
 .quote-stion{
-	display: grid;
-	/* border-bottom:0.02em solid rgb(168, 168, 168); */
 	
-
+	/* border-bottom:0.02em solid rgb(168, 168, 168); */
 }
 .quote-stion, .histo-stion{
 	gap: var(--pad-gap);
@@ -153,7 +153,7 @@ height: auto;
 	justify-content: space-between;
     gap: var(--pad-gap);
 	align-items: center;
-	padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*2);
+	padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1);
 	background-color: rgba(0, 0, 0, 0.089);
 	border-bottom: 0.05em solid rgb(201, 201, 201); 
 	/* border:0.2em solid red; */
@@ -163,7 +163,8 @@ height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--pad-gap)*2);
+	/* gap: calc(var(--pad-gap)*2); */
+	border:0.2em solid yellowgreen;
 }
 
 /* container for languages supported */
@@ -173,6 +174,7 @@ height: auto;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
 	height: fit-content;
+	
 }
 
 /* .padd{
@@ -207,8 +209,8 @@ height: auto;
 	background-position: center;
 
 	padding: 0 calc(var(--pad-gap)*2);
-	border-right: 0.02em solid rgb(190, 190, 190);
-	border-left: 0.02em solid rgb(190, 190, 190);
+	/* border-right: 0.02em solid rgb(190, 190, 190);
+	border-left: 0.02em solid rgb(190, 190, 190); */
 	
 
 }
@@ -399,7 +401,6 @@ opacity: 0.5;
 /* =================HISTORICAL SECTION=========================== */
 /* -----------Container for historical section -------- */
 .histo-stion{
-display: grid;
 flex: 1 1 auto;
 /* max-width: 35em; */
 align-content: flex-start;
@@ -572,7 +573,7 @@ gap: var(--pad-gap);
 .subcontainer{
 	display: grid;
 	grid-template-columns:1fr;
-	gap: calc(var(--pad-gap)*2);
+	/* gap: calc(var(--pad-gap)*2); */
 	/* border: 0.2em solid red; */
 	
 }
@@ -613,22 +614,17 @@ gap: var(--pad-gap);
 		/* justify-content: flex-start; */
 	 	/* max-width: 67%; */
 		/* padding-left: calc(var(--pad-gap)*2); */
-		background-color: red;
+		/* background-color: red; */
 		box-shadow: none;
   }
 
   .histo-stion{
-	  /* position: absolute;
-	 	width: 30%;
-	  	max-width: 30%;
-	  	right: 0; */
-  }
-
-	/* .quote-stion, .histo-stion{
-		 border-radius: 5px;
-		background-color: rgba(255, 255, 255, 0.356);
-		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2); 
-	} */
+	display: grid
+}
+  .quote-stion{
+	display: grid
+ }
+	
 
 	.historicalResult {
 		max-height: 30em;
@@ -637,5 +633,31 @@ gap: var(--pad-gap);
 	.generate{
 
     gap: calc(var(--pad-gap)*2);
+	}
 
+	.openHistoBtn{
+		display: none;
+	}
+
+
+	.closeHistoBtn{
+		display: none;
+	}
+
+	.generateleftBtn{
+		gap: calc(var(--pad-gap)*2);
+	}
+	
+	.generate{
+		padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*2);
+		}
+}
+@media screen and (min-width: 95em){
+	.mainly{
+		/* background-color: lightcoral; */
+		/* border: 0.2em solid blue; */
+		width: 90em;
+		justify-content: flex-end;
+		margin: 0 auto;
+	}
 }
