@@ -35,8 +35,8 @@
 								</select>
 							</div>
 							<!-- <div> -->
-							<button type="button" value="generateBtn" class="generateBtn"></button>
-							<button type="button" value="createyoursBtn" class="createyoursBtn"></button>
+							<button type="button" value="generateBtn" class="generateBtn btnInactive"></button>
+							<button type="button" value="createyoursBtn" class="createyoursBtn btnInactive"></button>
 							<!-- </div> -->
 						</div>
 						<footer class="quoteFooter">
@@ -60,12 +60,13 @@
 
 					<form id="form-CreateQuote" class="hide">
 						<div class="container-CreateQuote">
-							<label>Your quote</label>
-							<textarea class="yourtext" name="" cols="30" rows="10"></textarea>
+							<label>Write your quote</label>
+							<textarea class="yourtext" name="" cols="30" rows="10"
+								placeholder="Write your quote here..."></textarea>
 						</div>
 						<div class="container-CreateQuote">
 							<label for="">Your name</label>
-							<input type=" text" name="" class="yourname">
+							<input type=" text" name="" class="yourname" placeholder="Write your quote here...">
 						</div>
 
 					</form>
@@ -119,6 +120,10 @@
 
 		<div class="openHistoContainer">
 			<button id="openHistoBtn" class="openHistoBtn">History</button>
+		</div>
+
+		<div id="alert" class="alert">
+			<p>hola bye</p>
 		</div>
 	</main>
 	<script src="./js/script.js"></script>

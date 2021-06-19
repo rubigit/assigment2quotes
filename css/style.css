@@ -124,7 +124,7 @@ html{
 	align-items: center;
 	gap: var(--pad-gap);
 	padding: var(--pad-gap) calc(var(--pad-gap)*2);
-	border: 0.2em solid yellowgreen;
+	/* border: 0.2em solid yellowgreen; */
 }
 
 .histoHeader{
@@ -163,8 +163,8 @@ height: auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* gap: calc(var(--pad-gap)*2); */
-	border:0.2em solid yellowgreen;
+	gap: calc(var(--pad-gap)/2);
+	/* border:0.2em solid yellowgreen; */
 }
 
 /* container for languages supported */
@@ -174,6 +174,8 @@ height: auto;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
 	height: fit-content;
+	/* border:0.2em solid red; */
+	
 	
 }
 
@@ -196,53 +198,58 @@ height: auto;
 	font-size: inherit;
 }
 /* Button to generate random quote */
+
+
 .generateBtn{
 	
-	background: url(../img/getInspired.svg);
+	background: url("../img/getInspiredHover.svg");
 	background-repeat: no-repeat;
-	width: 2em;
-	height:1.8em ;
-	background-color:none;
+	width: 3em;
+	height:3em ;
 	cursor: pointer;
 	border: none;
+	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-
-	padding: 0 calc(var(--pad-gap)*2);
-	/* border-right: 0.02em solid rgb(190, 190, 190);
-	border-left: 0.02em solid rgb(190, 190, 190); */
-	
+	background-size: 2.5em 2.5em;
+	background-color: blue;
 
 }
 
 .generateBtn:hover{
-	background: url(../img/getInspiredHover.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	background-color:rgba(255, 255, 255, 0.304);
 }
+
+
+
+
+
 
 .createyoursBtn{
-	background: url(../img/createyours.svg);
+	background: url("../img/createyoursHover.svg");
 	background-repeat: no-repeat;
-	width: 1.7em;
-	height:1.8em ;
-	background-color:none;
+	width: 3em;
+	height:3em ;
 	cursor: pointer;
 	border: none;
+	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
+	background-size: 2.5em 2em;
 }
-
-
-
 
 .createyoursBtn:hover{
-	background: url(../img/createyoursHover.svg);
-	background-repeat: no-repeat;
-	background-position: center;
+	background-color:rgba(255, 255, 255, 0.304);
 }
 
+.btnActive{
+	background-color:rgba(255, 255, 255, 0.404);
+}
 
+.btnInactive{
+	background-color:transparent;
+	opacity: 0.7;
+}
 /* --------Section to display the quote ----------------- */
 .result{
 	display: grid;
@@ -252,16 +259,9 @@ height: auto;
 	"cite";
 	justify-content: center;
 	align-items: center;
-	/* padding: 0 calc(var(--pad-gap)/2); */
 
-	
-	/* max-width: 50em; */
-	/* position: relative; */
-	/* padding: 0 calc(var(--pad-gap)*2); */
-	padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
-	/* border: 0.2em solid red; */
-	/* justify-self: center; */
-	/* flex-grow: var(--pad-gap); */
+	padding: 0  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1)  calc(var(--pad-gap)*1);
+
 }
 
 /* text content of the quote */
@@ -327,8 +327,9 @@ height: auto;
 	justify-content: center;
 	grid-template-columns: 1fr;
 	gap: var(--pad-gap);
+
 	/* border: 0.2em solid rgb(100, 62, 62); */
-	padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
+	padding: 0  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1)  calc(var(--pad-gap)*1);
 		
 }
 
@@ -336,21 +337,55 @@ height: auto;
 .container-CreateQuote {
 	display: flex;
 	flex-direction: column;
-	gap: var(--pad-gap);
+	gap: calc(var(--pad-gap)/3);
 	/* border: 0.2em solid red; */
 	
 }
 
 .yourtext{
-	border: 0.2em solid yellowgreen;
 	flex-wrap: 1;
-	max-width: 100%;
+	width: 100%;
+	padding: var(--pad-gap);
+	box-shadow: 0px 6px 12px -7px rgba(75, 45, 45, 0.25);
+	border: 0.05em solid rgb(216, 216, 216);
+	border-radius: 0.5em;
+	background-color: rgba(255, 255, 255, 0.157);
+
 }
 
 
-.submit{
-	width: fit-content;
-	justify-self: center;
+.yourtext:hover{
+	background-color: rgba(255, 255, 255, 0.257);
+	outline: none;
+
+
+}
+
+.yourtext:focus{
+	background-color: rgba(255, 255, 255, 0.809);
+	outline: none;
+	
+
+}
+
+.yourname{
+	flex-wrap: 1;
+	width: 100%;
+	padding: var(--pad-gap);
+	box-shadow: 0px 6px 12px -7px rgba(75, 45, 45, 0.25);
+	border: 0.05em solid rgb(216, 216, 216);
+	border-radius: 0.5em;
+	background-color: rgba(255, 255, 255, 0.157);
+}
+
+.yourname:hover{
+	background-color: rgba(255, 255, 255, 0.257);
+	outline: none;
+}
+
+.yourname:focus{
+	background-color: rgba(255, 255, 255, 0.809);
+	outline: none;
 }
 
 /* -----Button for  save quote-------- */
@@ -588,6 +623,10 @@ gap: var(--pad-gap);
 }
 
 
+.alert{
+	display: none;
+}
+
 
 @media screen and (min-width: 60em) {
 	.subcontainer{
@@ -596,7 +635,7 @@ gap: var(--pad-gap);
 	}
 
 	.quotewraper{
-		padding: 0 calc(var(--pad-gap)*5);
+		padding: 0 calc(var(--pad-gap)*5) 0 0;
 	
 	}
 
@@ -650,7 +689,18 @@ gap: var(--pad-gap);
 	
 	.generate{
 		padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*2);
-		}
+	}
+
+	.result{
+		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
+	}	
+
+	.form-CreateQuote{
+		
+		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
+				
+	}
+			
 }
 @media screen and (min-width: 95em){
 	.mainly{

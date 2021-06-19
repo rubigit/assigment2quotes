@@ -1,13 +1,12 @@
-
 const quotes = [
 
 ]
 
-const formCreateQuote = document.querySelector(`#form-CreateQuote`)
-const result = document.querySelector(`#result`)
-
 document.addEventListener("DOMContentLoaded", function () {
 	console.log(`Ready`)
+
+
+
 
 	//list of language supported
 	const languages = [
@@ -23,6 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		{ value: 'hu', lan: 'Hungarian' },
 		{ value: 'ru', lan: 'Russian' }
 	]
+
+
+	const formCreateQuote = document.querySelector(`#form-CreateQuote`)
+	const result = document.querySelector(`#result`)
+	const generateBtn = document.querySelector(`.generateBtn`)
+	const createyoursBtn = document.querySelector(`.createyoursBtn`)
 
 	//get the language of the quote to generate
 	const getSourceLanguge = function (event) {
@@ -75,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
-
+		document.querySelector(`#alert`).style.display = "block";
+		displayAlert()
 
 		let contentQuote = ""
 		let authorName = ""
@@ -254,6 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function openHisto() {
+
 		const openHistoBtn = document.querySelector(`#openHistoBtn`)
 		openHistoBtn.classList.add(`hide`)
 		openHistoBtn.classList.remove(`openHistoBtn`)
@@ -267,6 +274,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		histoStion.classList.add(`dispGrid`)
 	}
 
+	function displayAlert() {
+		setTimeout(function () {
+			document.querySelector(`#alert`).style.display = "none";
+		}, 3000);
+	}
 
 	function closeHisto() {
 		console.log(`close histo`)
@@ -283,12 +295,26 @@ document.addEventListener("DOMContentLoaded", function () {
 		histoStion.classList.remove(`dispGrid`)
 	}
 
-	document.querySelector(`.generateBtn`).addEventListener(`click`, quoteAPI)
+	function setBGbutton(buttonA, buttonB) {
+		console.log(buttonA, buttonB)
+		buttonA.classList.add(`btnActive`)
+		buttonA.classList.remove(`btnInactive`)
+		buttonB.classList.add(`btnInactive`)
+		buttonB.classList.remove(`btnActive`)
+	}
+
+
+
+	generateBtn.addEventListener(`click`, quoteAPI)
+	createyoursBtn.addEventListener(`click`, createQuote)
+	generateBtn.addEventListener(`click`, function () { setBGbutton(generateBtn, createyoursBtn) })
+	createyoursBtn.addEventListener(`click`, function () { setBGbutton(createyoursBtn, generateBtn) })
+
 	document.querySelector(`#saveQuoteBtn`).addEventListener(`click`, saveQuote)
-	document.querySelector(`.createyoursBtn`).addEventListener(`click`, createQuote)
 	document.querySelector(`#orderBy`).addEventListener(`change`, LoadListQuote)
 	document.querySelector(`#openHistoBtn`).addEventListener(`click`, openHisto)
 	document.querySelector(`#closeHistoBtn`).addEventListener(`click`, closeHisto)
+
 
 
 	fillLngQuote()
