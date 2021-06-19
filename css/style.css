@@ -398,20 +398,50 @@ height: auto;
 
 }
 
+.openHistoContainer{
+	display: flex;
+	flex-direction: column;
+	gap: var(--pad-gap);
+	justify-content: center;
+	align-items: center;
+	padding: calc(var(--pad-gap)*2) var(--pad-gap);
+	/* border: 0.2em solid red; */
+
+}
+
 /* save button */
 .openHistoBtn{
-	color: springgreen;
+	background: url("../img/historyBtn.svg");
+	background-repeat: no-repeat;
+	width: 6em;
+	height:6em ;
+	cursor: pointer;
+	border: none;
+	
+	object-fit: cover;
+	background-position: center;
+	background-size: 5.5em 5.5em;
 }
 
-.openHistoBtn:focus{
-	color: rgb(71, 15, 228);
+.openHistoBtn:hover{
+	background: url("../img/historyBtnHover.svg");
+	background-repeat: no-repeat;
+	object-fit: cover;
+	background-position: center;
+	background-size: 5.5em 5.5em;
+
+	border-radius: 50%;
+	background-color:rgba(255, 255, 255, 0.304);
+	
 }
 
-
+.openHistoBtn:hover + .histolabel{
+	color: #A385AF;
+}
 
 /* save button */
 .saveQuoteBtn{
-	background: url(../img/save.svg);
+	background: url("../img/save.svg");
 	background-repeat: no-repeat;
 	width: 1.7em;
 	height:1.8em ;
@@ -424,7 +454,7 @@ height: auto;
 }
 
 .saveQuoteBtn:hover{
-	background: url(../img/saveHover.svg);
+	background: url("../img/saveHover.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -571,7 +601,7 @@ gap: var(--pad-gap);
 }
 
 .deleteRowQuote{
-	background: url(../img/delete.svg);
+	background: url("../img/delete.svg");
 	background-repeat: no-repeat;
 	width: 1.6em;
 	height:1.5em;
@@ -584,7 +614,7 @@ gap: var(--pad-gap);
 }
 
 .deleteRowQuote:hover{
-	background: url(../img/deleteHover.svg);
+	background: url("../img/deleteHover.svg");
 	background-repeat: no-repeat;
 }
 
@@ -674,7 +704,7 @@ gap: var(--pad-gap);
     gap: calc(var(--pad-gap)*2);
 	}
 
-	.openHistoBtn{
+	.openHistoContainer{
 		display: none;
 	}
 
