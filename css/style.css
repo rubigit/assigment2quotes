@@ -191,11 +191,11 @@ height: auto;
 /* list of languages supported */
 .lang-quote, .lang-historial, .orderBy{
 	background-color: transparent;
-	padding-right: var(--pad-gap);
+	/* padding-right: var(--pad-gap); */
 	outline:none ;
 	border:none;
     border-bottom: 0.2em solid rgb(163, 163, 163) ;
-	font-size: inherit;
+	font-size: 0.9em;
 }
 /* Button to generate random quote */
 
@@ -204,15 +204,14 @@ height: auto;
 	
 	background: url("../img/getInspiredHover.svg");
 	background-repeat: no-repeat;
-	width: 3em;
-	height:3em ;
+	width: 2.2em;
+	height:2.2em ;
 	cursor: pointer;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 2.5em 2.5em;
-	background-color: blue;
+	background-size: 1.7em 1.7em;
 
 }
 
@@ -228,14 +227,14 @@ height: auto;
 .createyoursBtn{
 	background: url("../img/createyoursHover.svg");
 	background-repeat: no-repeat;
-	width: 3em;
-	height:3em ;
+	width: 2.2em;
+	height:2.2em ;
 	cursor: pointer;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 2.5em 2em;
+	background-size: 1.7em 1.7em;
 }
 
 .createyoursBtn:hover{
@@ -487,7 +486,9 @@ justify-content: space-between;
 }
 
 .closeHistoBtn{
-	color: springgreen;
+	color: red;
+	background: transparent;
+	font-size: 1.5em;
 }
 
 .closeHistoBtn:focus{
@@ -656,6 +657,56 @@ gap: var(--pad-gap);
 .alert{
 	display: none;
 }
+
+
+@media screen and (min-width: 25em) {
+	.mainly{
+		background-color: rgba(0, 255, 128, 0.575);
+	}
+	.lang-quote, .lang-historial, .orderBy{
+		padding-right: var(--pad-gap);
+		/* font-size: 1em; */
+		}
+
+.generateBtn{
+	
+			background: url("../img/getInspiredHover.svg");
+			background-repeat: no-repeat;
+			width: 3em;
+			height:3em ;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5em;
+			object-fit: cover;
+			background-position: center;
+			background-size: 2.5em 2.5em;
+	
+		
+	}
+		
+		
+		
+		.createyoursBtn{
+			background: url("../img/createyoursHover.svg");
+			background-repeat: no-repeat;
+			width: 3em;
+			height:3em ;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5em;
+			object-fit: cover;
+			background-position: center;
+			background-size: 2.5em 2em;
+		}
+
+		.selectContainer{
+
+			gap: calc(var(--pad-gap)/2);
+		}
+		
+
+}
+
 
 
 @media screen and (min-width: 60em) {
