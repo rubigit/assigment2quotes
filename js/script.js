@@ -80,8 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
-		document.querySelector(`#alert`).style.display = "flex";
-		displayAlert()
+
 
 		let contentQuote = ""
 		let authorName = ""
@@ -117,6 +116,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					})
 					console.log(`saved`)
 					LoadListQuote()
+					document.querySelector(`#alert`).style.display = "flex";
+					displayAlert()
 
 				})
 				.catch(err => console.log(err));
