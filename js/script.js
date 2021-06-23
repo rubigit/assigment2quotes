@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const generateBtn = document.querySelector(`.generateBtn`)
 	const createyoursBtn = document.querySelector(`.createyoursBtn`)
 
+
 	//get the language of the quote to generate
 	const getSourceLanguge = function (event) {
 		console.log(event.target.value)
@@ -173,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			console.log(id, author, quote)
 			const quoteItem = document.createElement(`div`)
 			quoteItem.classList.add(`histo-item`)
-
 			quoteItem.innerHTML = `
 				<div class="quoteRow">
 				<p class="quoteID">ID: ${id}</p>
@@ -181,6 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				<p class="quoteRowAuthor"><i>- ${author}</i></p>
 				</div>
 				`
+			quoteItem.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
+
 
 			const deleteQuoteBtn = document.createElement(`button`)
 			deleteQuoteBtn.classList.add(`deleteRowQuote`)
@@ -314,6 +316,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		buttonB.classList.remove(`btnActive`)
 	}
 
+	function showHistoItem(id, quote, author) {
+		console.log(id, quote.substring(0, 20), author)
+	}
+
 
 
 	generateBtn.addEventListener(`click`, quoteAPI)
@@ -325,8 +331,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.querySelector(`#orderBy`).addEventListener(`change`, LoadListQuote)
 	document.querySelector(`#openHistoBtn`).addEventListener(`click`, openHisto)
 	document.querySelector(`#closeHistoBtn`).addEventListener(`click`, closeHisto)
-
-
 
 	fillLngQuote()
 	console.log(`done`)

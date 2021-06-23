@@ -705,8 +705,11 @@ gap: calc(var(--pad-gap)/2);
 	font-size: 0.8em;
 }
 .quoteRowTxt{
+	display: flex;
 	color: rgb(110, 110, 110);
 	font-size: 0.9em;
+	flex-wrap: wrap;
+	/* border: 0.2em solid red; */
 }
 
 .quoteRowAuthor{
