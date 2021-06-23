@@ -495,11 +495,12 @@ background: url("../img/save.svg");
 }
 
 .alert span:last-child{
-	color: rgb(112, 202, 112);
+	color: rgb(138, 248, 138);
 	font-size: 0.7em;
-	/* background-color: black; */
-	padding: 0 calc(var(--pad-gap)/4);
+	background-color: black;
+	padding: calc(var(--pad-gap)/8) calc(var(--pad-gap));
 	flex: 0 1 auto;
+	border-radius: 4em;
 }
 
 .openHistoContainer{

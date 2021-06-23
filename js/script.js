@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
-		document.querySelector(`.getInspiredTooltip`).style.display = "none";
+		document.querySelector(`.getInspiredTooltip`).style.opacity = 0;
 
 		let contentQuote = ""
 		let authorName = ""
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function displayAlert() {
 		setTimeout(function () {
 			document.querySelector(`#alert`).style.display = "none";
-
+			document.querySelector(`.getInspiredTooltip`).style.opacity = 1;
 		}, 1500);
 	}
 
