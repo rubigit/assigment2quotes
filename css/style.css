@@ -461,8 +461,37 @@ background: url("../img/save.svg");
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+}
 
+.alert{
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	align-items: center;
+	gap: calc(var(--pad-gap)/2);
+	align-content: flex-end;
+	padding-top: calc(var(--pad-gap)/2);
+	z-index: 1;
+	
+	top: 0;
+	left: 0;
+	width:fit-content;
+	margin-left: -0.3em;
+}
+.alert span:first-child{
+	color: rgb(138, 248, 138);
+	text-shadow:
+	-2px -2px 2px #65A06A,
+	-2px 2px 2px #65A06A,
+	 2px -2px 2px #65A06A,
+	 2px 2px 2px #65A06A;
+	font-weight: bold;
+	font-size: 1.3em;
+}
 
+.alert span:last-child{
+	color: #65A06A;
 }
 
 .openHistoContainer{
@@ -700,14 +729,12 @@ gap: var(--pad-gap);
 }
 
 
-.alert{
-	display: none;
-}
+
 
 
 @media screen and (min-width: 25em) {
 	.mainly{
-		background-color: rgba(160, 252, 206, 0.575);
+		/* background-color: rgba(160, 252, 206, 0.575); */
 	}
 	.lang-quote, .lang-historial, .orderBy{
 		padding-right: var(--pad-gap);

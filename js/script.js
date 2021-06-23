@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
-		document.querySelector(`#alert`).style.display = "block";
+		document.querySelector(`#alert`).style.display = "flex";
 		displayAlert()
 
 		let contentQuote = ""
