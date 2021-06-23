@@ -570,13 +570,22 @@ justify-content: space-between;
 }
 
 .closeHistoBtn{
-	color: red;
-	background: transparent;
-	font-size: 1.5em;
+	
+	background: url("../img/closeBtn.svg");
+	background-repeat: no-repeat;
+	width: 2em;
+	height:2em;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center center;
+	background-size: 1em 1em;
+	border-radius: 0.5em;
 }
 
-.closeHistoBtn:focus{
-	color: rgb(71, 15, 228);
+.closeHistoBtn:hover{
+	background-color:rgba(255, 255, 255, 0.304);
 }
 
 .Filters{
@@ -761,7 +770,7 @@ gap: var(--pad-gap);
 			border-radius: 0.5em;
 			object-fit: cover;
 			background-position: center;
-			background-size: 1.8em 1.8em;background-size: 1.9em 1.9em;
+			background-size: 1.9em 1.9em;
 	}
 		
 		
