@@ -198,6 +198,43 @@ height: auto;
 	font-size: 0.9em;
 }
 /* Button to generate random quote */
+.inspired{
+	/* display: grid;
+	grid-template-columns: 1fr; */
+	position: relative;
+	
+	
+	
+}
+.getInspiredTooltip{
+	display: none;
+	width: 7em;
+	background-color: rgba(0, 0, 0, 0.842);
+	font-size: 0.6em;
+	font-weight: bold;
+	color: aliceblue;
+	justify-content: center;
+	
+	border-radius: 2em;
+	padding: calc(var(--pad-gap)/3);
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 50%;
+	margin-left: -3.5em;
+  	transition: 0.5s;
+
+	
+}
+
+.generateBtn:hover + .getInspiredTooltip,
+.createyoursBtn:hover + .getInspiredTooltip,
+.saveQuoteBtn:hover:enabled + .getInspiredTooltip
+{
+	opacity: 0.9;
+	display: flex;
+	transition: 0.5s;
+}
 
 
 .generateBtn{
@@ -388,6 +425,37 @@ height: auto;
 }
 
 /* -----Button for  save quote-------- */
+/* save button */
+.saveQuoteBtn{
+	background: url("../img/saveHover.svg");
+	background-repeat: no-repeat;
+	width: 2.2em;
+	height:2.2em ;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.7em 1.7em;	
+}
+
+.saveQuoteBtn:hover{
+	background-color:rgba(255, 255, 255, 0.304);
+}
+
+.saveQuoteBtn:disabled{
+opacity: 0.4;
+cursor: none;
+background: url("../img/save.svg");
+	background-repeat: no-repeat;
+	width: 2.2em;
+	height:2.2em ;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.7em 1.7em;	
+}
 
 .quoteFooter{
 	display: flex;
@@ -408,7 +476,7 @@ height: auto;
 
 }
 
-/* save button */
+/* open hitory button */
 .openHistoBtn{
 	background: url("../img/historyBtn.svg");
 	background-repeat: no-repeat;
@@ -438,29 +506,7 @@ height: auto;
 	color: #A385AF;
 }
 
-/* save button */
-.saveQuoteBtn{
-	background: url("../img/save.svg");
-	background-repeat: no-repeat;
-	width: 1.7em;
-	height:1.8em ;
-	background-color:none;
-	cursor: pointer;
-	border: none;
-	object-fit: cover;
-	background-position: center;
-	justify-self: flex-end;
-}
 
-.saveQuoteBtn:hover{
-	background: url("../img/saveHover.svg");
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.saveQuoteBtn:disabled{
-opacity: 0.5;
-}
 
 /* =================HISTORICAL SECTION=========================== */
 /* -----------Container for historical section -------- */
@@ -661,7 +707,7 @@ gap: var(--pad-gap);
 
 @media screen and (min-width: 25em) {
 	.mainly{
-		background-color: rgba(0, 255, 128, 0.575);
+		background-color: rgba(160, 252, 206, 0.575);
 	}
 	.lang-quote, .lang-historial, .orderBy{
 		padding-right: var(--pad-gap);
@@ -696,6 +742,20 @@ gap: var(--pad-gap);
 			background-position: center;
 			background-size: 1.9em 1.9em;
 		}
+
+		.saveQuoteBtn{
+			background: url("../img/saveHover.svg");
+			background-repeat: no-repeat;
+			width: 2.4em;
+			height:2.4em;
+			cursor: pointer;
+			border: none;
+			border-radius: 0.5em;
+			object-fit: cover;
+			background-position: center;
+			background-size: 1.9em 1.9em;
+		}
+
 
 		.selectContainer{
 
