@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
 	function createNewQuote() {
 
 		const yourtext = document.querySelector(`.yourtext`)
@@ -214,33 +215,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function createQuote() {
-
-
 		document.querySelector(`#saveQuoteBtn`).disabled = false
+		clearResult()
+		displayForm()
+		console.log(`create`)
+	}
 
+	function clearCuoteForm() {
+		document.querySelector(`.yourtext`).value = ``
+		document.querySelector(`.yourname`).value = ``
+	}
+	function clearResult() {
 		document.querySelector(`#insertQuote`).innerHTML = ``
 		document.querySelector(`.q-open`).innerHTML = ``
 		document.querySelector(`.q-close`).innerHTML = ``
 		document.querySelector(`.cite`).innerHTML = ``
+	}
 
+	function displayForm() {
 		formCreateQuote.classList.remove(`hide`)
 		formCreateQuote.classList.add(`form-CreateQuote`)
 		result.classList.add(`hide`)
 		result.classList.remove(`result`)
-
-		console.log(`create`)
 	}
-
-
+	function displayResult() {
+		formCreateQuote.classList.add(`hide`)
+		formCreateQuote.classList.remove(`form-CreateQuote`)
+		result.classList.remove(`hide`)
+		result.classList.add(`result`)
+	}
 
 	function quoteAPI() {
 
 		document.querySelector(`#saveQuoteBtn`).disabled = false
 
-		formCreateQuote.classList.add(`hide`)
-		formCreateQuote.classList.remove(`form-CreateQuote`)
-		result.classList.remove(`hide`)
-		result.classList.add(`result`)
+		displayResult()
 
 		const langQuote = document.querySelector(`#lang-quote`)
 		let langparameter = `random/?language_code=${langQuote.value}`
@@ -318,11 +327,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function showHistoItem(id, quote, author) {
 		console.log(id, quote.substring(0, 20), author)
+
+		generateBtn.classList.remove(`btnActive`)
+		generateBtn.classList.add(`btnInactive`)
+		createyoursBtn.classList.remove(`btnActive`)
+		createyoursBtn.classList.add(`btnInactive`)
+
+		document.querySelector(`#saveQuoteBtn`).disabled = true
+		clearCuoteForm()
+		displayResult()
+		document.querySelector(`#insertQuote`).innerHTML = quote
+		document.querySelector(`.q-open`).innerHTML = `"`
+		document.querySelector(`.q-close`).innerHTML = `"`
+		document.querySelector(`.cite`).innerHTML = author
+
 	}
 
 
 
 	generateBtn.addEventListener(`click`, quoteAPI)
+	generateBtn.addEventListener(`click`, clearCuoteForm)
 	createyoursBtn.addEventListener(`click`, createQuote)
 	generateBtn.addEventListener(`click`, function () { setBGbutton(generateBtn, createyoursBtn) })
 	createyoursBtn.addEventListener(`click`, function () { setBGbutton(createyoursBtn, generateBtn) })
