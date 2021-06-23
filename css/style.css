@@ -469,15 +469,19 @@ background: url("../img/save.svg");
 	flex-direction: column;
 	position: absolute;
 	align-items: center;
-	gap: calc(var(--pad-gap)/2);
+	gap: calc(var(--pad-gap)/3);
 	align-content: flex-end;
-	padding-top: calc(var(--pad-gap)/2);
+	padding-top: calc(var(--pad-gap));
 	z-index: 1;
+	flex: 1 1 auto;
 	
-	top: 0;
-	left: 0;
-	width:fit-content;
-	margin-left: -0.3em;
+	/* border: 0.2em solid red; */
+	
+	top: 100%;
+	left: 50%;
+	width:3em;
+	margin-left: -1.5em;
+	margin-top: -3em;
 }
 .alert span:first-child{
 	color: rgb(138, 248, 138);
@@ -491,7 +495,11 @@ background: url("../img/save.svg");
 }
 
 .alert span:last-child{
-	color: #65A06A;
+	color: rgb(112, 202, 112);
+	font-size: 0.7em;
+	/* background-color: black; */
+	padding: 0 calc(var(--pad-gap)/4);
+	flex: 0 1 auto;
 }
 
 .openHistoContainer{

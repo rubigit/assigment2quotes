@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
-
+		document.querySelector(`.getInspiredTooltip`).style.display = "none";
 
 		let contentQuote = ""
 		let authorName = ""
@@ -117,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					console.log(`saved`)
 					LoadListQuote()
 					document.querySelector(`#alert`).style.display = "flex";
+
 					displayAlert()
 
 				})
@@ -278,7 +279,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	function displayAlert() {
 		setTimeout(function () {
 			document.querySelector(`#alert`).style.display = "none";
-		}, 3000);
+
+		}, 1500);
 	}
 
 	function closeHisto() {
