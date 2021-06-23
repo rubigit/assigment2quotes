@@ -811,7 +811,7 @@ gap: var(--pad-gap);
 
 
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 50em) {
 	.subcontainer{
 		grid-template-columns: 2fr 1fr;
 		gap:0;
@@ -830,13 +830,9 @@ gap: var(--pad-gap);
 			padding: var(--pad-gap) calc(var(--pad-gap)*5);
 			}
   .mainly {
-		/* max-width: 80em;
-		grid-template-columns: 2fr 1fr; */
-		/* max-width: 30em; */
-		/* justify-content: flex-start; */
-	 	/* max-width: 67%; */
-		/* padding-left: calc(var(--pad-gap)*2); */
-		/* background-color: red; */
+		width: 99%;
+		justify-content: flex-end;
+		margin: 0 auto;
 		box-shadow: none;
   }
 
@@ -885,11 +881,12 @@ gap: var(--pad-gap);
 	}
 			
 }
-@media screen and (min-width: 95em){
+
+@media screen and (min-width: 75em) {
 	.mainly{
 		/* background-color: lightcoral; */
 		/* border: 0.2em solid blue; */
-		width: 90em;
+		width: 70em;
 		justify-content: flex-end;
 		margin: 0 auto;
 	}
