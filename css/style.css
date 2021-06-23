@@ -513,6 +513,9 @@ background: url("../img/save.svg");
 	/* border: 0.2em solid red; */
 
 }
+.histolabel{
+color:#898989;
+}
 
 /* open hitory button */
 .openHistoBtn{
