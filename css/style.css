@@ -672,16 +672,14 @@ gap: var(--pad-gap);
 	
 			background: url("../img/getInspiredHover.svg");
 			background-repeat: no-repeat;
-			width: 3em;
-			height:3em ;
+			width: 2.4em;
+			height:2.4em;
 			cursor: pointer;
 			border: none;
 			border-radius: 0.5em;
 			object-fit: cover;
 			background-position: center;
-			background-size: 2.5em 2.5em;
-	
-		
+			background-size: 1.8em 1.8em;background-size: 1.9em 1.9em;
 	}
 		
 		
@@ -689,14 +687,14 @@ gap: var(--pad-gap);
 		.createyoursBtn{
 			background: url("../img/createyoursHover.svg");
 			background-repeat: no-repeat;
-			width: 3em;
-			height:3em ;
+			width: 2.4em;
+			height:2.4em;
 			cursor: pointer;
 			border: none;
 			border-radius: 0.5em;
 			object-fit: cover;
 			background-position: center;
-			background-size: 2.5em 2em;
+			background-size: 1.9em 1.9em;
 		}
 
 		.selectContainer{
@@ -704,6 +702,14 @@ gap: var(--pad-gap);
 			gap: calc(var(--pad-gap)/2);
 		}
 		
+		.btnActive{
+			background-color:rgba(255, 255, 255, 0.404);
+		}
+		
+		.btnInactive{
+			background-color:transparent;
+			opacity: 0.7;
+		}
 
 }
 
