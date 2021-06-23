@@ -123,7 +123,7 @@ html{
 	display: flex;
 	align-items: center;
 	gap: var(--pad-gap);
-	padding: var(--pad-gap) calc(var(--pad-gap)*2);
+	padding: var(--pad-gap);
 	/* border: 0.2em solid yellowgreen; */
 }
 
@@ -600,7 +600,7 @@ background-color: rgba(0, 0, 0, 0.089);
 	justify-content: flex-end;
 	gap: calc(var(--pad-gap)*2);
 	align-items: flex-end;
-	padding: 0 calc(var(--pad-gap)*2) var(--pad-gap) calc(var(--pad-gap)*2);
+	padding: 0 var(--pad-gap) var(--pad-gap) var(--pad-gap);
 	background-color: rgba(0, 0, 0, 0.089);
 	border-bottom: 0.05em solid rgb(201, 201, 201); 
 }
@@ -677,10 +677,13 @@ gap: var(--pad-gap);
 
 .histo-item{
 	display: grid;
-	grid-template-columns: 2fr 1fr;
-	gap:var(--pad-gap);
-	padding: var(--pad-gap)calc(var(--pad-gap)*2);
+	grid-template-columns: 2fr auto;
+	gap:calc(var(--pad-gap)/4);
+	padding: var(--pad-gap);
 	border-bottom: 0.05em solid rgb(201, 201, 201);
+
+	
+
 }
 
 .histo-item:first-child{
@@ -690,36 +693,52 @@ gap: var(--pad-gap);
 	background-color: rgba(255, 255, 255, 0.253);
 }
 
-/* .quoteRow{
+.quoteRow{
 
-} */
+display: flex;
+flex-direction: column;
+gap: calc(var(--pad-gap)/2);
+} 
+
+.quoteID{
+	color: rgb(71, 71, 71);;
+	font-size: 0.8em;
+}
 .quoteRowTxt{
-	color: rgb(236, 82, 198);
-	font-weight: bold;
-	font-size: 1em;
+	color: rgb(110, 110, 110);
+	font-size: 0.9em;
 }
 
 .quoteRowAuthor{
-	font-size: 0.9em;
+	font-size: 0.8em;
 }
 
 .deleteRowQuote{
 	background: url("../img/delete.svg");
 	background-repeat: no-repeat;
-	width: 1.6em;
-	height:1.5em;
-	background-color:none;
+	width: 2em;
+	height:1.9em;
 	cursor: pointer;
 	border: none;
+	border-radius: 0.5em;
 	object-fit: cover;
-	object-position: center center;
-	justify-self: flex-end;
+	background-position: center center;
+	background-size: 0.9em 0.8em;
+
+	/* justify-self: flex-end; */
+	
+	/* border: 0.2em solid red; */
+}
+.deleteRowQuote:hover {
+	background-color:rgba(134, 134, 134, 0.157);
 }
 
-.deleteRowQuote:hover{
+
+
+/* .deleteRowQuote:hover{
 	background: url("../img/deleteHover.svg");
 	background-repeat: no-repeat;
-}
+} */
 
 .historicalResult {
 	max-height: 75vh;
@@ -796,7 +815,7 @@ gap: var(--pad-gap);
 			border: none;
 			border-radius: 0.5em;
 			object-fit: cover;
-			background-position: center;
+			background-position: center center;
 			background-size: 1.9em 1.9em;
 		}
 

@@ -176,9 +176,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			quoteItem.innerHTML = `
 				<div class="quoteRow">
-				<p class="quoteID">${id}</p>
+				<p class="quoteID">ID: ${id}</p>
 				<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
-				<p class="quoteRowAuthor">${author}</p>
+				<p class="quoteRowAuthor"><i>- ${author}</i></p>
 				</div>
 				`
 
@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		setTimeout(function () {
 			document.querySelector(`#alert`).style.display = "none";
 			document.querySelector(`.getInspiredTooltip`).style.opacity = 1;
-		}, 1500);
+		}, 700);
 	}
 
 	function closeHisto() {
