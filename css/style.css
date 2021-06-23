@@ -104,10 +104,10 @@ html{
 /* -------------Container for quote generator section----------- */
 .quote-stion{
 	
-	/* border-bottom:0.02em solid rgb(168, 168, 168); */
+	gap: var(--pad-gap);
 }
 .quote-stion, .histo-stion{
-	gap: var(--pad-gap);
+
 	/* padding:0  var(--pad-gap)  var(--pad-gap) var(--pad-gap); */
 	color:inherit;
 	font-size: inherit;
@@ -129,9 +129,10 @@ html{
 
 .histoHeader{
 
-	border-bottom: 0.2em solid rgb(138, 138, 138);
+	
 	padding: var(--pad-gap);
-	box-shadow: 0px 10px 23px -14px rgba(134, 134, 134, 0.4);
+	/* border-bottom: 0.2em solid rgb(138, 138, 138);
+	box-shadow: 0px 10px 23px -14px rgba(134, 134, 134, 0.4); */
 	}
 
 
@@ -556,6 +557,7 @@ flex: 1 1 auto;
 /* max-width: 35em; */
 align-content: flex-start;
 height: 90vh;
+
 }
 
 
@@ -565,6 +567,8 @@ height: 90vh;
 display: flex;
 align-items: center;
 justify-content: space-between;
+
+background-color: rgba(0, 0, 0, 0.089); 
 }
 
 .histoHeading{
@@ -596,7 +600,9 @@ justify-content: space-between;
 	justify-content: flex-end;
 	gap: calc(var(--pad-gap)*2);
 	align-items: flex-end;
-	padding: 0 calc(var(--pad-gap)*2);
+	padding: 0 calc(var(--pad-gap)*2) var(--pad-gap) calc(var(--pad-gap)*2);
+	background-color: rgba(0, 0, 0, 0.089);
+	border-bottom: 0.05em solid rgb(201, 201, 201); 
 }
 
 
@@ -655,12 +661,12 @@ gap: var(--pad-gap);
 	color: rgb(71, 15, 228);
 }
 
-.EmptyDB{
+/* .EmptyDB{
 	color:blue;
 	text-transform: uppercase;
 	font-weight: bold;
 	text-align: center;
-}
+} */
 
 
 .historicalResult{
@@ -716,18 +722,21 @@ gap: var(--pad-gap);
 }
 
 .historicalResult {
-	max-height: 60em;
+	height: 100%;
+	max-height: 80em;
 	overflow: auto;
+
 }
 
 
 .itsEmpty{
 	display: grid;
 	/* border: 0.2em solid red; */
-	padding: calc(var(--pad-gap)*1.5) var(--pad-gap);
+	padding: calc(var(--pad-gap)*5) var(--pad-gap);
 	gap: var(--pad-gap);
 	justify-content: center;
 	align-items: center;
+	/* border:0.2em solid greenyellow; */
 }
 
 
@@ -857,7 +866,9 @@ gap: var(--pad-gap);
 	
 
 	.historicalResult {
-		max-height: 30em;
+	/* max-height: 90em;
+	overflow: auto; */
+	
 	}
 
 	.generate{
@@ -865,12 +876,7 @@ gap: var(--pad-gap);
     gap: calc(var(--pad-gap)*2);
 	}
 
-	.openHistoContainer{
-		display: none;
-	}
-
-
-	.closeHistoBtn{
+	.openHistoContainer, .histolabel, .closeHistoBtn{
 		display: none;
 	}
 

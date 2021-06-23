@@ -262,6 +262,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function openHisto() {
+		console.log(`opened`)
+		const labelHisto = document.querySelector(`#histolabel`)
+		labelHisto.classList.add(`hide`)
+		labelHisto.classList.remove(`histolabel`)
 
 		const openHistoBtn = document.querySelector(`#openHistoBtn`)
 		openHistoBtn.classList.add(`hide`)
@@ -285,6 +289,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function closeHisto() {
 		console.log(`close histo`)
+		const labelHisto = document.querySelector(`#histolabel`)
+		labelHisto.classList.remove(`hide`)
+		labelHisto.classList.add(`histolabel`)
+
 		const openHistoBtn = document.querySelector(`#openHistoBtn`)
 		openHistoBtn.classList.remove(`hide`)
 		openHistoBtn.classList.add(`openHistoBtn`)
