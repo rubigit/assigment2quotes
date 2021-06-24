@@ -387,7 +387,9 @@ height: auto;
 	border: 0.05em solid rgb(216, 216, 216);
 	border-radius: 0.5em;
 	background-color: rgba(255, 255, 255, 0.157);
-
+	resize: vertical;
+	height: auto;
+	max-height: 20em;
 }
 
 
@@ -423,6 +425,16 @@ height: auto;
 .yourname:focus{
 	background-color: rgba(255, 255, 255, 0.809);
 	outline: none;
+}
+
+.yourtext::placeholder, .yourname::placeholder{
+	color:  rgb(144, 144, 144);
+	font-size: 0.8em;
+}
+
+.alertFieldEmpty::placeholder{
+	color: rgb(245, 41, 41);
+	font-size: 0.9em;
 }
 
 /* -----Button for  save quote-------- */

@@ -67,12 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-
+	function hideWelcome() {
+		document.querySelector(`#welcome`).classList.add(`hide`)
+	}
 
 	function displayRandomQuote(content, name) {
-
+		hideWelcome()
 		document.querySelector(`#quoteText`).classList.remove(`hide`)
-		document.querySelector(`#welcome`).classList.add(`hide`)
 		document.querySelector(`#insertQuote`).innerHTML = content
 		document.querySelector(`.q-open`).innerHTML = `"`
 		document.querySelector(`.q-close`).innerHTML = `"`
@@ -102,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 
+
 			fetch('https://reqres.in/api/users', {
 				method: "POST",
 				body: JSON.stringify(_data),
@@ -125,7 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
 				})
 				.catch(err => console.log(err));
 
+			document.querySelector(`.yourtext`).classList.remove(`alertFieldEmpty`)
+			document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
+
 			hideEmpty()
+		} else {
+			document.querySelector(`.yourtext`).classList.add(`alertFieldEmpty`)
+			document.querySelector(`.yourname`).classList.add(`alertFieldEmpty`)
 		}
 	}
 
@@ -351,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function showHistoItem(id, quote, author) {
 		console.log(id, quote.substring(0, 20), author)
-
+		hideWelcome()
 		if (document.querySelector(`#quote-stion`).classList.contains(`hide`)) {
 			closeHisto()
 		}
