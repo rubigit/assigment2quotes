@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const result = document.querySelector(`#result`)
 	const generateBtn = document.querySelector(`.generateBtn`)
 	const createyoursBtn = document.querySelector(`.createyoursBtn`)
+	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
 
 
 	//get the language of the quote to generate
@@ -83,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function saveQuote() {
+		document.querySelector(`#tooltipSaveBtn`).style.display = "none";
 		document.querySelector(`.getInspiredTooltip`).style.opacity = 0;
 
 		let contentQuote = ""
@@ -294,6 +296,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function quoteAPI() {
+		cursorProgress()
+		cursorPointer()
 		let languageActive = true
 		enableSave()
 		displayResult()
@@ -342,6 +346,29 @@ document.addEventListener("DOMContentLoaded", function () {
 		setTimeout(function () {
 			document.querySelector(`#alert`).style.display = "none";
 			document.querySelector(`.getInspiredTooltip`).style.opacity = 1;
+		}, 700);
+	}
+	function hideBtnTooltip(btn) {
+		if (btn == saveQuoteBtn) {
+			document.querySelector(`#tooltipSaveBtn`).style.display = "none";
+		} else if (btn == createyoursBtn) {
+			document.querySelector(`#tooltipMakeBtn`).style.display = "none";
+		} else {
+			document.querySelector(`#tooltipGetBtn`).style.display = "none";
+		}
+	}
+
+	function timerBtnTooltip(btn) {
+		timing = setTimeout(function () { hideBtnTooltip(btn) }, 1500);
+	}
+
+	function cursorProgress() {
+		document.body.style.cursor = `progress`
+	}
+
+	function cursorPointer() {
+		setTimeout(function () {
+			document.body.style.cursor = `pointer`
 		}, 700);
 	}
 
@@ -399,6 +426,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
+	function displayBtnTooltip(btn) {
+		if (btn == saveQuoteBtn) {
+			document.querySelector(`#tooltipSaveBtn`).style.display = "flex";
+		} else if (btn == createyoursBtn) {
+			document.querySelector(`#tooltipMakeBtn`).style.display = "flex";
+		} else {
+			document.querySelector(`#tooltipGetBtn`).style.display = "flex";
+		}
+		timerBtnTooltip(btn)
+	}
 
 	generateBtn.addEventListener(`click`, quoteAPI)
 	generateBtn.addEventListener(`click`, clearCuoteForm)
@@ -407,9 +444,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	createyoursBtn.addEventListener(`click`, function () { setBGbutton(createyoursBtn, generateBtn) })
 
 	document.querySelector(`#saveQuoteBtn`).addEventListener(`click`, saveQuote)
+
 	document.querySelector(`#orderBy`).addEventListener(`change`, LoadListQuote)
 	document.querySelector(`#openHistoBtn`).addEventListener(`click`, openHisto)
 	document.querySelector(`#closeHistoBtn`).addEventListener(`click`, closeHisto)
+	generateBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(generateBtn) })
+	createyoursBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(createyoursBtn) })
+	saveQuoteBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(saveQuoteBtn) })
+
+	generateBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(generateBtn) })
+	createyoursBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(createyoursBtn) })
+	saveQuoteBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(saveQuoteBtn) })
 
 	fillLngQuote()
 	console.log(`done`)

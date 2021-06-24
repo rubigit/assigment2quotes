@@ -228,14 +228,14 @@ height: auto;
 	
 }
 
-.generateBtn:hover + .getInspiredTooltip,
-.createyoursBtn:hover + .getInspiredTooltip,
-.saveQuoteBtn:hover:enabled + .getInspiredTooltip
-{
+/* .generateBtn:hover + .getInspiredTooltip,
+.createyoursBtn:hover + .getInspiredTooltip */
+/* .saveQuoteBtn:hover:enabled + .getInspiredTooltip */
+/* {
 	opacity: 0.9;
 	display: flex;
 	transition: 0.5s;
-}
+} */
 
 
 .generateBtn{
