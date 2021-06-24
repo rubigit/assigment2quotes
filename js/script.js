@@ -185,18 +185,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const historyItem = document.createElement(`div`)
 			historyItem.classList.add(`historyItem`)
-			historyItem.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
 			const historyItemHeader = document.createElement(`header`)
 			historyItemHeader.classList.add(`historyItem-header`)
-			historyItemHeader.innerHTML = `
-			<p class="quoteID">ID: ${id}</p>
-			`
+			const quoteID = document.createElement(`p`)
+			quoteID.classList.add(`quoteID`)
+			quoteID.innerHTML = `ID: ${id}`
+			quoteID.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
+			historyItemHeader.appendChild(quoteID)
+
 			const historyItemBtns = document.createElement(`div`)
 
 			const seeRowQuote = document.createElement(`button`)
 			seeRowQuote.classList.add(`seeRowQuote`)
 			seeRowQuote.id = `seeRowQuote`
-			seeRowQuote.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
+			seeRowQuote.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
 
 			const deleteRowQuote = document.createElement(`button`)
 			deleteRowQuote.classList.add(`deleteRowQuote`)
@@ -206,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const historyItemFooter = document.createElement(`footer`)
 			historyItemFooter.classList.add(`historyItem-footer`)
+			historyItemFooter.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
 			historyItemFooter.innerHTML = `
 			<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
 			<p class="quoteRowAuthor"><i>- ${author}</i></p>
@@ -357,8 +360,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		buttonB.classList.remove(`btnActive`)
 	}
 
-	function showHistoItem(id, quote, author) {
+	function showHistoItem(id, author, quote) {
 		console.log(id, quote.substring(0, 20), author)
+		displayResult()
+		disableSave()
+		clearCuoteForm()
+
 		hideWelcome()
 		if (document.querySelector(`#quote-stion`).classList.contains(`hide`)) {
 			closeHisto()
@@ -369,9 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		createyoursBtn.classList.remove(`btnActive`)
 		createyoursBtn.classList.add(`btnInactive`)
 
-		disableSave()
-		clearCuoteForm()
-		displayResult()
+		document.querySelector(`#quoteText`).classList.remove(`hide`)
 		document.querySelector(`#insertQuote`).innerHTML = quote
 		document.querySelector(`.q-open`).innerHTML = `"`
 		document.querySelector(`.q-close`).innerHTML = `"`
