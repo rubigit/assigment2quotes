@@ -173,25 +173,43 @@ document.addEventListener("DOMContentLoaded", function () {
 		quotes.map(({ id, author, quote }) => {
 			let content = ``
 			console.log(id, author, quote)
-			const quoteItem = document.createElement(`div`)
-			quoteItem.classList.add(`histo-item`)
-			quoteItem.innerHTML = `
-				<div class="quoteRow">
-				<p class="quoteID">ID: ${id}</p>
-				<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
-				<p class="quoteRowAuthor"><i>- ${author}</i></p>
-				</div>
-				`
-			quoteItem.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
 
 
-			const deleteQuoteBtn = document.createElement(`button`)
-			deleteQuoteBtn.classList.add(`deleteRowQuote`)
-			deleteQuoteBtn.id = `deleteRowQuote`
-			// deleteQuoteBtn.innerHTML = `Delete`
-			deleteQuoteBtn.addEventListener(`click`, function () { deleQuote(`${id}`) })
-			quoteTable.appendChild(quoteItem)
-			quoteItem.appendChild(deleteQuoteBtn)
+			const historyItem = document.createElement(`div`)
+			historyItem.classList.add(`historyItem`)
+			historyItem.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
+			const historyItemHeader = document.createElement(`header`)
+			historyItemHeader.classList.add(`historyItem-header`)
+			historyItemHeader.innerHTML = `
+			<p class="quoteID">ID: ${id}</p>
+			`
+			const historyItemBtns = document.createElement(`div`)
+
+			const seeRowQuote = document.createElement(`button`)
+			seeRowQuote.classList.add(`seeRowQuote`)
+			seeRowQuote.id = `seeRowQuote`
+			seeRowQuote.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
+
+			const deleteRowQuote = document.createElement(`button`)
+			deleteRowQuote.classList.add(`deleteRowQuote`)
+			deleteRowQuote.id = `deleteRowQuote`
+			deleteRowQuote.addEventListener(`click`, function () { deleQuote(`${id}`) })
+
+
+			const historyItemFooter = document.createElement(`footer`)
+			historyItemFooter.classList.add(`historyItem-footer`)
+			historyItemFooter.innerHTML = `
+			<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
+			<p class="quoteRowAuthor"><i>- ${author}</i></p>
+			`
+
+			historyItem.appendChild(historyItemHeader)
+			historyItemHeader.appendChild(historyItemBtns)
+			historyItemBtns.appendChild(seeRowQuote)
+			historyItemBtns.appendChild(deleteRowQuote)
+			historyItem.appendChild(historyItemFooter)
+			quoteTable.appendChild(historyItem)
+
 		})
 
 		console.log(`loaded`)
@@ -333,6 +351,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function showHistoItem(id, quote, author) {
 		console.log(id, quote.substring(0, 20), author)
+
+		if (document.querySelector(`#quote-stion`).classList.contains(`hide`)) {
+			closeHisto()
+		}
 
 		generateBtn.classList.remove(`btnActive`)
 		generateBtn.classList.add(`btnInactive`)

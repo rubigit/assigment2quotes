@@ -675,7 +675,40 @@ gap: var(--pad-gap);
 	
 }
 
-.histo-item{
+
+.historyItem{
+	display: grid;
+	grid-template-columns: 1fr;
+	
+	padding: var(--pad-gap);
+	border-bottom: 0.05em solid rgb(201, 201, 201);
+	
+}
+
+.historyItem:first-child{
+    border-top: 0.05em solid rgb(201, 201, 201); 
+}
+.historyItem:hover {
+	background-color: rgba(255, 255, 255, 0.253);
+}
+
+
+.historyItem-header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.historyItem-footer{
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: calc(var(--pad-gap)/2);
+}
+
+
+
+
+/* .histo-item{
 	display: grid;
 	grid-template-columns: 2fr auto;
 	gap:calc(var(--pad-gap)/4);
@@ -691,14 +724,14 @@ gap: var(--pad-gap);
 }
 .histo-item:hover {
 	background-color: rgba(255, 255, 255, 0.253);
-}
+} */
 
-.quoteRow{
+/* .quoteRow{
 
 display: flex;
 flex-direction: column;
 gap: calc(var(--pad-gap)/2);
-} 
+}  */
 
 .quoteID{
 	color: rgb(71, 71, 71);;
@@ -709,7 +742,6 @@ gap: calc(var(--pad-gap)/2);
 	color: rgb(110, 110, 110);
 	font-size: 0.9em;
 	flex-wrap: wrap;
-	
 }
 
 .quoteRowAuthor{
@@ -727,16 +759,26 @@ gap: calc(var(--pad-gap)/2);
 	object-fit: cover;
 	background-position: center center;
 	background-size: 0.9em 0.8em;
-
-	/* justify-self: flex-end; */
-	
-	/* border: 0.2em solid red; */
 }
 .deleteRowQuote:hover {
 	background-color:rgba(134, 134, 134, 0.157);
 }
 
-
+.seeRowQuote{
+	background: url("../img/seeQuote.svg");
+	background-repeat: no-repeat;
+	width: 2em;
+	height:1.9em;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center center;
+	background-size: 0.9em 0.8em;
+}
+.seeRowQuote:hover {
+	background-color:rgba(134, 134, 134, 0.157);
+}
 
 /* .deleteRowQuote:hover{
 	background: url("../img/deleteHover.svg");
