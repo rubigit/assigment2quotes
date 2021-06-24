@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			document.querySelector(`.yourtext`).classList.remove(`alertFieldEmpty`)
 			document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
-
+			document.querySelector(`#orderBy`).disabled = false
 			hideEmpty()
 		} else {
 			document.querySelector(`.yourtext`).classList.add(`alertFieldEmpty`)
@@ -238,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (quotes.length == 1) {
 			emptyNotification.classList.remove(`hide`)
 			emptyNotification.classList.add(`itsEmpty`)
+			document.querySelector(`#orderBy`).disabled = true
 		}
 	}
 
