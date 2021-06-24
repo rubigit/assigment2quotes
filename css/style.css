@@ -709,7 +709,7 @@ gap: calc(var(--pad-gap)/2);
 	color: rgb(110, 110, 110);
 	font-size: 0.9em;
 	flex-wrap: wrap;
-	/* border: 0.2em solid red; */
+	
 }
 
 .quoteRowAuthor{

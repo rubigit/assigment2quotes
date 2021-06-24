@@ -212,10 +212,16 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
+	function disableSave() {
+		document.querySelector(`#saveQuoteBtn`).disabled = true
+	}
 
+	function enableSave() {
+		document.querySelector(`#saveQuoteBtn`).disabled = false
+	}
 
 	function createQuote() {
-		document.querySelector(`#saveQuoteBtn`).disabled = false
+		enableSave()
 		clearResult()
 		displayForm()
 		console.log(`create`)
@@ -247,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function quoteAPI() {
 
-		document.querySelector(`#saveQuoteBtn`).disabled = false
+		enableSave()
 
 		displayResult()
 
@@ -333,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		createyoursBtn.classList.remove(`btnActive`)
 		createyoursBtn.classList.add(`btnInactive`)
 
-		document.querySelector(`#saveQuoteBtn`).disabled = true
+		disableSave()
 		clearCuoteForm()
 		displayResult()
 		document.querySelector(`#insertQuote`).innerHTML = quote
