@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const historyItemFooter = document.createElement(`footer`)
 			historyItemFooter.classList.add(`historyItem-footer`)
-			historyItemFooter.addEventListener(`click`, function () { showHistoItem(id, quote, author) })
+			historyItemFooter.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
 			historyItemFooter.innerHTML = `
 			<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
 			<p class="quoteRowAuthor"><i>- ${author}</i></p>
@@ -245,14 +245,26 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.querySelector(`#saveQuoteBtn`).disabled = true
 	}
 
+	function enableDisableLanguage(languageActive) {
+		console.log(languageActive)
+		const langQuote = document.querySelector(`#lang-quote`)
+		if (languageActive) {
+			langQuote.disabled = false
+		} else {
+			langQuote.disabled = true
+		}
+	}
+
 	function enableSave() {
 		document.querySelector(`#saveQuoteBtn`).disabled = false
 	}
 
 	function createQuote() {
+		let languageActive = false
 		enableSave()
 		clearResult()
 		displayForm()
+		enableDisableLanguage(languageActive)
 		console.log(`create`)
 	}
 
@@ -281,11 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function quoteAPI() {
-
+		let languageActive = true
 		enableSave()
-
 		displayResult()
-
+		enableDisableLanguage(languageActive)
 		const langQuote = document.querySelector(`#lang-quote`)
 		let langparameter = `random/?language_code=${langQuote.value}`
 
@@ -361,6 +372,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function showHistoItem(id, author, quote) {
+		let languageActive = false
+		enableDisableLanguage(languageActive)
 		console.log(id, quote.substring(0, 20), author)
 		displayResult()
 		disableSave()

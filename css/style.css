@@ -499,10 +499,10 @@ background: url("../img/save.svg");
 .alert span:first-child{
 	color: rgb(138, 248, 138);
 	text-shadow:
-	-2px -2px 2px #65A06A,
-	-2px 2px 2px #65A06A,
-	 2px -2px 2px #65A06A,
-	 2px 2px 2px #65A06A;
+	-2px -2px 2px #333333,
+	-2px 2px 2px #333333,
+	 2px -2px 2px #333333,
+	 2px 2px 2px #333333;
 	font-weight: bold;
 	font-size: 1.3em;
 }
