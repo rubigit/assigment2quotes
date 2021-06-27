@@ -1,12 +1,11 @@
 
 /* :::::::::::::::::::::::::::FONTS :::::::::::::::::::::::::::::::::::::::: */
-
 /* font-family: 'Overpass', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@700&display=swap');
-
 /* font-family: 'Courgette', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 /* :::::::::::::::::::::::::::RESETS :::::::::::::::::::::::::::::::::::::::: */
 html, body {
 	height: 100%;
@@ -48,107 +47,98 @@ img{
 	height: auto;
 	vertical-align: bottom;
 }
-button {
-    /* display: block; */
-    /* width: 20px;
-    height: 20px; */
-    /* padding: 2px; */
-    background-color: rgb(169, 169, 240);
-}
+
 
 /* =================VARIABLES==================*/
 html{
-	--fCgette:Courgette, cursive;
-	--fOver:Overpass, sans-serif;
-	--pad-gap:1em;
 	
+	--fOver:Overpass, sans-serif;  /* Common font */
+	--fCgette:Courgette, cursive; /* font for quote result */
+	--pad-gap:1em; /* paddings and gaps */
 }
 
-/* =================GENERATE QUOTE=========================== */
-/*----------------------main containter ------------------*/
 
+
+/* class to hide elements */
 .hide{
 	display: none;
 }
 
 
-
-
+/* =================MAIN CONTAINER=========================== */
 .mainly{
 	display: grid;
 	grid-template-columns:1fr;
-	/* justify-content: center; */
-	/* width: auto;
-	max-width: 80em;
-	margin: 0 auto; */
-	/* box-shadow: 0 0.3em 0.7em grey;
-	background-color: rgba(255, 255, 255, 0.459); */
-	/* gap: calc(var(--pad-gap)*4); */
-
 	color:rgb(90, 90, 90);
 	font-size: 1em;
 	font-weight: bold;
 	font-family: var(--fOver);
 }
-
+/* All children inherit font properties */
 .mainly *{
 	color:inherit;
 	font-size: inherit;
 	font-weight: inherit;
 	font-family: inherit;
 }
+
+/* Toggle grid property of quote section and history section */
 .dispGrid{
 	display: grid;
 }
 
-/* -------------Container for quote generator section----------- */
-.quote-stion{
-	
-	gap: var(--pad-gap);
-}
-.quote-stion, .histo-stion{
 
-	/* padding:0  var(--pad-gap)  var(--pad-gap) var(--pad-gap); */
-	color:inherit;
-	font-size: inherit;
-	font-weight: bold;
-	/* border-radius: 5px; */
-	background-color: rgba(255, 255, 255, 0.356);
-	box-shadow: 0 -7px 12px -5px rgba(0,0,0,0.2);
-	
-}
-
-/* ------------------------- header for logo ------------*/
-.quoteHeader{
+/* ---- header for logo and text logo--------*/
+.mainHeader{
 	display: flex;
 	align-items: center;
 	gap: var(--pad-gap);
 	padding: var(--pad-gap);
-	/* border: 0.2em solid yellowgreen; */
 }
-
-.histoHeader{
-
-	
-	padding: var(--pad-gap);
-	/* border-bottom: 0.2em solid rgb(138, 138, 138);
-	box-shadow: 0px 10px 23px -14px rgba(134, 134, 134, 0.4); */
-	}
-
 
 /* picture logo */
 .logo{
-width: 2em;
-height: auto;
+	width: 2em;
+	height: auto;
 }
+	
 /* text logo */
 .title{
 	color: rgb(49, 49, 49);
 	font-size: 1.3em;
 }
 
+/* ----------------------------------------------- */
+/* subcontainer for quote section and history section */
+.subcontainer{
+	display: grid;
+	grid-template-columns:1fr;
+}
 
-/* ------------------Section to generate the quote ------------------ */
+/* container for quote section */
+.quotewraper{
+	flex-grow: 3 1 100%;
+
+}
+	
+/* ----------Container for quote generator section-------- */
+.quote-stion{
+	gap: var(--pad-gap);
+
+}
+
+/* Quote section and history section */
+.quote-stion, .histo-stion{
+	color:inherit;
+	font-size: inherit;
+	font-weight: bold;
+	background-color: rgba(255, 255, 255, 0.356);
+	box-shadow: 0 -7px 12px -5px rgba(0,0,0,0.2);
+	
+}
+
+/* ----------------------------------------------- */
+/* -------Section to generate the quote ----- */
 .generate{
 	display: flex;
 	justify-content: space-between;
@@ -157,15 +147,13 @@ height: auto;
 	padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1);
 	background-color: rgba(0, 0, 0, 0.089);
 	border-bottom: 0.05em solid rgb(201, 201, 201); 
-	/* border:0.2em solid red; */
 }	
-
-.generateleftBtn{
+/*--------------- quote header */
+.quoteHeader{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: calc(var(--pad-gap)/2);
-	/* border:0.2em solid yellowgreen; */
 }
 
 /* container for languages supported */
@@ -175,39 +163,31 @@ height: auto;
 	align-content: center;
 	gap: calc(var(--pad-gap)/2);
 	height: fit-content;
-	/* border:0.2em solid red; */
-	
-	
 }
 
-/* .padd{
-	padding-right: var(--pad-gap);
-} */
-/* label for list of languages supported */
+/* label for  languages supported */
 .select-label{
 	font-weight: bold;
 	font-size: 0.8em;
 	padding-left: calc(var(--pad-gap)/4);
 }
+
 /* list of languages supported */
 .lang-quote, .lang-historial, .orderBy{
 	background-color: transparent;
-	/* padding-right: var(--pad-gap); */
 	outline:none ;
 	border:none;
     border-bottom: 0.2em solid rgb(163, 163, 163) ;
 	font-size: 0.9em;
 }
-/* Button to generate random quote */
-.inspired{
-	/* display: grid;
-	grid-template-columns: 1fr; */
+
+/* Commont tooltip for buttons */
+/* tooltip body */
+.tooltipbody{
 	position: relative;
-	
-	
-	
 }
-.getInspiredTooltip{
+/* tooltip text */
+.tooltipSpan{
 	display: none;
 	width: 7em;
 	background-color: rgba(0, 0, 0, 0.842);
@@ -215,7 +195,6 @@ height: auto;
 	font-weight: bold;
 	color: aliceblue;
 	justify-content: center;
-	
 	border-radius: 2em;
 	padding: calc(var(--pad-gap)/3);
 	position: absolute;
@@ -224,22 +203,10 @@ height: auto;
 	left: 50%;
 	margin-left: -3.5em;
   	transition: 0.5s;
-
-	
 }
-
-/* .generateBtn:hover + .getInspiredTooltip,
-.createyoursBtn:hover + .getInspiredTooltip */
-/* .saveQuoteBtn:hover:enabled + .getInspiredTooltip */
-/* {
-	opacity: 0.9;
-	display: flex;
-	transition: 0.5s;
-} */
-
-
+ 
+/* Button to generate random quote (to get inspired) */
 .generateBtn{
-	
 	background: url("../img/getInspiredHover.svg");
 	background-repeat: no-repeat;
 	width: 2.2em;
@@ -253,15 +220,12 @@ height: auto;
 
 }
 
+/* Button to generate random quote when hover */
 .generateBtn:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
 
-
-
-
-
-
+/* Button to display form to creater own quotes */
 .createyoursBtn{
 	background: url("../img/createyoursHover.svg");
 	background-repeat: no-repeat;
@@ -274,20 +238,109 @@ height: auto;
 	background-position: center;
 	background-size: 1.7em 1.7em;
 }
-
+/* Button to display form to creater own quotes when hover */
 .createyoursBtn:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
 
+/* Button to indicate which button is active */
 .btnActive{
 	background-color:rgba(255, 255, 255, 0.404);
 }
 
+/* Button to indicate which button is inactive */
 .btnInactive{
 	background-color:transparent;
 	opacity: 0.7;
 }
-/* --------Section to display the quote ----------------- */
+
+
+
+/* --------quote footer */
+.quoteFooter{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+/* save quote button */
+.saveQuoteBtn{
+	background: url("../img/saveHover.svg");
+	background-repeat: no-repeat;
+	width: 2.2em;
+	height:2.2em ;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.7em 1.7em;	
+}
+
+/* save quote button when hover */
+.saveQuoteBtn:hover{
+	background-color:rgba(255, 255, 255, 0.304);
+}
+
+/* save quote button when disabled */
+.saveQuoteBtn:disabled{
+	opacity: 0.4;
+	cursor: none;
+	background: url("../img/save.svg");
+	background-repeat: no-repeat;
+	width: 2.2em;
+	height:2.2em ;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.7em 1.7em;	
+}
+
+/* container for alert message  when the quote is saved */
+.alert{
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	align-items: center;
+	gap: calc(var(--pad-gap)/3);
+	align-content: flex-end;
+	padding-top: calc(var(--pad-gap));
+	z-index: 1;
+	flex: 1 1 auto;
+	top: 100%;
+	left: 50%;
+	width:3em;
+	margin-left: -1.5em;
+	margin-top: -3em;
+}
+
+/* checkmark icon */
+.alert span:first-child{
+	color: rgb(138, 248, 138);
+	text-shadow:
+	-2px -2px 2px #333333,
+	-2px 2px 2px #333333,
+	 2px -2px 2px #333333,
+	 2px 2px 2px #333333;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+/* saved message  */
+.alert span:last-child{
+	color: rgb(138, 248, 138);
+	font-size: 0.7em;
+	background-color: black;
+	padding: calc(var(--pad-gap)/8) calc(var(--pad-gap));
+	flex: 0 1 auto;
+	border-radius: 4em;
+}
+
+
+
+/* ----Section to display result of Random quotes (to get inspired) ----- */
 .result{
 	display: grid;
 	grid-template-columns: 1fr;
@@ -296,10 +349,17 @@ height: auto;
 	"cite";
 	justify-content: center;
 	align-items: center;
-
 	padding: 0  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1)  calc(var(--pad-gap)*1);
 
 }
+
+/* quote picture bg */
+.quoteSymbol{
+	grid-area: qote;
+	width: auto;
+	max-height: 5em;
+} 
+
 
 /* text content of the quote */
 .quoteText{
@@ -307,17 +367,12 @@ height: auto;
 	font-size: 1.2em;
 	font-family: var(--fCgette);
 	height: auto;
-	/* width: 60em; */
 	max-width:60em;
 	flex:0 1 100%;
-	/* padding:var(--pad-gap); */
 	line-height: 2;
-	/* z-index: 2; */
-	/* border: 0.2em solid red; */
 	text-align: center;
 	justify-self:center ;
 }
-
 
 /* open quote */
 .q-open{
@@ -330,16 +385,6 @@ height: auto;
 	padding-left: calc(var(--pad-gap)/2);
 	font-size: 1.8em;
 }
-
-/* quote picture bg */
-.quoteSymbol{
-	grid-area: qote;
-	width: auto;
-	max-height: 5em;
-} 
-
-
-
 
 /*------------ footer of the quotation -------------*/
 .author{
@@ -358,27 +403,29 @@ height: auto;
 }
 
 
-
+/* Form to capture information to create own quotes  */
 .form-CreateQuote{
 	display: grid;
 	justify-content: center;
 	grid-template-columns: 1fr;
 	gap: var(--pad-gap);
-
-	/* border: 0.2em solid rgb(100, 62, 62); */
 	padding: 0  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1)  calc(var(--pad-gap)*1);
 		
 }
 
-
+/* container for labels and inputs  */
 .container-CreateQuote {
 	display: flex;
 	flex-direction: column;
 	gap: calc(var(--pad-gap)/3);
-	/* border: 0.2em solid red; */
-	
 }
 
+.label-create{
+	color: rgb(128, 128, 128);
+	font-size: 0.9em;
+}
+
+/* text area to write own quote  */
 .yourtext{
 	flex-wrap: 1;
 	width: 100%;
@@ -392,21 +439,19 @@ height: auto;
 	max-height: 20em;
 }
 
-
+/* text area to write own quote when hover  */
 .yourtext:hover{
 	background-color: rgba(255, 255, 255, 0.257);
 	outline: none;
-
-
 }
 
+/* text area to write own quote when focus  */
 .yourtext:focus{
 	background-color: rgba(255, 255, 255, 0.809);
 	outline: none;
-	
-
 }
 
+/* input to enter the name  */
 .yourname{
 	flex-wrap: 1;
 	width: 100%;
@@ -417,147 +462,28 @@ height: auto;
 	background-color: rgba(255, 255, 255, 0.157);
 }
 
+/* input to enter the name when hover  */
 .yourname:hover{
 	background-color: rgba(255, 255, 255, 0.257);
 	outline: none;
 }
 
+/* input to enter the name when focus  */
 .yourname:focus{
 	background-color: rgba(255, 255, 255, 0.809);
 	outline: none;
 }
 
+/* default place holder for text area and input field  */
 .yourtext::placeholder, .yourname::placeholder{
 	color:  rgb(144, 144, 144);
 	font-size: 0.8em;
 }
 
+/* alert message when text area and input field are empty  */
 .alertFieldEmpty::placeholder{
 	color: rgb(245, 41, 41);
 	font-size: 0.9em;
-}
-
-/* -----Button for  save quote-------- */
-/* save button */
-.saveQuoteBtn{
-	background: url("../img/saveHover.svg");
-	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
-	cursor: pointer;
-	border: none;
-	border-radius: 0.5em;
-	object-fit: cover;
-	background-position: center;
-	background-size: 1.7em 1.7em;	
-}
-
-.saveQuoteBtn:hover{
-	background-color:rgba(255, 255, 255, 0.304);
-}
-
-.saveQuoteBtn:disabled{
-opacity: 0.4;
-cursor: none;
-background: url("../img/save.svg");
-	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
-	border: none;
-	border-radius: 0.5em;
-	object-fit: cover;
-	background-position: center;
-	background-size: 1.7em 1.7em;	
-}
-
-.quoteFooter{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-}
-
-.alert{
-	display: none;
-	flex-direction: column;
-	position: absolute;
-	align-items: center;
-	gap: calc(var(--pad-gap)/3);
-	align-content: flex-end;
-	padding-top: calc(var(--pad-gap));
-	z-index: 1;
-	flex: 1 1 auto;
-	
-	/* border: 0.2em solid red; */
-	
-	top: 100%;
-	left: 50%;
-	width:3em;
-	margin-left: -1.5em;
-	margin-top: -3em;
-}
-.alert span:first-child{
-	color: rgb(138, 248, 138);
-	text-shadow:
-	-2px -2px 2px #333333,
-	-2px 2px 2px #333333,
-	 2px -2px 2px #333333,
-	 2px 2px 2px #333333;
-	font-weight: bold;
-	font-size: 1.3em;
-}
-
-.alert span:last-child{
-	color: rgb(138, 248, 138);
-	font-size: 0.7em;
-	background-color: black;
-	padding: calc(var(--pad-gap)/8) calc(var(--pad-gap));
-	flex: 0 1 auto;
-	border-radius: 4em;
-}
-
-.openHistoContainer{
-	display: flex;
-	flex-direction: column;
-	gap: var(--pad-gap);
-	justify-content: center;
-	align-items: center;
-	padding: calc(var(--pad-gap)*2) var(--pad-gap);
-	/* border: 0.2em solid red; */
-
-}
-.histolabel{
-color:#898989;
-}
-
-/* open hitory button */
-.openHistoBtn{
-	background: url("../img/historyBtn.svg");
-	background-repeat: no-repeat;
-	width: 6em;
-	height:6em ;
-	cursor: pointer;
-	border: none;
-	
-	object-fit: cover;
-	background-position: center;
-	background-size: 5.5em 5.5em;
-}
-
-.openHistoBtn:hover{
-	background: url("../img/historyBtnHover.svg");
-	background-repeat: no-repeat;
-	object-fit: cover;
-	background-position: center;
-	background-size: 5.5em 5.5em;
-
-	border-radius: 50%;
-	background-color:rgba(255, 255, 255, 0.304);
-	
-}
-
-.openHistoBtn:hover + .histolabel{
-	color: #A385AF;
 }
 
 
@@ -566,30 +492,27 @@ color:#898989;
 /* -----------Container for historical section -------- */
 .histo-stion{
 flex: 1 1 auto;
-/* max-width: 35em; */
 align-content: flex-start;
 min-height: 95vh;
-
 }
 
 
-
-/* istorical header for subheading and closing button */
+/* Historical header for subheading and closing button */
 .histoHeader{
 display: flex;
 align-items: center;
+padding: var(--pad-gap);
 justify-content: space-between;
-
 background-color: rgba(0, 0, 0, 0.089); 
 }
 
+/* subheading for History  */
 .histoHeading{
-	/* font-size: 1.5em; */
 	font-weight: bold;
 }
 
+/* Button to close history section  */
 .closeHistoBtn{
-	
 	background: url("../img/closeBtn.svg");
 	background-repeat: no-repeat;
 	width: 2em;
@@ -603,10 +526,12 @@ background-color: rgba(0, 0, 0, 0.089);
 	border-radius: 0.5em;
 }
 
+/* Button to close history section when hover  */
 .closeHistoBtn:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
 
+/* container for history filters  */
 .Filters{
 	display: flex;
 	justify-content: flex-end;
@@ -617,138 +542,67 @@ background-color: rgba(0, 0, 0, 0.089);
 	border-bottom: 0.05em solid rgb(201, 201, 201); 
 }
 
-
-.clearAllQuotes{
-	color: springgreen;
-}
-
-.clearAllQuotes:focus{
-	color: rgb(71, 15, 228);
-}
-
-.deleteConfirm{
-display: flex;
-flex-direction: column;
-border: 0.5em solid rgba(255, 0, 0, 0.336);
-border-radius: 10px;
-padding: var(--pad-gap);
-background-color: white;
-gap: var(--pad-gap);
-}
-
-
-
-.deleteParagraph{
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	gap: var(--pad-gap);
-}
-
-.deleteParagraph span:first-child{
-	
-	font-weight: bolder;
-	font-size: 1.3em;
-}
-
-.BtnCollectionDelete{
-	display: flex;
-	justify-content: flex-end;
-	gap: var(--pad-gap);
-}
-
-.cancelDeleteQuote{
-	color: springgreen;
-}
-
-.cancelDeleteQuote:focus{
-	color: rgb(71, 15, 228);
-}
-
-.DeleteAllQuote{
-	color: springgreen;
-}
-
-.DeleteAllQuote:focus{
-	color: rgb(71, 15, 228);
-}
-
-/* .EmptyDB{
-	color:blue;
-	text-transform: uppercase;
-	font-weight: bold;
-	text-align: center;
-} */
-
-
-.historicalResult{
+/* container for message when history is empty  */
+.itsEmpty{
 	display: grid;
-	/* gap: var(--pad-gap); */
-	
+	padding: calc(var(--pad-gap)*5) var(--pad-gap);
+	gap: var(--pad-gap);
+	justify-content: center;
+	align-items: center;
 }
 
 
+/* ------------------------- */
+/* container to display history of saved quotes  */
+.historicalResult {
+	display: grid;
+	max-height: 75vh;
+	overflow: auto;
+}
+
+
+/* container of the quote saved  */
 .historyItem{
 	display: grid;
-	grid-template-columns: 1fr;
-	
+	grid-template-columns: 1fr;	
 	padding: var(--pad-gap);
 	border-bottom: 0.05em solid rgb(201, 201, 201);
-	
 }
 
+/*firt child of the container of the quote saved  */
 .historyItem:first-child{
     border-top: 0.05em solid rgb(201, 201, 201); 
 }
+
+/*container of the quote saved when hover */
 .historyItem:hover {
 	background-color: rgba(255, 255, 255, 0.253);
 }
 
+/* header of the item saved  */
 
 .historyItem-header{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
 }
 
+/* footer of the item saved  */
 .historyItem-footer{
 	display: grid;
 	grid-template-columns: 1fr;
 	gap: calc(var(--pad-gap)/2);
 }
 
-
-
-
-/* .histo-item{
-	display: grid;
-	grid-template-columns: 2fr auto;
-	gap:calc(var(--pad-gap)/4);
-	padding: var(--pad-gap);
-	border-bottom: 0.05em solid rgb(201, 201, 201);
-
-	
-
-}
-
-.histo-item:first-child{
-    border-top: 0.05em solid rgb(201, 201, 201); 
-}
-.histo-item:hover {
-	background-color: rgba(255, 255, 255, 0.253);
-} */
-
-/* .quoteRow{
-
-display: flex;
-flex-direction: column;
-gap: calc(var(--pad-gap)/2);
-}  */
-
+/* id of the quote saved  */
 .quoteID{
 	color: rgb(71, 71, 71);;
 	font-size: 0.8em;
+	flex-grow: 1;
 }
+
+/* text of the quote saved  */
 .quoteRowTxt{
 	display: flex;
 	color: rgb(110, 110, 110);
@@ -756,10 +610,12 @@ gap: calc(var(--pad-gap)/2);
 	flex-wrap: wrap;
 }
 
+/* author of the quote saved  */
 .quoteRowAuthor{
 	font-size: 0.8em;
 }
 
+/* button to delete quote saved  */
 .deleteRowQuote{
 	background: url("../img/delete.svg");
 	background-repeat: no-repeat;
@@ -772,10 +628,13 @@ gap: calc(var(--pad-gap)/2);
 	background-position: center center;
 	background-size: 0.9em 0.8em;
 }
+
+/* button to delete quote saved when hover */
 .deleteRowQuote:hover {
 	background-color:rgba(134, 134, 134, 0.157);
 }
 
+/* button to see quote saved  */
 .seeRowQuote{
 	background: url("../img/seeQuote.svg");
 	background-repeat: no-repeat;
@@ -788,198 +647,212 @@ gap: calc(var(--pad-gap)/2);
 	background-position: center center;
 	background-size: 0.9em 0.8em;
 }
+
+/* button to see quote saved when hover */
 .seeRowQuote:hover {
 	background-color:rgba(134, 134, 134, 0.157);
 }
 
-/* .deleteRowQuote:hover{
-	background: url("../img/deleteHover.svg");
-	background-repeat: no-repeat;
-} */
-
-.historicalResult {
-	max-height: 75vh;
-	/* height: 80em; */
-	overflow: auto;
-
-}
 
 
-.itsEmpty{
-	display: grid;
-	/* border: 0.2em solid red; */
-	padding: calc(var(--pad-gap)*5) var(--pad-gap);
+/* --------------------------------- */
+/* container for button to open history section */
+.openHistoContainer{
+	display: flex;
+	flex-direction: column;
 	gap: var(--pad-gap);
 	justify-content: center;
 	align-items: center;
-	/* border:0.2em solid greenyellow; */
+	padding: calc(var(--pad-gap)*2) var(--pad-gap);
 }
 
 
 
-.subcontainer{
-	display: grid;
-	grid-template-columns:1fr;
-	/* gap: calc(var(--pad-gap)*2); */
-	/* border: 0.2em solid red; */
+/* open hitory button */
+.openHistoBtn{
+	background: url("../img/historyBtn.svg");
+	background-repeat: no-repeat;
+	width: 6em;
+	height:6em ;
+	cursor: pointer;
+	border: none;
+	object-fit: cover;
+	background-position: center;
+	background-size: 5.5em 5.5em;
+}
+
+/* open hitory button when hover */
+.openHistoBtn:hover{
+	background: url("../img/historyBtnHover.svg");
+	background-repeat: no-repeat;
+	object-fit: cover;
+	background-position: center;
+	background-size: 5.5em 5.5em;
+	border-radius: 50%;
+	background-color:rgba(255, 255, 255, 0.304);
 	
 }
 
-.quotewraper{
-	flex-grow: 3 1 100%;
-	/* padding: 0 calc(var(--pad-gap)*5); */
-	/* border:0.2em solid rgb(197, 92, 92); */
-	/* min-width: 60em; */
-	/* max-width: 80em; */
+/* open hitory label*/
+.histolabel{
+	color:#898989;
+}
 
+/* open hitory label when hover */
+.openHistoBtn:hover + .histolabel{
+	color: #A385AF;
 }
 
 
 
 
+
+/* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::MEDIA QUERY::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 
 @media screen and (min-width: 25em) {
-	.mainly{
-		/* background-color: rgba(160, 252, 206, 0.575); */
-	}
+
+	/* list of languages supported and order by */
 	.lang-quote, .lang-historial, .orderBy{
 		padding-right: var(--pad-gap);
-		/* font-size: 1em; */
-		}
+	}
 
-.generateBtn{
-	
-			background: url("../img/getInspiredHover.svg");
-			background-repeat: no-repeat;
-			width: 2.4em;
-			height:2.4em;
-			cursor: pointer;
-			border: none;
-			border-radius: 0.5em;
-			object-fit: cover;
-			background-position: center;
-			background-size: 1.9em 1.9em;
+	/* Button to generate random quote (to get inspired) */
+	.generateBtn{
+		background: url("../img/getInspiredHover.svg");
+		background-repeat: no-repeat;
+		width: 2.4em;
+		height:2.4em;
+		cursor: pointer;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center;
+		background-size: 1.9em 1.9em;
 	}
 		
 		
+	/* Button to display form to creater own quotes */	
+	.createyoursBtn{
+		background: url("../img/createyoursHover.svg");
+		background-repeat: no-repeat;
+		width: 2.4em;
+		height:2.4em;
+		cursor: pointer;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center center;
+		background-size: 1.9em 1.9em;
+	}
+
+	/* save quote button */
+	.saveQuoteBtn{
+		background: url("../img/saveHover.svg");
+		background-repeat: no-repeat;
+		width: 2.4em;
+		height:2.4em;
+		cursor: pointer;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center;
+		background-size: 1.9em 1.9em;
+	}
+
+	/* container for languages supported */
+	.selectContainer{
+		gap: calc(var(--pad-gap)/2);
+	}
 		
-		.createyoursBtn{
-			background: url("../img/createyoursHover.svg");
-			background-repeat: no-repeat;
-			width: 2.4em;
-			height:2.4em;
-			cursor: pointer;
-			border: none;
-			border-radius: 0.5em;
-			object-fit: cover;
-			background-position: center center;
-			background-size: 1.9em 1.9em;
-		}
-
-		.saveQuoteBtn{
-			background: url("../img/saveHover.svg");
-			background-repeat: no-repeat;
-			width: 2.4em;
-			height:2.4em;
-			cursor: pointer;
-			border: none;
-			border-radius: 0.5em;
-			object-fit: cover;
-			background-position: center;
-			background-size: 1.9em 1.9em;
-		}
-
-
-		.selectContainer{
-
-			gap: calc(var(--pad-gap)/2);
-		}
-		
-		.btnActive{
-			background-color:rgba(255, 255, 255, 0.404);
-		}
-		
-		.btnInactive{
-			background-color:transparent;
-			opacity: 0.7;
-		}
+	/* Button to indicate which button is active */
+	.btnActive{
+		background-color:rgba(255, 255, 255, 0.404);
+	}
+	
+	/* Button to indicate which button is inactive */
+	.btnInactive{
+		background-color:transparent;
+		opacity: 0.7;
+	}
 
 }
 
 
 
 @media screen and (min-width: 50em) {
+
+	/* =========MAIN CONTAINER================ */
+	.mainly {
+		width: 99%;
+		justify-content: flex-end;
+		margin: 0 auto;
+		box-shadow: none;
+  	}
+
+	/* subcontainer for quote section and history section */
 	.subcontainer{
 		grid-template-columns: 2fr 1fr;
 		gap:0;
 	}
 
+	/* container for quote section */
 	.quotewraper{
 		padding: 0 calc(var(--pad-gap)*5) 0 0;
-	
 	}
 
+	/* Quote section and history section */
 	.quote-stion, .histo-stion{
 		box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.2);
-		}
-
-		.quoteHeader{
-			padding: var(--pad-gap) calc(var(--pad-gap)*5);
-			}
-  .mainly {
-		width: 99%;
-		justify-content: flex-end;
-		margin: 0 auto;
-		box-shadow: none;
-  }
-
-  .histo-stion{
-	display: grid
-}
-  .quote-stion{
-	display: grid
- }
-	
-
-	/* .historicalResult {
-	 max-height: 90em;
-	overflow: auto;
-	
-	} */
-
-	.generate{
-
-    gap: calc(var(--pad-gap)*2);
 	}
 
+	/* ---- header for logo and text logo--------*/
+	.mainHeader{
+		padding: var(--pad-gap) calc(var(--pad-gap)*5);			
+	}
+
+	/* history section  */
+ 	.histo-stion{
+		display: grid
+	}
+ 	/* quote section  */
+  	.quote-stion{
+		display: grid
+ 	}
+	
+
+	/* container for button to open history section */
 	.openHistoContainer, .histolabel, .closeHistoBtn{
 		display: none;
 	}
 
-	.generateleftBtn{
+	/*--------------- quote header */
+	.quoteHeader{
 		gap: calc(var(--pad-gap)*2);
 	}
 	
+		/* -------Section to generate the quote ----- */
 	.generate{
 		padding:  calc(var(--pad-gap)*1) calc(var(--pad-gap)*2);
 	}
 
+	/* ----Section to display result of Random quotes (to get inspired) ----- */
 	.result{
 		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
 	}	
 
-	.form-CreateQuote{
-		
-		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);
-				
+	/* Form to capture information to create own quotes  */
+	.form-CreateQuote{	
+		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);			
 	}
 			
 }
 
 @media screen and (min-width: 75em) {
+
+	/* =========MAIN CONTAINER============= */
 	.mainly{
-		/* background-color: lightcoral; */
-		/* border: 0.2em solid blue; */
 		width: 70em;
 		justify-content: flex-end;
 		margin: 0 auto;

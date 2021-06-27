@@ -1,11 +1,16 @@
-const quotes = [
-
-]
-
 document.addEventListener("DOMContentLoaded", function () {
 	console.log(`Ready`)
 
+	// storage html elements 
+	const formCreateQuote = document.querySelector(`#form-CreateQuote`)
+	const result = document.querySelector(`#result`)
+	const generateBtn = document.querySelector(`.generateBtn`)
+	const createyoursBtn = document.querySelector(`.createyoursBtn`)
+	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
 
+	// array to storage saved quotes
+	const quotes = [
+	]
 
 
 	//list of language supported
@@ -24,25 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	]
 
 
-	const formCreateQuote = document.querySelector(`#form-CreateQuote`)
-	const result = document.querySelector(`#result`)
-	const generateBtn = document.querySelector(`.generateBtn`)
-	const createyoursBtn = document.querySelector(`.createyoursBtn`)
-	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
-
-
-	//get the language of the quote to generate
+	//get the language selected
 	const getSourceLanguge = function (event) {
 		console.log(event.target.value)
 		let language = event.target.value
 		let lanparameter = `?language_code=${language}`
 		console.log(lanparameter)
-
-
 	}
 
 	// list the language supported to generate a quote
-	function fillLngQuote() {
+	function listLangSupported() {
 		let langTable = document.querySelector(`#lang-quote`)
 		languages.map(({ value, lan }) => {
 			let language = document.createElement(`option`)
@@ -53,25 +49,33 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
+	// function to GET random quotes 
+	function quoteAPI() {
 
+		let languageActive = true
+		enableSave()
+		displayResult()
+		enableDisableLanguage(languageActive)
+		const langQuote = document.querySelector(`#lang-quote`)
+		let langparameter = `random/?language_code=${langQuote.value}`
 
-	function createNewQuote() {
-
-		const yourtext = document.querySelector(`.yourtext`)
-		const yourname = document.querySelector(`.yourname`)
-		if (yourtext.value && yourname.value) {
-			console.log(yourtext.value)
-			console.log(yourname.value)
-		} else {
-			console.log(`empty`)
-
-		}
+		fetch(`https://quotes15.p.rapidapi.com/quotes/${langparameter}`, {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-key": "0b168600abmsh79f9a6cdaf4fc2ep120417jsn341f4e4f7d29",
+				"x-rapidapi-host": "quotes15.p.rapidapi.com"
+			}
+		})
+			.then((response) => response.json())
+			.then(response => {
+				displayRandomQuote(response.content, response.originator.name)
+			})
+			.catch(err => {
+				console.error(err);
+			});
 	}
 
-	function hideWelcome() {
-		document.querySelector(`#welcome`).classList.add(`hide`)
-	}
-
+	// function to display random quotes 
 	function displayRandomQuote(content, name) {
 		hideWelcome()
 		document.querySelector(`#quoteText`).classList.remove(`hide`)
@@ -79,25 +83,47 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.querySelector(`.q-open`).innerHTML = `"`
 		document.querySelector(`.q-close`).innerHTML = `"`
 		document.querySelector(`.cite`).innerHTML = name
-
 	}
 
 
+	// function to display the section of the result of random quotes
+	function displayResult() {
+		formCreateQuote.classList.add(`hide`)
+		formCreateQuote.classList.remove(`form-CreateQuote`)
+		result.classList.remove(`hide`)
+		result.classList.add(`result`)
+	}
+
+
+	// function to display form to create own quote
+	function displayForm() {
+		let languageActive = false
+		enableSave()
+		clearResult()
+		formCreateQuote.classList.remove(`hide`)
+		formCreateQuote.classList.add(`form-CreateQuote`)
+		result.classList.add(`hide`)
+		result.classList.remove(`result`)
+		enableDisableLanguage(languageActive)
+	}
+
+	// function to save quotes 
 	function saveQuote() {
 		document.querySelector(`#tooltipSaveBtn`).style.display = "none";
-		document.querySelector(`.getInspiredTooltip`).style.opacity = 0;
-
-		let contentQuote = ""
+		document.querySelector(`.tooltipSpan`).style.opacity = 0;
+		// set variables for the quote text and author 
 		let authorName = ""
-
+		let contentQuote = ""
+		// if the form is hide, assign the random quote information inot the variables
 		if (formCreateQuote.classList.contains(`hide`)) {
-			contentQuote = document.querySelector(`#insertQuote`).innerHTML
 			authorName = document.querySelector(`.cite`).innerHTML
+			contentQuote = document.querySelector(`#insertQuote`).innerHTML
+			// else, assign the information in the form into the variables
 		} else {
-			contentQuote = document.querySelector(`.yourtext`).value
 			authorName = document.querySelector(`.yourname`).value
+			contentQuote = document.querySelector(`.yourtext`).value
 		}
-
+		// if the variables are not empty save variables into data
 		if (contentQuote != "" && authorName != "") {
 			let _data = {
 				author: authorName,
@@ -105,9 +131,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 
-
+			// submit the data using POST method
 			fetch('https://reqres.in/api/users', {
 				method: "POST",
+				//  convert saved data to a JSON string
 				body: JSON.stringify(_data),
 				headers: { "Content-type": "application/json; charset=UTF-8" }
 			})
@@ -115,17 +142,20 @@ document.addEventListener("DOMContentLoaded", function () {
 				.then(response => {
 					console.log(`------------`);
 					console.log(response);
+					//push the data into the array of saved quotes  
 					quotes.push({
 						id: response.id,
 						author: response.author,
 						quote: response.quote,
 					})
 					console.log(`saved`)
+
+					// call funtion to display the saved quotes
 					LoadListQuote()
+
+					// show and hide message of saved quote
 					document.querySelector(`#alert`).style.display = "flex";
-
-					displayAlert()
-
+					hideSavedAlert()
 				})
 				.catch(err => console.log(err));
 
@@ -133,27 +163,19 @@ document.addEventListener("DOMContentLoaded", function () {
 			document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
 			document.querySelector(`#orderBy`).disabled = false
 			hideEmpty()
-		} else {
+		}
+		// else, prompt to enter information
+		else {
 			document.querySelector(`.yourtext`).classList.add(`alertFieldEmpty`)
 			document.querySelector(`.yourname`).classList.add(`alertFieldEmpty`)
 		}
 	}
 
-	function deleQuote(id) {
-		notifyEmpy()
-		let index = quotes.findIndex(function (o) {
-			return o.id === id;
-		})
-		console.log(index)
-		quotes.splice(index, 1)
-		LoadListQuote()
-		console.log(`quote to delete`, id)
-	}
-
+	// function to load the list of quotes saved
 	function LoadListQuote() {
 
+		// sort the saved quotes
 		let sort = document.querySelector(`#orderBy`).value
-
 		quotes.sort(function (a, b) {
 			let valueA
 			let valueB
@@ -173,20 +195,21 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (valueA < valueB) {
 				return -1
 			}
-
 			return 0
-
 		})
 
+		// populate the result of saved quotes
+		/* container to display history of saved quotes  */
 		const quoteTable = document.querySelector(`.historicalResult`)
 		quoteTable.innerHTML = ``
 		quotes.map(({ id, author, quote }) => {
 			let content = ``
 			console.log(id, author, quote)
 
-
+			/* container of the single quote saved  */
 			const historyItem = document.createElement(`div`)
 			historyItem.classList.add(`historyItem`)
+			/* header of the item saved  */
 			const historyItemHeader = document.createElement(`header`)
 			historyItemHeader.classList.add(`historyItem-header`)
 			const quoteID = document.createElement(`p`)
@@ -194,20 +217,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			quoteID.innerHTML = `ID: ${id}`
 			quoteID.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
 			historyItemHeader.appendChild(quoteID)
-
 			const historyItemBtns = document.createElement(`div`)
-
+			/* button to see quote saved  */
 			const seeRowQuote = document.createElement(`button`)
 			seeRowQuote.classList.add(`seeRowQuote`)
 			seeRowQuote.id = `seeRowQuote`
 			seeRowQuote.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
-
+			/* button to delete quote saved  */
 			const deleteRowQuote = document.createElement(`button`)
 			deleteRowQuote.classList.add(`deleteRowQuote`)
 			deleteRowQuote.id = `deleteRowQuote`
 			deleteRowQuote.addEventListener(`click`, function () { deleQuote(`${id}`) })
-
-
+			/* footer of the item saved  */
 			const historyItemFooter = document.createElement(`footer`)
 			historyItemFooter.classList.add(`historyItem-footer`)
 			historyItemFooter.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
@@ -215,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
 			<p class="quoteRowAuthor"><i>- ${author}</i></p>
 			`
-
+			// append  html elements created
 			historyItem.appendChild(historyItemHeader)
 			historyItemHeader.appendChild(historyItemBtns)
 			historyItemBtns.appendChild(seeRowQuote)
@@ -224,32 +245,93 @@ document.addEventListener("DOMContentLoaded", function () {
 			quoteTable.appendChild(historyItem)
 
 		})
-
-		console.log(`loaded`)
+		console.log(`loaded saved elements`)
 	}
 
-	function hideEmpty() {
-		const emptyNotification = document.querySelector(`#itsEmpty`)
-		emptyNotification.classList.add(`hide`)
-		emptyNotification.classList.remove(`itsEmpty`)
+	// function to see a single saved quote
+	function showHistoItem(id, author, quote) {
+		let languageActive = false
+		enableDisableLanguage(languageActive)
+		displayResult()
+		disableSave()
+		clearCuoteForm()
+		hideWelcome()
+
+		// if the quote section is hiden, close the history section
+		if (document.querySelector(`#quote-stion`).classList.contains(`hide`)) {
+			closeHisto()
+		}
+
+		generateBtn.classList.remove(`btnActive`)
+		generateBtn.classList.add(`btnInactive`)
+		createyoursBtn.classList.remove(`btnActive`)
+		createyoursBtn.classList.add(`btnInactive`)
+
+		// display the content of the saved quote  
+		document.querySelector(`#quoteText`).classList.remove(`hide`)
+		document.querySelector(`#insertQuote`).innerHTML = quote
+		document.querySelector(`.q-open`).innerHTML = `"`
+		document.querySelector(`.q-close`).innerHTML = `"`
+		document.querySelector(`.cite`).innerHTML = author
+
 	}
 
+	// function to delete a single saved quote
+	function deleQuote(id) {
+
+		notifyEmpy()
+		//  get the  target's index
+		let index = quotes.findIndex(function (o) {
+			return o.id === id;
+		})
+
+		// remove 1 element at the target's index
+		console.log(index)
+		quotes.splice(index, 1)
+		LoadListQuote()
+		console.log(`quote to delete`, id)
+	}
+
+	// function to hide message of saved quote
+	function hideSavedAlert() {
+		setTimeout(function () {
+			document.querySelector(`#alert`).style.display = "none";
+			document.querySelector(`.tooltipSpan`).style.opacity = 1;
+		}, 700);
+	}
+
+
+	// display message when history of saved quotes is empty
 	function notifyEmpy() {
 		const emptyNotification = document.querySelector(`#itsEmpty`)
 
-		if (quotes.length == 1) {
+		if (quotes.length <= 1) {
 			emptyNotification.classList.remove(`hide`)
 			emptyNotification.classList.add(`itsEmpty`)
 			document.querySelector(`#orderBy`).disabled = true
 		}
 	}
 
+	// hide message about history of saved quotes is empty
+	function hideEmpty() {
+		const emptyNotification = document.querySelector(`#itsEmpty`)
+		emptyNotification.classList.add(`hide`)
+		emptyNotification.classList.remove(`itsEmpty`)
+	}
+
+	// enable save button
+	function enableSave() {
+		document.querySelector(`#saveQuoteBtn`).disabled = false
+	}
+
+	// disable save button
 	function disableSave() {
 		document.querySelector(`#saveQuoteBtn`).disabled = true
 	}
 
+	// enable and disable Language selector
 	function enableDisableLanguage(languageActive) {
-		console.log(languageActive)
+
 		const langQuote = document.querySelector(`#lang-quote`)
 		if (languageActive) {
 			langQuote.disabled = false
@@ -258,71 +340,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	function enableSave() {
-		document.querySelector(`#saveQuoteBtn`).disabled = false
-	}
 
-	function createQuote() {
-		let languageActive = false
-		enableSave()
-		clearResult()
-		displayForm()
-		enableDisableLanguage(languageActive)
-		console.log(`create`)
-	}
-
-	function clearCuoteForm() {
-		document.querySelector(`.yourtext`).value = ``
-		document.querySelector(`.yourname`).value = ``
-	}
-	function clearResult() {
-		document.querySelector(`#insertQuote`).innerHTML = ``
-		document.querySelector(`.q-open`).innerHTML = ``
-		document.querySelector(`.q-close`).innerHTML = ``
-		document.querySelector(`.cite`).innerHTML = ``
-	}
-
-	function displayForm() {
-		formCreateQuote.classList.remove(`hide`)
-		formCreateQuote.classList.add(`form-CreateQuote`)
-		result.classList.add(`hide`)
-		result.classList.remove(`result`)
-	}
-	function displayResult() {
-		formCreateQuote.classList.add(`hide`)
-		formCreateQuote.classList.remove(`form-CreateQuote`)
-		result.classList.remove(`hide`)
-		result.classList.add(`result`)
-	}
-
-	function quoteAPI() {
-		cursorProgress()
-		cursorPointer()
-		let languageActive = true
-		enableSave()
-		displayResult()
-		enableDisableLanguage(languageActive)
-		const langQuote = document.querySelector(`#lang-quote`)
-		let langparameter = `random/?language_code=${langQuote.value}`
-
-		fetch(`https://quotes15.p.rapidapi.com/quotes/${langparameter}`, {
-			"method": "GET",
-			"headers": {
-				"x-rapidapi-key": "0b168600abmsh79f9a6cdaf4fc2ep120417jsn341f4e4f7d29",
-				"x-rapidapi-host": "quotes15.p.rapidapi.com"
-			}
-		})
-			.then((response) => response.json())
-			.then(response => {
-				console.log(response);
-
-				displayRandomQuote(response.content, response.originator.name)
-			})
-			.catch(err => {
-				console.error(err);
-			});
-	}
-
+	// function to open history section
 	function openHisto() {
 		console.log(`opened`)
 		const labelHisto = document.querySelector(`#histolabel`)
@@ -342,38 +361,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		histoStion.classList.add(`dispGrid`)
 	}
 
-	function displayAlert() {
-		setTimeout(function () {
-			document.querySelector(`#alert`).style.display = "none";
-			document.querySelector(`.getInspiredTooltip`).style.opacity = 1;
-		}, 700);
-	}
-	function hideBtnTooltip(btn) {
-		if (btn == saveQuoteBtn) {
-			document.querySelector(`#tooltipSaveBtn`).style.display = "none";
-		} else if (btn == createyoursBtn) {
-			document.querySelector(`#tooltipMakeBtn`).style.display = "none";
-		} else {
-			document.querySelector(`#tooltipGetBtn`).style.display = "none";
-		}
-	}
-
-	function timerBtnTooltip(btn) {
-		timing = setTimeout(function () { hideBtnTooltip(btn) }, 1500);
-	}
-
-	function cursorProgress() {
-		document.body.style.cursor = `progress`
-	}
-
-	function cursorPointer() {
-		setTimeout(function () {
-			document.body.style.cursor = `pointer`
-		}, 700);
-	}
-
+	// function to close history section
 	function closeHisto() {
-		console.log(`close histo`)
+
 		const labelHisto = document.querySelector(`#histolabel`)
 		labelHisto.classList.remove(`hide`)
 		labelHisto.classList.add(`histolabel`)
@@ -391,41 +381,21 @@ document.addEventListener("DOMContentLoaded", function () {
 		histoStion.classList.remove(`dispGrid`)
 	}
 
-	function setBGbutton(buttonA, buttonB) {
-		console.log(buttonA, buttonB)
-		buttonA.classList.add(`btnActive`)
-		buttonA.classList.remove(`btnInactive`)
-		buttonB.classList.add(`btnInactive`)
-		buttonB.classList.remove(`btnActive`)
+
+	// function to clear the form fields
+	function clearCuoteForm() {
+		document.querySelector(`.yourtext`).value = ``
+		document.querySelector(`.yourname`).value = ``
+	}
+	//  function to clear the result of random quotes 
+	function clearResult() {
+		document.querySelector(`#insertQuote`).innerHTML = ``
+		document.querySelector(`.q-open`).innerHTML = ``
+		document.querySelector(`.q-close`).innerHTML = ``
+		document.querySelector(`.cite`).innerHTML = ``
 	}
 
-	function showHistoItem(id, author, quote) {
-		let languageActive = false
-		enableDisableLanguage(languageActive)
-		console.log(id, quote.substring(0, 20), author)
-		displayResult()
-		disableSave()
-		clearCuoteForm()
-
-		hideWelcome()
-		if (document.querySelector(`#quote-stion`).classList.contains(`hide`)) {
-			closeHisto()
-		}
-
-		generateBtn.classList.remove(`btnActive`)
-		generateBtn.classList.add(`btnInactive`)
-		createyoursBtn.classList.remove(`btnActive`)
-		createyoursBtn.classList.add(`btnInactive`)
-
-		document.querySelector(`#quoteText`).classList.remove(`hide`)
-		document.querySelector(`#insertQuote`).innerHTML = quote
-		document.querySelector(`.q-open`).innerHTML = `"`
-		document.querySelector(`.q-close`).innerHTML = `"`
-		document.querySelector(`.cite`).innerHTML = author
-
-	}
-
-
+	// Function to display tooltip of the buttons
 	function displayBtnTooltip(btn) {
 		if (btn == saveQuoteBtn) {
 			document.querySelector(`#tooltipSaveBtn`).style.display = "flex";
@@ -437,25 +407,56 @@ document.addEventListener("DOMContentLoaded", function () {
 		timerBtnTooltip(btn)
 	}
 
+	//  timer to hide tooltip of the buttons
+	function timerBtnTooltip(btn) {
+		timing = setTimeout(function () { hideBtnTooltip(btn) }, 1500);
+	}
+
+	// function to hide the tooltip of the buttos
+	function hideBtnTooltip(btn) {
+		if (btn == saveQuoteBtn) {
+			document.querySelector(`#tooltipSaveBtn`).style.display = "none";
+		} else if (btn == createyoursBtn) {
+			document.querySelector(`#tooltipMakeBtn`).style.display = "none";
+		} else {
+			document.querySelector(`#tooltipGetBtn`).style.display = "none";
+		}
+	}
+
+
+	// Set a background when the buttons are active
+	function setBGbutton(buttonA, buttonB) {
+		console.log(buttonA, buttonB)
+		buttonA.classList.add(`btnActive`)
+		buttonA.classList.remove(`btnInactive`)
+		buttonB.classList.add(`btnInactive`)
+		buttonB.classList.remove(`btnActive`)
+	}
+
+	// function to hide welcoming message
+	function hideWelcome() {
+		document.querySelector(`#welcome`).classList.add(`hide`)
+	}
+
+
+
+	// call functions through events
 	generateBtn.addEventListener(`click`, quoteAPI)
 	generateBtn.addEventListener(`click`, clearCuoteForm)
-	createyoursBtn.addEventListener(`click`, createQuote)
+	createyoursBtn.addEventListener(`click`, displayForm)
 	generateBtn.addEventListener(`click`, function () { setBGbutton(generateBtn, createyoursBtn) })
 	createyoursBtn.addEventListener(`click`, function () { setBGbutton(createyoursBtn, generateBtn) })
-
 	document.querySelector(`#saveQuoteBtn`).addEventListener(`click`, saveQuote)
-
 	document.querySelector(`#orderBy`).addEventListener(`change`, LoadListQuote)
 	document.querySelector(`#openHistoBtn`).addEventListener(`click`, openHisto)
 	document.querySelector(`#closeHistoBtn`).addEventListener(`click`, closeHisto)
 	generateBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(generateBtn) })
 	createyoursBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(saveQuoteBtn) })
-
 	generateBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(generateBtn) })
 	createyoursBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(saveQuoteBtn) })
 
-	fillLngQuote()
-	console.log(`done`)
+	// call function to list the languages suported 
+	listLangSupported()
 })

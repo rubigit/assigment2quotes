@@ -12,94 +12,95 @@
 <body>
 	<!-- main containter -->
 	<main class="mainly">
-		<!-- :::::: Container for quote generator section :::::: -->
-		<!-- header for logo -->
-		<header class="quoteHeader">
 
+		<!-- main meading and logo -->
+		<header class="mainHeader">
 			<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
 			<h1 class="title">Randon quotes</h1>
-
 		</header>
 
+		<!-- :::::: section to generate random quote and create own quotes :::::: -->
 		<div class="subcontainer">
 			<div class="quotewraper">
 				<section id="quote-stion" class="quote-stion dispGrid">
 					<!-- Section to generate the quote -->
 					<section class="generate">
-						<div class="generateleftBtn">
-							<!-- container for languages supported -->
+						<header class="quoteHeader">
+							<!-- container for supportedlanguages  -->
 							<div class=selectContainer>
 								<label class="select-label">Laguage</label>
-								<!-- list of language supported -->
+								<!-- list of supported language  -->
 								<select class="lang-quote" name="lang-quote" id="lang-quote">
 								</select>
 							</div>
-
-							<div class="inspired">
+							<!-- button to generate random quotes -->
+							<div class="tooltipbody">
 								<button type="button" value="generateBtn" class="generateBtn btnInactive"></button>
-								<span class="getInspiredTooltip" id="tooltipGetBtn">Get inspired</span>
+								<span class="tooltipSpan" id="tooltipGetBtn">Get inspired</span>
 							</div>
-							<div class="inspired">
+							<!-- button to create own quotes -->
+							<div class="tooltipbody">
 								<button type="button" value="createyoursBtn"
 									class="createyoursBtn btnInactive"></button>
-								<span class="getInspiredTooltip" id="tooltipMakeBtn">Make quotes</span>
+								<span class="tooltipSpan" id="tooltipMakeBtn">Make quotes</span>
 							</div>
 
-						</div>
+						</header>
 						<footer class="quoteFooter">
-							<div class="inspired">
+							<!-- Button to save quote  -->
+							<div class="tooltipbody">
 								<button type="button" value="saveQuoteBtn" id="saveQuoteBtn" class="saveQuoteBtn"
 									disabled></button>
-								<span class="getInspiredTooltip" id="tooltipSaveBtn">Save quotes</span>
+								<span class="tooltipSpan" id="tooltipSaveBtn">Save quotes</span>
 							</div>
+							<!-- Message when the quote is saved -->
 							<div id="alert" class="alert">
 								<span>&check;</span><span>Saved</span>
 							</div>
 						</footer>
 					</section>
-					<!-- Section to display the quote -->
+
+					<!-- Section to display the result of random quotes -->
 					<blockquote id="result" class="result">
-						<!-- quote picture bg  -->
+						<!-- quote picture background  -->
 						<img class="quoteSymbol" src="./img/openquotes.svg" alt="Open quote" height="38">
-						<!-- text content of the quote -->
+						<!-- Welcoming message -->
 						<p id="welcome" class="quoteText">Welcome to random quotes</p>
+						<!-- Content for the quote -->
 						<p id="quoteText" class="quoteText hide"><span class="q-open"></span><span
 								id="insertQuote"></span><span class="q-close"></span></p>
-						<!-- footer of the quotation and cite for the author-->
+						<!-- Cite the author-->
 						<footer class="author"><cite class="cite"></cite></footer>
 					</blockquote>
-
-
+					<!-- Form to capture information to create quotes -->
 					<form id="form-CreateQuote" class="hide">
+						<!-- capture quote text -->
 						<div class="container-CreateQuote">
-							<label>Write your quote</label>
+							<label class="label-create">Write your quote</label>
 							<textarea class="yourtext" name="" cols="30" rows="10"
 								placeholder="&#42; Write your quote here..."></textarea>
 						</div>
+						<!-- capture author name -->
 						<div class="container-CreateQuote">
-							<label for="">Your name</label>
+							<label class="label-create">Your name</label>
 							<input type=" text" name="" class="yourname" placeholder="&#42; Enter your name here...">
 						</div>
-
 					</form>
-					<!-- Buttons for historical and save quote -->
-
-
-
-
 				</section>
 			</div>
+
+
 			<!-- :::::: Container for historical section :::::: -->
 			<section id="histo-stion" class="histo-stion hide">
-				<!-- historical header for subheading and closing button -->
+				<!-- historical heading and  closing button -->
 				<header class=histoHeader>
 					<h2 class="histoHeading">History</h2>
 					<button type="button" value="closeHistoBtn" id="closeHistoBtn" class="closeHistoBtn"></button>
 				</header>
-				<!-- historical filters and clear all button -->
+				<!-- Filter section -->
 				<section class="Filters">
-
 					<div class="selectContainer">
+						<!-- order by filter -->
 						<label class="select-label">Order by</label>
 						<select disabled class="orderBy" name="orderBy" id="orderBy">
 							<option value="id">Id</option>
@@ -107,46 +108,18 @@
 						</select>
 					</div>
 				</section>
-
+				<!-- message when the history record is empty -->
 				<section id="itsEmpty" class="itsEmpty">
 					<img src="./img/noquotes.svg" alt="message indicatin no quotes">
 					<p>No quotes saved</p>
 				</section>
-
-				<!-- Display historical quotes -->
+				<!-- Display saved quotes -->
 				<section class="historicalResult">
-					<!-- 
-				<div class="histo-item">
-					<div class="quoteRow">
-						<p class="quoteID">ID here</p>
-						<p class="quoteRowTxt">Quote text here ...</p>
-						<p class="quoteRowAuthor">Author name</p>
-					</div>
-					<button id="deleteRowQuote" type="button" value="deleteRowQuote"
-						class="deleteRowQuote">Delete</button>
-				</div> -->
-					<!-- <div class="historyItem">
-						<header class="historyItem-header">
-							<p class="quoteID">ID:</p>
-							<div>
-								<button id="seeRowQuote" type="button" value="seeRowQuote" class="seeRowQuote"></button>
-								<button id="deleteRowQuote" type="button" value="deleteRowQuote"
-									class="deleteRowQuote"></button>
-							</div>
-						</header>
-						<footer class="historyItem-footer">
-							<p class="quoteRowTxt">Quote here fdgerg fwefe fwefewf wefewfew efef ewfew fwef wefwef
-								wefewf
-								fewfewf rr rt ret re tre t ret ert ret retr t rter </p>
-							<p class="quoteRowAuthor"><i>-Author</i></p>
-						</footer>
-					</div> -->
+					<!-- populate saved quotes -->
 				</section>
-
 			</section>
-
 		</div>
-
+		<!-- button to open History container -->
 		<div class="openHistoContainer">
 			<button id="openHistoBtn" class="openHistoBtn"></button>
 			<labelc id="histolabel" class="histolabel">History</label>
