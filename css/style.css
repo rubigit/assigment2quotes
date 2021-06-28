@@ -209,14 +209,14 @@ html{
 .generateBtn{
 	background: url("../img/getInspiredHover.svg");
 	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
+	width: 1.7em;
+	height:1.7em;
 	cursor: pointer;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 1.7em 1.7em;
+	background-size: 1.3em 1.3em;
 
 }
 
@@ -229,14 +229,14 @@ html{
 .createyoursBtn{
 	background: url("../img/createyoursHover.svg");
 	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
+	width: 1.7em;
+	height:1.7em;
 	cursor: pointer;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 1.7em 1.7em;
+	background-size: 1.3em 1.3em;
 }
 /* Button to display form to creater own quotes when hover */
 .createyoursBtn:hover{
@@ -268,14 +268,14 @@ html{
 .saveQuoteBtn{
 	background: url("../img/saveHover.svg");
 	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
+	width: 1.7em;
+	height:1.7em;			
 	cursor: pointer;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 1.7em 1.7em;	
+	background-size: 1.3em 1.3em;	
 }
 
 /* save quote button when hover */
@@ -289,13 +289,13 @@ html{
 	cursor: none;
 	background: url("../img/save.svg");
 	background-repeat: no-repeat;
-	width: 2.2em;
-	height:2.2em ;
+	width: 1.7em;
+	height:1.7em;
 	border: none;
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 1.7em 1.7em;	
+	background-size: 1.3em 1.3em;	
 }
 
 /* container for alert message  when the quote is saved */
@@ -438,7 +438,7 @@ html{
 	border-radius: 0.5em;
 	object-fit: cover;
 	background-position: center;
-	background-size: 1.5em 1.5em;
+	background-size: 1.3em 1.3em;
 }
 
 /* clear form button:hover  */
@@ -749,14 +749,14 @@ background-color: rgba(0, 0, 0, 0.089);
 	.generateBtn{
 		background: url("../img/getInspiredHover.svg");
 		background-repeat: no-repeat;
-		width: 2.4em;
-		height:2.4em;
+		width: 1.8em;
+		height:1.8em;
 		cursor: pointer;
 		border: none;
 		border-radius: 0.5em;
 		object-fit: cover;
 		background-position: center;
-		background-size: 1.9em 1.9em;
+		background-size: 1.4em 1.4em;
 	}
 		
 		
@@ -764,28 +764,43 @@ background-color: rgba(0, 0, 0, 0.089);
 	.createyoursBtn{
 		background: url("../img/createyoursHover.svg");
 		background-repeat: no-repeat;
-		width: 2.4em;
-		height:2.4em;
+		width: 1.8em;
+		height:1.8em;
 		cursor: pointer;
 		border: none;
 		border-radius: 0.5em;
 		object-fit: cover;
 		background-position: center center;
-		background-size: 1.9em 1.9em;
+		background-size: 1.4em 1.4em;
 	}
 
 	/* save quote button */
 	.saveQuoteBtn{
 		background: url("../img/saveHover.svg");
 		background-repeat: no-repeat;
-		width: 2.4em;
-		height:2.4em;
+		width: 1.8em;
+		height:1.8em;
 		cursor: pointer;
 		border: none;
 		border-radius: 0.5em;
 		object-fit: cover;
 		background-position: center;
-		background-size: 1.9em 1.9em;
+		background-size: 1.4em 1.4em;
+	}
+
+
+	.saveQuoteBtn:disabled{
+		opacity: 0.4;
+		cursor: none;
+		background: url("../img/save.svg");
+		background-repeat: no-repeat;
+		width: 1.8em;
+		height:1.8em;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center;
+		background-size: 1.4em 1.4em;
 	}
 
 	/* container for languages supported */
@@ -802,6 +817,19 @@ background-color: rgba(0, 0, 0, 0.089);
 	.btnInactive{
 		background-color:transparent;
 		opacity: 0.7;
+	}
+
+	.clearForm{
+		background: url("../img/clearForm.svg");
+		background-repeat: no-repeat;
+		width: 1.8em;
+		height:1.8em;
+		cursor: pointer;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center;
+		background-size: 1.4em 1.4em;
 	}
 
 }
