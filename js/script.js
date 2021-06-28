@@ -123,6 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			authorName = document.querySelector(`.yourname`).value
 			contentQuote = document.querySelector(`.yourtext`).value
 		}
+
+		authorName = authorName.charAt(0).toUpperCase() + authorName.slice(1);
+
 		// if the variables are not empty save variables into data
 		if (contentQuote != "" && authorName != "") {
 			let _data = {
@@ -144,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					console.log(response);
 					//push the data into the array of saved quotes  
 					quotes.push({
-						id: response.id,
+						id: parseInt(response.id),
 						author: response.author,
 						quote: response.quote,
 					})
@@ -173,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// function to load the list of quotes saved
 	function LoadListQuote() {
-
 		// sort the saved quotes
 		let sort = document.querySelector(`#orderBy`).value
 		quotes.sort(function (a, b) {
