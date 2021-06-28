@@ -153,7 +153,8 @@ html{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: calc(var(--pad-gap)/2);
+	gap: calc(var(--pad-gap));
+
 }
 
 /* container for languages supported */
@@ -205,6 +206,13 @@ html{
   	transition: 0.5s;
 }
  
+.inspiredBorder{
+	border-right:0.02em solid rgb(163, 163, 163);
+	height: 2em;
+	padding-right: var(--pad-gap);
+	display: flex;
+}
+
 /* Button to generate random quote (to get inspired) */
 .generateBtn{
 	background: url("../img/getInspiredHover.svg");
@@ -561,12 +569,19 @@ background-color: rgba(0, 0, 0, 0.089);
 /* container for history filters  */
 .Filters{
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	gap: calc(var(--pad-gap)*2);
 	align-items: flex-end;
 	padding: 0 var(--pad-gap) var(--pad-gap) var(--pad-gap);
 	background-color: rgba(0, 0, 0, 0.089);
 	border-bottom: 0.05em solid rgb(201, 201, 201); 
+}
+
+/* display the number of elements in the result */
+.qtyResults span{
+	color:  rgb(151, 151, 151);
+	font-size: 0.8em;
+	
 }
 
 /* container for message when history is empty  */
@@ -745,6 +760,9 @@ background-color: rgba(0, 0, 0, 0.089);
 		padding-right: var(--pad-gap);
 	}
 
+
+
+
 	/* Button to generate random quote (to get inspired) */
 	.generateBtn{
 		background: url("../img/getInspiredHover.svg");
@@ -882,10 +900,14 @@ background-color: rgba(0, 0, 0, 0.089);
 		display: none;
 	}
 
-	/*--------------- quote header */
 	.quoteHeader{
 		gap: calc(var(--pad-gap)*2);
 	}
+
+	.inspiredBorder{
+		padding-right: calc(var(--pad-gap)*2);
+	}
+
 	
 		/* -------Section to generate the quote ----- */
 	.generate{

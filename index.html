@@ -34,9 +34,11 @@
 								</select>
 							</div>
 							<!-- button to generate random quotes -->
-							<div class="tooltipbody">
-								<button type="button" value="generateBtn" class="generateBtn btnInactive"></button>
-								<span class="tooltipSpan" id="tooltipGetBtn">Get inspired</span>
+							<div class="inspiredBorder">
+								<div class="tooltipbody ">
+									<button type="button" value="generateBtn" class="generateBtn btnInactive"></button>
+									<span class="tooltipSpan" id="tooltipGetBtn">Get inspired</span>
+								</div>
 							</div>
 							<!-- button to create own quotes -->
 							<div class="tooltipbody">
@@ -105,6 +107,10 @@
 				</header>
 				<!-- Filter section -->
 				<section class="Filters">
+					<!-- display the number of elements in the result -->
+					<div class="qtyResults">
+						<span id="spanQtyResults">0 Results</span>
+					</div>
 					<div class="selectContainer">
 						<!-- order by filter -->
 						<label class="select-label">Order by</label>

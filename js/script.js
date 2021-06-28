@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const createyoursBtn = document.querySelector(`.createyoursBtn`)
 	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
 	const clearForm = document.querySelector(`#clearForm`)
-
+	const spanQtyResults = document.querySelector(`#spanQtyResults`)
 	// array to storage saved quotes
 	const quotes = [
 	]
@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// function to load the list of quotes saved
 	function LoadListQuote() {
+
 		// sort the saved quotes
 		let sort = document.querySelector(`#orderBy`).value
 		quotes.sort(function (a, b) {
@@ -200,13 +201,14 @@ document.addEventListener("DOMContentLoaded", function () {
 			return 0
 		})
 
+		let result = 0
 		// populate the result of saved quotes
 		/* container to display history of saved quotes  */
 		const quoteTable = document.querySelector(`.historicalResult`)
 		quoteTable.innerHTML = ``
 		quotes.map(({ id, author, quote }) => {
 			let content = ``
-			console.log(id, author, quote)
+			console.log(id, author, quote.substring(0, 10))
 
 			/* container of the single quote saved  */
 			const historyItem = document.createElement(`div`)
@@ -246,7 +248,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			historyItem.appendChild(historyItemFooter)
 			quoteTable.appendChild(historyItem)
 
+			result++
+
 		})
+		// display the number of elements in the result
+		spanQtyResults.innerHTML = `${result} Results`
 		console.log(`loaded saved elements`)
 	}
 
@@ -345,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// function to open history section
 	function openHisto() {
-		console.log(`opened`)
+
 		const labelHisto = document.querySelector(`#histolabel`)
 		labelHisto.classList.add(`hide`)
 		labelHisto.classList.remove(`histolabel`)
@@ -436,7 +442,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Set a background when the buttons are active
 	function setBGbutton(buttonA, buttonB) {
-		console.log(buttonA, buttonB)
+
 		buttonA.classList.add(`btnActive`)
 		buttonA.classList.remove(`btnInactive`)
 		buttonB.classList.add(`btnInactive`)
@@ -476,4 +482,5 @@ document.addEventListener("DOMContentLoaded", function () {
 	clearForm.addEventListener(`mouseout`, function () { hideBtnTooltip(clearForm) })
 	// call function to list the languages suported 
 	listLangSupported()
+
 })
