@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	//  timer to hide tooltip of the buttons
 	function timerBtnTooltip(btn) {
-		timing = setTimeout(function () { hideBtnTooltip(btn) }, 1500);
+		timing = setTimeout(function () { hideBtnTooltip(btn) }, 2000);
 	}
 
 	// function to hide the tooltip of the buttos
