@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const generateBtn = document.querySelector(`.generateBtn`)
 	const createyoursBtn = document.querySelector(`.createyoursBtn`)
 	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
+	const clearForm = document.querySelector(`#clearForm`)
 
 	// array to storage saved quotes
 	const quotes = [
@@ -162,8 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				})
 				.catch(err => console.log(err));
 
-			document.querySelector(`.yourtext`).classList.remove(`alertFieldEmpty`)
-			document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
+			hideAlertFieldEmpty()
 			document.querySelector(`#orderBy`).disabled = false
 			hideEmpty()
 		}
@@ -388,6 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function clearCuoteForm() {
 		document.querySelector(`.yourtext`).value = ``
 		document.querySelector(`.yourname`).value = ``
+		hideAlertFieldEmpty()
 	}
 	//  function to clear the result of random quotes 
 	function clearResult() {
@@ -403,6 +404,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			document.querySelector(`#tooltipSaveBtn`).style.display = "flex";
 		} else if (btn == createyoursBtn) {
 			document.querySelector(`#tooltipMakeBtn`).style.display = "flex";
+		}
+		else if (btn == clearForm) {
+			document.querySelector(`#tooltipClearForm`).style.display = "flex";
+
 		} else {
 			document.querySelector(`#tooltipGetBtn`).style.display = "flex";
 		}
@@ -420,6 +425,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			document.querySelector(`#tooltipSaveBtn`).style.display = "none";
 		} else if (btn == createyoursBtn) {
 			document.querySelector(`#tooltipMakeBtn`).style.display = "none";
+		}
+		else if (btn == clearForm) {
+			document.querySelector(`#tooltipClearForm`).style.display = "none";
 		} else {
 			document.querySelector(`#tooltipGetBtn`).style.display = "none";
 		}
@@ -440,6 +448,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.querySelector(`#welcome`).classList.add(`hide`)
 	}
 
+	// function to hide message when form fields are empty 
+	function hideAlertFieldEmpty() {
+		document.querySelector(`.yourtext`).classList.remove(`alertFieldEmpty`)
+		document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
+	}
 
 
 	// call functions through events
@@ -455,10 +468,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	generateBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(generateBtn) })
 	createyoursBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(saveQuoteBtn) })
+	clearForm.addEventListener(`mouseover`, function () { displayBtnTooltip(clearForm) })
+	clearForm.addEventListener(`click`, clearCuoteForm)
 	generateBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(generateBtn) })
 	createyoursBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(saveQuoteBtn) })
-
+	clearForm.addEventListener(`mouseout`, function () { hideBtnTooltip(clearForm) })
 	// call function to list the languages suported 
 	listLangSupported()
 })

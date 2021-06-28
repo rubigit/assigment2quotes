@@ -420,6 +420,33 @@ html{
 	gap: calc(var(--pad-gap)/3);
 }
 
+/* container for subheading and clear form button  */
+.title-clearForm{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* clear form button  */
+.clearForm{
+	background: url("../img/clearForm.svg");
+	background-repeat: no-repeat;
+	width: 1.7em;
+	height:1.7em;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.5em 1.5em;
+}
+
+/* clear form button:hover  */
+.clearForm:hover{
+	background-color:rgba(255, 255, 255, 0.304);
+}
+
+/* subheading */
 .label-create{
 	color: rgb(128, 128, 128);
 	font-size: 0.9em;
