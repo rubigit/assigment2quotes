@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const openHistoContainer = document.querySelector(`#openHistoContainer`)
 	const userloginsection = document.querySelector(`#userloginsection`)
 	const mainHeader = document.querySelector(`#mainHeader`)
-
+	const yourname = document.querySelector(`.yourname`)
 
 	// array to storage saved quotes
 	const quotes = [
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		authorName = authorName.charAt(0).toUpperCase() + authorName.slice(1)
 
 		// if the variables are not empty save variables into data
-		if (contentQuote != "" && authorName != "") {
+		if (contentQuote.trim() != "" && authorName.trim() != "") {
 			let _data = {
 				author: authorName,
 				quote: contentQuote,
@@ -178,7 +178,17 @@ document.addEventListener("DOMContentLoaded", function () {
 		else {
 			document.querySelector(`.yourtext`).classList.add(`alertFieldEmpty`)
 			document.querySelector(`.yourname`).classList.add(`alertFieldEmpty`)
+
+			if (contentQuote.trim() == "") {
+				document.querySelector(`.yourtext`).value = ``
+			}
+
+			if (authorName.trim() == "") {
+				document.querySelector(`.yourname`).value = ``
+			}
 		}
+
+
 	}
 
 	//  load the list of quotes saved
@@ -513,12 +523,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		userloginsection.classList.remove(`userloginsection`)
 	}
 
-
-
-
-
-
-
+	// make enter key work as  "save quote" button
+	yourname.addEventListener("keydown", function (event) {
+		if (event.keyCode == 13) {
+			event.preventDefault();
+			saveQuote()
+		}
+	})
 
 
 	// call functions through events
