@@ -149,12 +149,34 @@ html{
 	background-position: center;
 	background-size: 1.3em 1.3em;
 	background-color:rgba(255, 255, 255, 0.104);
+	position: relative;
 }
 
 
 .userIcon:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
+
+.userIcon:after {
+
+	background-color:rgba(175, 175, 175, 0.304);
+	content: "";
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	width: 1.8em;
+	height:1.8em;
+	top:0;
+	left: 50%;
+	margin-left:-.9em;
+	opacity: 0;
+	transition: all 0.8s;
+  }
+  
+  .userIcon:active:after {
+	opacity: 1;
+	transition: 0s;
+  }
 
 
 .detailsDrop{
@@ -346,6 +368,30 @@ html{
 	background-color:rgba(255, 255, 255, 0.304);
 }
 
+
+.generateBtn:after {
+
+	background-color:rgba(175, 175, 175, 0.304);
+	content: "";
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	width: 1.9em;
+	height:1.9em;
+	top:0;
+	left: 50%;
+	margin-left:-.95em;
+	opacity: 0;
+	transition: all 0.8s;
+  }
+  
+  .generateBtn:active:after {
+	opacity: 1;
+	transition: 0s;
+  }
+
+
+
 /* Button to display form to creater own quotes */
 .createyoursBtn{
 	background: url("../img/createyoursHover.svg");
@@ -363,6 +409,29 @@ html{
 .createyoursBtn:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
+
+.createyoursBtn:after {
+
+	background-color:rgba(175, 175, 175, 0.304);
+	content: "";
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	width: 1.9em;
+	height:1.9em;
+	top:0;
+	left: 50%;
+	margin-left:-.95em;
+	opacity: 0;
+	transition: all 0.8s;
+  }
+  
+  .createyoursBtn:active:after {
+	opacity: 1;
+	transition: 0s;
+  }
+
+
 
 /* Button to indicate which button is active */
 .btnActive{
@@ -403,6 +472,28 @@ html{
 .saveQuoteBtn:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
+
+.saveQuoteBtn:after {
+
+	background-color:rgba(175, 175, 175, 0.304);
+	content: "";
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	width: 1.9em;
+	height:1.9em;
+	top:0;
+	left: 50%;
+	margin-left:-.95em;
+	opacity: 0;
+	transition: all 0.8s;
+  }
+  
+  .saveQuoteBtn:active:after {
+	opacity: 1;
+	transition: 0s;
+  }
+
 
 /* save quote button when disabled */
 .saveQuoteBtn:disabled{
@@ -566,6 +657,29 @@ html{
 .clearForm:hover{
 	background-color:rgba(255, 255, 255, 0.304);
 }
+
+
+.clearForm:after {
+
+	background-color:rgba(175, 175, 175, 0.304);
+	content: "";
+	border-radius: 0.5em;
+	display: block;
+	position: absolute;
+	width: 1.9em;
+	height:1.9em;
+	top:0;
+	left: 50%;
+	margin-left:-.95em;
+	opacity: 0;
+	transition: all 0.8s;
+  }
+  
+  .clearForm:active:after {
+	opacity: 1;
+	transition: 0s;
+  }
+
 
 /* subheading */
 .label-create{
