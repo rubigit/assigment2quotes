@@ -66,6 +66,10 @@ html{
 	display: none;
 }
 
+.flexx{
+	display: flex;
+}
+
 
 /* =================MAIN CONTAINER=========================== */
 .mainly{
@@ -93,21 +97,128 @@ html{
 /* ---- header for logo and text logo--------*/
 .mainHeader{
 	display: flex;
-	align-items: center;
-	gap: var(--pad-gap);
-	padding: var(--pad-gap);
+	justify-content: space-between;
+	padding: var(--pad-gap) calc(var(--pad-gap)/2);
 }
 
+.logoName{
+	display: flex;
+	align-items: center;
+	gap: var(--pad-gap);
+	}
 /* picture logo */
 .logo{
 	width: 2em;
 	height: auto;
+	
 }
 	
 /* text logo */
 .title{
+	display: flex;
 	color: rgb(49, 49, 49);
 	font-size: 1.3em;
+	text-transform: uppercase;
+	gap: calc(var(--pad-gap)/8);
+}
+
+.title span:first-child{
+	color: rgb(121, 141, 144);
+}
+
+.title span:last-child{
+	color:#B290C2;
+}
+
+/* ----------------------- */
+
+.dropdownUser{
+	display: flex;
+	position: relative;	
+}
+
+.userIcon{
+	background: url("../img/usericon.svg");
+	background-repeat: no-repeat;
+	width: 1.7em;
+	height:1.7em;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: center;
+	background-size: 1.3em 1.3em;
+	background-color:rgba(255, 255, 255, 0.104);
+}
+
+
+.userIcon:hover{
+	background-color:rgba(255, 255, 255, 0.304);
+}
+
+
+.detailsDrop{
+	flex-direction: column;
+	align-items: center;
+	flex-grow: 1;
+	gap: var(--pad-gap);
+	padding: calc(var(--pad-gap));
+	border:0.02em solid rgb(201, 201, 201);
+	box-shadow: -1px 1px 9px 0px rgba(0,0,0,0.3);
+	border-radius: 0.5em;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: calc(var(--pad-gap)/2);
+	
+	z-index: 1;
+	
+	background-color: #ebebeb;
+	min-width: 8em;
+	
+}
+
+.signedAs{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: calc(var(--pad-gap)/2);
+	padding-bottom: var(--pad-gap);
+	border-bottom: 0.02em solid rgb(201, 201, 201);	
+	font-size: 0.7em;
+}
+
+.signedAs span:first-child{
+	color: rgb(0, 0, 0);
+	font-weight: bolder;
+}
+.signedAs span:last-child{
+	color: rgb(100, 100, 100);
+	font-weight: lighter;
+	
+}
+
+.signOut{
+	padding: calc(var(--pad-gap)/4) calc(var(--pad-gap)/2) calc(var(--pad-gap)/4) calc(var(--pad-gap));
+	width: fit-content;
+	align-self: center;
+	font-size: 0.8em;
+	background: url("../img/signout.svg");
+	background-repeat: no-repeat;
+	cursor: pointer;
+	border: none;
+	border-radius: 0.5em;
+	object-fit: cover;
+	background-position: left center;
+	background-size: 0.8em 0.8em;
+	color: rgb(83, 83, 83);
+	opacity: 0.7;
+	margin-top: var(--pad-gap);
+	
+}
+
+.signOut:hover{
+	opacity: 1;
 }
 
 /* ----------------------------------------------- */
@@ -749,6 +860,10 @@ background-color: rgba(0, 0, 0, 0.089);
 
 
 
+.userloginsection{
+	border:0.02em solid red;
+}
+
 
 
 /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -761,9 +876,6 @@ background-color: rgba(0, 0, 0, 0.089);
 	.lang-quote, .lang-historial, .orderBy{
 		padding-right: var(--pad-gap);
 	}
-
-
-
 
 	/* Button to generate random quote (to get inspired) */
 	.generateBtn{
@@ -852,6 +964,20 @@ background-color: rgba(0, 0, 0, 0.089);
 		background-size: 1.5em 1.5em;
 	}
 
+	.userIcon{
+		background: url("../img/usericon.svg");
+		background-repeat: no-repeat;
+		width: 1.8em;
+		height:1.8em;
+		cursor: pointer;
+		border: none;
+		border-radius: 0.5em;
+		object-fit: cover;
+		background-position: center;
+		background-size: 1.4em 1.4em;
+		background-color:rgba(255, 255, 255, 0.104);
+	}
+
 }
 
 
@@ -887,9 +1013,9 @@ html {
 	}
 
 	/* ---- header for logo and text logo--------*/
-	.mainHeader{
+	/* .mainHeader{
 		padding: var(--pad-gap) calc(var(--pad-gap)*5);			
-	}
+	} */
 
 	/* history section  */
  	.histo-stion{

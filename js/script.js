@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	const saveQuoteBtn = document.querySelector(`#saveQuoteBtn`)
 	const clearForm = document.querySelector(`#clearForm`)
 	const spanQtyResults = document.querySelector(`#spanQtyResults`)
+	const detailsDrop = document.querySelector(`.detailsDrop`)
+	const subcontainer = document.querySelector(`#subcontainer`)
+	const openHistoContainer = document.querySelector(`#openHistoContainer`)
+	const userloginsection = document.querySelector(`#userloginsection`)
+	const mainHeader = document.querySelector(`#mainHeader`)
+
+
 	// array to storage saved quotes
 	const quotes = [
 	]
@@ -50,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	// function to GET random quotes 
+	//  GET random quotes 
 	function quoteAPI() {
 
 		let languageActive = true
@@ -72,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
 				displayRandomQuote(response.content, response.originator.name)
 			})
 			.catch(err => {
-				console.error(err);
-			});
+				console.error(err)
+			})
 	}
 
-	// function to display random quotes 
+	//  display random quotes 
 	function displayRandomQuote(content, name) {
 		hideWelcome()
 		document.querySelector(`#quoteText`).classList.remove(`hide`)
@@ -87,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	// function to display the section of the result of random quotes
+	//  display the section of the result of random quotes
 	function displayResult() {
 		formCreateQuote.classList.add(`hide`)
 		formCreateQuote.classList.remove(`form-CreateQuote`)
@@ -96,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	// function to display form to create own quote
+	//  display form to create own quote
 	function displayForm() {
 		let languageActive = false
 		enableSave()
@@ -108,10 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		enableDisableLanguage(languageActive)
 	}
 
-	// function to save quotes 
+	//  save quotes 
 	function saveQuote() {
-		document.querySelector(`#tooltipSaveBtn`).style.display = "none";
-		document.querySelector(`.tooltipSpan`).style.opacity = 0;
+		document.querySelector(`#tooltipSaveBtn`).style.display = "none"
+		document.querySelector(`.tooltipSpan`).style.opacity = 0
 		// set variables for the quote text and author 
 		let authorName = ""
 		let contentQuote = ""
@@ -125,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			contentQuote = document.querySelector(`.yourtext`).value
 		}
 
-		authorName = authorName.charAt(0).toUpperCase() + authorName.slice(1);
+		authorName = authorName.charAt(0).toUpperCase() + authorName.slice(1)
 
 		// if the variables are not empty save variables into data
 		if (contentQuote != "" && authorName != "") {
@@ -144,8 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			})
 				.then(response => response.json())
 				.then(response => {
-					console.log(`------------`);
-					console.log(response);
+					console.log(`------------`)
+					console.log(response)
 					//push the data into the array of saved quotes  
 					quotes.push({
 						id: parseInt(response.id),
@@ -158,10 +165,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					LoadListQuote()
 
 					// show and hide message of saved quote
-					document.querySelector(`#alert`).style.display = "flex";
+					document.querySelector(`#alert`).style.display = "flex"
 					hideSavedAlert()
 				})
-				.catch(err => console.log(err));
+				.catch(err => console.log(err))
 
 			hideAlertFieldEmpty()
 			document.querySelector(`#orderBy`).disabled = false
@@ -174,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	// function to load the list of quotes saved
+	//  load the list of quotes saved
 	function LoadListQuote() {
 
 		// sort the saved quotes
@@ -256,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.log(`loaded saved elements`)
 	}
 
-	// function to see a single saved quote
+	//  see a single saved quote
 	function showHistoItem(id, author, quote) {
 		let languageActive = false
 		enableDisableLanguage(languageActive)
@@ -284,13 +291,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	}
 
-	// function to delete a single saved quote
+	//  delete a single saved quote
 	function deleQuote(id) {
 
 		notifyEmpy()
 		//  get the  target's index
 		let index = quotes.findIndex(function (o) {
-			return o.id === id;
+			return o.id === id
 		})
 
 		// remove 1 element at the target's index
@@ -300,12 +307,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		console.log(`quote to delete`, id)
 	}
 
-	// function to hide message of saved quote
+	//  hide message of saved quote
 	function hideSavedAlert() {
 		setTimeout(function () {
-			document.querySelector(`#alert`).style.display = "none";
-			document.querySelector(`.tooltipSpan`).style.opacity = 1;
-		}, 700);
+			document.querySelector(`#alert`).style.display = "none"
+			document.querySelector(`.tooltipSpan`).style.opacity = 1
+		}, 700)
 	}
 
 
@@ -349,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	// function to open history section
+	//  open history section
 	function openHisto() {
 
 		const labelHisto = document.querySelector(`#histolabel`)
@@ -369,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		histoStion.classList.add(`dispGrid`)
 	}
 
-	// function to close history section
+	//  close history section
 	function closeHisto() {
 
 		const labelHisto = document.querySelector(`#histolabel`)
@@ -390,13 +397,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	// function to clear the form fields
+	//  clear the form fields
 	function clearCuoteForm() {
 		document.querySelector(`.yourtext`).value = ``
 		document.querySelector(`.yourname`).value = ``
 		hideAlertFieldEmpty()
 	}
-	//  function to clear the result of random quotes 
+	//   clear the result of random quotes 
 	function clearResult() {
 		document.querySelector(`#insertQuote`).innerHTML = ``
 		document.querySelector(`.q-open`).innerHTML = ``
@@ -404,38 +411,38 @@ document.addEventListener("DOMContentLoaded", function () {
 		document.querySelector(`.cite`).innerHTML = ``
 	}
 
-	// Function to display tooltip of the buttons
+	//  display tooltip of the buttons
 	function displayBtnTooltip(btn) {
 		if (btn == saveQuoteBtn) {
-			document.querySelector(`#tooltipSaveBtn`).style.display = "flex";
+			document.querySelector(`#tooltipSaveBtn`).style.display = "flex"
 		} else if (btn == createyoursBtn) {
-			document.querySelector(`#tooltipMakeBtn`).style.display = "flex";
+			document.querySelector(`#tooltipMakeBtn`).style.display = "flex"
 		}
 		else if (btn == clearForm) {
-			document.querySelector(`#tooltipClearForm`).style.display = "flex";
+			document.querySelector(`#tooltipClearForm`).style.display = "flex"
 
 		} else {
-			document.querySelector(`#tooltipGetBtn`).style.display = "flex";
+			document.querySelector(`#tooltipGetBtn`).style.display = "flex"
 		}
 		timerBtnTooltip(btn)
 	}
 
 	//  timer to hide tooltip of the buttons
 	function timerBtnTooltip(btn) {
-		timing = setTimeout(function () { hideBtnTooltip(btn) }, 2000);
+		timing = setTimeout(function () { hideBtnTooltip(btn) }, 2000)
 	}
 
-	// function to hide the tooltip of the buttos
+	//  hide the tooltip of the buttos
 	function hideBtnTooltip(btn) {
 		if (btn == saveQuoteBtn) {
-			document.querySelector(`#tooltipSaveBtn`).style.display = "none";
+			document.querySelector(`#tooltipSaveBtn`).style.display = "none"
 		} else if (btn == createyoursBtn) {
-			document.querySelector(`#tooltipMakeBtn`).style.display = "none";
+			document.querySelector(`#tooltipMakeBtn`).style.display = "none"
 		}
 		else if (btn == clearForm) {
-			document.querySelector(`#tooltipClearForm`).style.display = "none";
+			document.querySelector(`#tooltipClearForm`).style.display = "none"
 		} else {
-			document.querySelector(`#tooltipGetBtn`).style.display = "none";
+			document.querySelector(`#tooltipGetBtn`).style.display = "none"
 		}
 	}
 
@@ -449,16 +456,69 @@ document.addEventListener("DOMContentLoaded", function () {
 		buttonB.classList.remove(`btnActive`)
 	}
 
-	// function to hide welcoming message
+	//  hide welcoming message
 	function hideWelcome() {
 		document.querySelector(`#welcome`).classList.add(`hide`)
 	}
 
-	// function to hide message when form fields are empty 
+	//  hide message when form fields are empty 
 	function hideAlertFieldEmpty() {
 		document.querySelector(`.yourtext`).classList.remove(`alertFieldEmpty`)
 		document.querySelector(`.yourname`).classList.remove(`alertFieldEmpty`)
 	}
+
+	//  display sing out section
+	function toggleSignout() {
+		detailsDrop.classList.toggle(`flexx`)
+		detailsDrop.classList.toggle(`hide`)
+	}
+
+
+	window.addEventListener('click', function (e) {
+		if (detailsDrop.classList.contains(`flexx`)) {
+			if (!(document.querySelector('.detailsDrop').contains(e.target))
+				&& !(document.querySelector('.userIcon').contains(e.target))) {
+				toggleSignout()
+			}
+		}
+	})
+
+	// display sign in and sign out section
+	// hide quote and history section
+	function displaysignUserSection() {
+		console.log(`sign out`)
+		subcontainer.classList.add(`hide`)
+		openHistoContainer.classList.add(`hide`)
+		mainHeader.classList.add(`hide`)
+		userloginsection.classList.remove(`hide`)
+
+		subcontainer.classList.remove(`subcontainer`)
+		openHistoContainer.classList.remove(`openHistoContainer`)
+		mainHeader.classList.remove(`mainHeader`)
+		userloginsection.classList.add(`userloginsection`)
+
+	}
+
+	// hide sign in and sign out section
+	// display quote and history section
+	function hidesignUserSection() {
+		subcontainer.classList.remove(`hide`)
+		openHistoContainer.classList.remove(`hide`)
+		mainHeader.classList.remove(`hide`)
+		userloginsection.classList.add(`hide`)
+
+		subcontainer.classList.add(`subcontainer`)
+		openHistoContainer.classList.add(`openHistoContainer`)
+		mainHeader.classList.add(`mainHeader`)
+		userloginsection.classList.remove(`userloginsection`)
+	}
+
+
+
+
+
+
+
 
 
 	// call functions through events
@@ -480,7 +540,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	createyoursBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(saveQuoteBtn) })
 	clearForm.addEventListener(`mouseout`, function () { hideBtnTooltip(clearForm) })
-	// call function to list the languages suported 
+	document.querySelector(`.userIcon`).addEventListener(`click`, toggleSignout)
+	document.querySelector(`.signOut`).addEventListener(`click`, displaysignUserSection)
+	document.querySelector(`#signIn`).addEventListener(`click`, hidesignUserSection)
+
+
+	// call  list the languages suported 
 	listLangSupported()
 
 })
