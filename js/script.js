@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
 	console.log(`Ready`)
 
+
+	const db = firebase.firestore();
+
 	// storage html elements 
 	const formCreateQuote = document.querySelector(`#form-CreateQuote`)
 	const result = document.querySelector(`#result`)
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function saveQuote() {
 		document.querySelector(`#tooltipSaveBtn`).style.display = "none"
 		document.querySelector(`.tooltipSpan`).style.opacity = 0
-		// set variables for the quote text and author 
+		// set variables for the quote content and author name
 		let authorName = ""
 		let contentQuote = ""
 		// if the form is hide, assign the random quote information inot the variables
@@ -134,47 +137,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		authorName = authorName.charAt(0).toUpperCase() + authorName.slice(1)
 
-		// if the variables are not empty save variables into data
-		if (contentQuote.trim() != "" && authorName.trim() != "") {
-			let _data = {
-				author: authorName,
-				quote: contentQuote,
-			}
+		// if the quote content and author name are not empty save information in database
+		if (authorName.trim() != "" && contentQuote.trim() != "") {
 
+			db.collection("Quote")
+				.add({
+					author: authorName,
+					quote: contentQuote,
+					timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+				})
+				.then(function (docRef) {
+					console.log("Document written with ID:", docRef.id);
 
-			// submit the data using POST method
-			fetch('https://reqres.in/api/users', {
-				method: "POST",
-				//  convert saved data to a JSON string
-				body: JSON.stringify(_data),
-				headers: { "Content-type": "application/json; charset=UTF-8" }
-			})
-				.then(response => response.json())
-				.then(response => {
-					console.log(`------------`)
-					console.log(response)
-					//push the data into the array of saved quotes  
-					quotes.push({
-						id: parseInt(response.id),
-						author: response.author,
-						quote: response.quote,
-					})
-					console.log(`saved`)
-
-					// call funtion to display the saved quotes
 					LoadListQuote()
-
-					// show and hide message of saved quote
 					document.querySelector(`#alert`).style.display = "flex"
 					hideSavedAlert()
-				})
-				.catch(err => console.log(err))
 
-			hideAlertFieldEmpty()
-			document.querySelector(`#orderBy`).disabled = false
-			hideEmpty()
+
+					hideAlertFieldEmpty()
+					document.querySelector(`#orderBy`).disabled = false
+					hideEmpty()
+				})
+				.catch(function (error) {
+					console.error("Error adding document", error);
+				});
+
 		}
-		// else, prompt to enter information
+		// else, prompt to enter valid information
 		else {
 			document.querySelector(`.yourtext`).classList.add(`alertFieldEmpty`)
 			document.querySelector(`.yourname`).classList.add(`alertFieldEmpty`)
@@ -190,6 +179,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	}
+
+
+
+
+
 
 	//  load the list of quotes saved
 	function LoadListQuote() {
