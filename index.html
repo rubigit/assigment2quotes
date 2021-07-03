@@ -28,7 +28,14 @@
 						<button type="button" value="signOut" class="signOut">Sign out</button>
 					</div>
 				</div>
-				<button type="button" value="signOut" class="help">?</button>
+
+				<div class="tooltipbody ">
+					<button type="button" value="help" class="help">?</button>
+
+					<span class="tooltipSpanHelp" id="tooltipHelp">Help</span>
+				</div>
+
+
 			</div>
 		</header>
 
@@ -160,8 +167,31 @@
 			<button id="signIn">signIn</button>
 		</section>
 
-		<section class="help hide">
-			<h1>help</h1>
+		<!-- help section  -->
+		<section id="helpSection" class="hide">
+			<!-- help title  -->
+			<h1>How to use this "Random quotes" application</h1>
+			<!-- help conten information  -->
+			<details class="helpDetails">
+				<summary>How to generate a random quote to get inspiration</summary>
+				<img src="./img/help-generate.gif" alt="Animtion to generate a random quote">
+			</details>
+			<details class="helpDetails">
+				<summary>How to create your own quote</summary>
+				<img src="./img/help-create.gif" alt="Animation to create own quote">
+			</details>
+			<details class="helpDetails">
+				<summary>How to open the histoy of saved quotes</summary>
+				<img src="./img/help-history.gif" alt="Animation to open history section">
+			</details>
+			<details class="helpDetails">
+				<summary>How to see a saved quote</summary>
+				<img src="./img/help-see.gif" alt="Animation to see a saved quote">
+			</details>
+			<details class="helpDetails">
+				<summary>How to delete a saved quote</summary>
+				<img src="./img/help-delete.gif" alt="Animation to delete a saved quote">
+			</details>
 		</section>
 
 	</main>
@@ -169,7 +199,7 @@
 	<!-- DB- connection -->
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+	<script src=" https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use

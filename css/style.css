@@ -132,6 +132,27 @@ html{
 
 /* ----------------------- */
 
+.userHelp{
+	display: flex;
+	gap: calc(var(--pad-gap)/2);
+	align-items: center;
+}
+
+.help{
+	border-radius: 50%;
+	width: 1.2em;
+	height: 1.2em;
+	text-align: center;
+	background-color: transparent;
+	vertical-align: center;
+	border:0.02em solid rgb(126, 126, 126);
+	color: rgb(126, 126, 126);
+	font-size: 0.9em;
+	cursor: pointer;
+	position: relative;
+}
+
+
 .dropdownUser{
 	display: flex;
 	position: relative;	
@@ -335,12 +356,30 @@ html{
 	padding: calc(var(--pad-gap)/3);
 	position: absolute;
 	z-index: 1;
-	top: 100%;
+	top: 130%;
 	left: 50%;
 	margin-left: -3.5em;
   	transition: 0.5s;
 }
  
+.tooltipSpanHelp{
+	display: none;
+	width: 7em;
+	background-color: rgba(0, 0, 0, 0.842);
+	font-size: 0.6em;
+	font-weight: bold;
+	color: aliceblue;
+	justify-content: center;
+	border-radius: 2em;
+	padding: calc(var(--pad-gap)/3);
+	position: absolute;
+	z-index: 1;
+	top: 130%;
+	right:0;
+	/* margin-left: -3.5em; */
+  	transition: 0.5s;
+}
+
 .inspiredBorder{
 	border-right:0.02em solid rgb(163, 163, 163);
 	height: 2em;
@@ -641,6 +680,7 @@ html{
 }
 
 /* clear form button  */
+/* { -------- */
 .clearForm{
 	background: url("../img/clearForm.svg");
 	background-repeat: no-repeat;
@@ -680,7 +720,7 @@ html{
 	opacity: 1;
 	transition: 0s;
   }
-
+/* -------} */
 
 /* subheading */
 .label-create{
@@ -980,6 +1020,45 @@ background-color: rgba(0, 0, 0, 0.089);
 }
 
 
+/* help section */
+.helpSection{
+	display: grid;
+	padding: var(--pad-gap);
+	gap: var(--pad-gap);
+}
+
+/* help section title  */
+.helpSection h1{
+	color:rgb(112, 92, 221);
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+/* help content information  */
+/* {-------- */
+.helpDetails{
+	display: flex;
+	padding-left: var(--pad-gap);
+}
+
+.helpSection summary {
+	color:rgb(0, 0, 0);
+	font-weight: bolder;
+	font-size: 1.1em;
+}
+
+.helpSection img{
+	width: 15em;
+	height: auto;
+	border-radius: 5px;
+	box-shadow:1px 1px 6px 3px rgba(0,0,0,0.2);
+	margin: var(--pad-gap);
+}
+/* -------- } */
+
+
+
+
 
 /* ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::MEDIA QUERY::::::::::::::::::::::::::
@@ -1066,6 +1145,7 @@ background-color: rgba(0, 0, 0, 0.089);
 		opacity: 0.7;
 	}
 
+	/* clear form button  */
 	.clearForm{
 		background: url("../img/clearForm.svg");
 		background-repeat: no-repeat;
@@ -1079,6 +1159,7 @@ background-color: rgba(0, 0, 0, 0.089);
 		background-size: 1.5em 1.5em;
 	}
 
+	/* user icon button  */
 	.userIcon{
 		background: url("../img/usericon.svg");
 		background-repeat: no-repeat;
@@ -1091,6 +1172,12 @@ background-color: rgba(0, 0, 0, 0.089);
 		background-position: center;
 		background-size: 1.4em 1.4em;
 		background-color:rgba(255, 255, 255, 0.104);
+	}
+
+/* gif picture for help content  */
+	.helpSection img{
+		width: 20em;
+		height: auto;	
 	}
 
 }
@@ -1170,7 +1257,13 @@ html {
 	.form-CreateQuote{	
 		padding: 0  calc(var(--pad-gap)*2) calc(var(--pad-gap)*2)  calc(var(--pad-gap)*2);			
 	}
-			
+
+	/* gif picture for help content  */
+	.helpSection img{
+		width: 25em;
+		height: auto;	
+	}
+		
 }
 
 @media screen and (min-width: 75em) {

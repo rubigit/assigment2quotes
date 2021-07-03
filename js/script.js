@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const mainHeader = document.querySelector(`#mainHeader`)
 	const yourname = document.querySelector(`.yourname`)
 	const orderBy = document.querySelector(`#orderBy`)
-	// array to storage saved quotes
-	const quotes = [
-	]
+	const help = document.querySelector(`.help`)
+	const helpSection = document.querySelector(`#helpSection`)
+
 
 
 	//list of language supported
@@ -40,13 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	]
 
 
-	//get the language selected
-	const getSourceLanguge = function (event) {
-		console.log(event.target.value)
-		let language = event.target.value
-		let lanparameter = `?language_code=${language}`
-		console.log(lanparameter)
-	}
+
 
 	// list the language supported to generate a quote
 	function listLangSupported() {
@@ -413,7 +407,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		else if (btn == clearForm) {
 			document.querySelector(`#tooltipClearForm`).style.display = "flex"
 
-		} else {
+		} else if (btn == help) {
+			document.querySelector(`#tooltipHelp`).style.display = "flex"
+		}
+		else {
 			document.querySelector(`#tooltipGetBtn`).style.display = "flex"
 		}
 		timerBtnTooltip(btn)
@@ -433,7 +430,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		else if (btn == clearForm) {
 			document.querySelector(`#tooltipClearForm`).style.display = "none"
-		} else {
+		} else if (btn == help) {
+			document.querySelector(`#tooltipHelp`).style.display = "none"
+		}
+		else {
 			document.querySelector(`#tooltipGetBtn`).style.display = "none"
 		}
 	}
@@ -489,6 +489,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		mainHeader.classList.remove(`mainHeader`)
 		userloginsection.classList.add(`userloginsection`)
 
+
+		helpSection.classList.add(`hide`)
+		helpSection.classList.remove(`helpSection`)
+
 	}
 
 	// hide sign in and sign out section
@@ -514,6 +518,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	})
 
 
+	// display help section 
+	function displayHelp() {
+		helpSection.classList.toggle(`hide`)
+		helpSection.classList.toggle(`helpSection`)
+		subcontainer.classList.toggle(`hide`)
+		openHistoContainer.classList.toggle(`hide`)
+		subcontainer.classList.toggle(`subcontainer`)
+		openHistoContainer.classList.toggle(`openHistoContainer`)
+
+		if (helpSection.classList.contains(`helpSection`)) {
+			help.innerHTML = `x`
+			help.style.color = `red`
+		} else {
+			help.innerHTML = `?`
+			help.style.color = `rgb(126, 126, 126)`
+		}
+
+	}
+
 	// call functions through events
 	generateBtn.addEventListener(`click`, quoteAPI)
 	generateBtn.addEventListener(`click`, clearCuoteForm)
@@ -528,11 +551,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	createyoursBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseover`, function () { displayBtnTooltip(saveQuoteBtn) })
 	clearForm.addEventListener(`mouseover`, function () { displayBtnTooltip(clearForm) })
+	help.addEventListener(`mouseover`, function () { displayBtnTooltip(help) })
 	clearForm.addEventListener(`click`, clearCuoteForm)
 	generateBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(generateBtn) })
 	createyoursBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(createyoursBtn) })
 	saveQuoteBtn.addEventListener(`mouseout`, function () { hideBtnTooltip(saveQuoteBtn) })
 	clearForm.addEventListener(`mouseout`, function () { hideBtnTooltip(clearForm) })
+	help.addEventListener(`mouseout`, function () { hideBtnTooltip(help) })
+	help.addEventListener(`click`, displayHelp)
 	document.querySelector(`.userIcon`).addEventListener(`click`, toggleSignout)
 	document.querySelector(`.signOut`).addEventListener(`click`, displaysignUserSection)
 	document.querySelector(`#signIn`).addEventListener(`click`, hidesignUserSection)
