@@ -559,7 +559,7 @@ html{
 	grid-template-areas: 
 	"qote"
 	"cite";
-	justify-content: center;
+	justify-content: center; 
 	align-items: center;
 	padding: 0  calc(var(--pad-gap)*1) calc(var(--pad-gap)*1)  calc(var(--pad-gap)*1);
 
@@ -570,6 +570,7 @@ html{
 	grid-area: qote;
 	width: auto;
 	max-height: 5em;
+	justify-self: center;
 } 
 
 
@@ -866,7 +867,7 @@ background-color: rgba(0, 0, 0, 0.089);
 
 /* id of the quote saved  */
 .quoteID{
-	color: rgb(71, 71, 71);;
+	color: rgb(148, 139, 139);;
 	font-size: 0.8em;
 	flex-grow: 1;
 }

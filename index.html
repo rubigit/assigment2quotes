@@ -18,14 +18,17 @@
 				<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
 				<h1 class="title"><span>Random</span><span>quotes</span></h1>
 			</section>
-			<div id="dropdownUser" class="dropdownUser">
-				<button type="button" value="userIcon" class="userIcon"></button>
-				<div class="detailsDrop hide">
-					<p class="signedAs">
-						<span>User name</span><span>rcortes1708.rcj@gmail.com</span>
-					</p>
-					<button type="button" value="signOut" class="signOut">Sign out</button>
+			<div class="userHelp">
+				<div id="dropdownUser" class="dropdownUser">
+					<button type="button" value="userIcon" class="userIcon"></button>
+					<div class="detailsDrop hide">
+						<p class="signedAs">
+							<span>User name</span><span>rcortes1708.rcj@gmail.com</span>
+						</p>
+						<button type="button" value="signOut" class="signOut">Sign out</button>
+					</div>
 				</div>
+				<button type="button" value="signOut" class="help">?</button>
 			</div>
 		</header>
 
@@ -124,9 +127,10 @@
 					<div class="selectContainer">
 						<!-- order by filter -->
 						<label class="select-label">Order by</label>
-						<select disabled class="orderBy" name="orderBy" id="orderBy">
-							<option value="id">Id</option>
+						<select disabled class="orderBy" name="orderBy" id="orderBy" value"Date">
+							<option value="timestamp">Date</option>
 							<option value="author">Author</option>
+							<option value="quote">Quote</option>
 						</select>
 					</div>
 				</section>
@@ -155,6 +159,11 @@
 			<p>The layout for larger screens is in the media query: @media screen and (min-width: 50em)</p>
 			<button id="signIn">signIn</button>
 		</section>
+
+		<section class="help hide">
+			<h1>help</h1>
+		</section>
+
 	</main>
 
 	<!-- DB- connection -->

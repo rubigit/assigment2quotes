@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const userloginsection = document.querySelector(`#userloginsection`)
 	const mainHeader = document.querySelector(`#mainHeader`)
 	const yourname = document.querySelector(`.yourname`)
-
+	const orderBy = document.querySelector(`#orderBy`)
 	// array to storage saved quotes
 	const quotes = [
 	]
@@ -149,14 +149,13 @@ document.addEventListener("DOMContentLoaded", function () {
 				.then(function (docRef) {
 					console.log("Document written with ID:", docRef.id);
 
-					LoadListQuote()
+					// LoadListQuote()
 					document.querySelector(`#alert`).style.display = "flex"
 					hideSavedAlert()
 
 
 					hideAlertFieldEmpty()
-					document.querySelector(`#orderBy`).disabled = false
-					hideEmpty()
+
 				})
 				.catch(function (error) {
 					console.error("Error adding document", error);
@@ -187,84 +186,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	//  load the list of quotes saved
 	function LoadListQuote() {
-
-		// sort the saved quotes
-		let sort = document.querySelector(`#orderBy`).value
-		quotes.sort(function (a, b) {
-			let valueA
-			let valueB
-
-			if (sort == "id") {
-				valueA = a.id
-				valueB = b.id
-			}
-			else {
-				valueA = a.author
-				valueB = b.author
-			}
-
-			if (valueA > valueB) {
-				return 1
-			}
-			if (valueA < valueB) {
-				return -1
-			}
-			return 0
-		})
-
-		let result = 0
+		// let result = 0
 		// populate the result of saved quotes
 		/* container to display history of saved quotes  */
 		const quoteTable = document.querySelector(`.historicalResult`)
-		quoteTable.innerHTML = ``
-		quotes.map(({ id, author, quote }) => {
-			let content = ``
-			console.log(id, author, quote.substring(0, 10))
 
-			/* container of the single quote saved  */
-			const historyItem = document.createElement(`div`)
-			historyItem.classList.add(`historyItem`)
-			/* header of the item saved  */
-			const historyItemHeader = document.createElement(`header`)
-			historyItemHeader.classList.add(`historyItem-header`)
-			const quoteID = document.createElement(`p`)
-			quoteID.classList.add(`quoteID`)
-			quoteID.innerHTML = `ID: ${id}`
-			quoteID.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
-			historyItemHeader.appendChild(quoteID)
-			const historyItemBtns = document.createElement(`div`)
-			/* button to see quote saved  */
-			const seeRowQuote = document.createElement(`button`)
-			seeRowQuote.classList.add(`seeRowQuote`)
-			seeRowQuote.id = `seeRowQuote`
-			seeRowQuote.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
-			/* button to delete quote saved  */
-			const deleteRowQuote = document.createElement(`button`)
-			deleteRowQuote.classList.add(`deleteRowQuote`)
-			deleteRowQuote.id = `deleteRowQuote`
-			deleteRowQuote.addEventListener(`click`, function () { deleQuote(`${id}`) })
-			/* footer of the item saved  */
-			const historyItemFooter = document.createElement(`footer`)
-			historyItemFooter.classList.add(`historyItem-footer`)
-			historyItemFooter.addEventListener(`click`, function () { showHistoItem(id, author, quote) })
-			historyItemFooter.innerHTML = `
-			<p class="quoteRowTxt">${quote.substring(0, 60)} ...</p>
-			<p class="quoteRowAuthor"><i>- ${author}</i></p>
-			`
-			// append  html elements created
-			historyItem.appendChild(historyItemHeader)
-			historyItemHeader.appendChild(historyItemBtns)
-			historyItemBtns.appendChild(seeRowQuote)
-			historyItemBtns.appendChild(deleteRowQuote)
-			historyItem.appendChild(historyItemFooter)
-			quoteTable.appendChild(historyItem)
+		db.collection("Quote")
+			.orderBy(`${orderBy.value}`, "asc")
+			.onSnapshot(function (querySnapshot) {
+				notifyEmpy(querySnapshot.size)
+				// display the number of elements in the result
+				spanQtyResults.innerHTML = `${querySnapshot.size} Results`
 
-			result++
+				quoteTable.innerHTML = "";
 
-		})
-		// display the number of elements in the result
-		spanQtyResults.innerHTML = `${result} Results`
+				querySnapshot.forEach((doc) => {
+
+
+
+
+					/* container of the single quote saved  */
+					const historyItem = document.createElement(`div`)
+					historyItem.classList.add(`historyItem`)
+					/* header of the item saved  */
+					const historyItemHeader = document.createElement(`header`)
+					historyItemHeader.classList.add(`historyItem-header`)
+					const quoteID = document.createElement(`p`)
+					quoteID.classList.add(`quoteID`)
+					quoteID.innerHTML = `ID: ${doc.id.substring(0, 6)}`
+					quoteID.addEventListener(`click`, function () { showHistoItem(doc.id, doc.data().author, doc.data().quote) })
+					historyItemHeader.appendChild(quoteID)
+					const historyItemBtns = document.createElement(`div`)
+					/* button to see quote saved  */
+					const seeRowQuote = document.createElement(`button`)
+					seeRowQuote.classList.add(`seeRowQuote`)
+					seeRowQuote.id = `seeRowQuote`
+					seeRowQuote.addEventListener(`click`, function () { showHistoItem(doc.id, doc.data().author, doc.data().quote) })
+					/* button to delete quote saved  */
+					const deleteRowQuote = document.createElement(`button`)
+					deleteRowQuote.classList.add(`deleteRowQuote`)
+					deleteRowQuote.id = `deleteRowQuote`
+					deleteRowQuote.addEventListener(`click`, function () { deleQuote(doc.id) })
+					/* footer of the item saved  */
+					const historyItemFooter = document.createElement(`footer`)
+					historyItemFooter.classList.add(`historyItem-footer`)
+					historyItemFooter.addEventListener(`click`, function () { showHistoItem(doc.id, doc.data().author, doc.data().quote) })
+					historyItemFooter.innerHTML =
+						`
+						<p class="quoteRowTxt">${doc.data().quote.substring(0, 60)} ...</p>
+						<p class="quoteRowAuthor"><i>- ${doc.data().author}</i></p>
+						`
+					// append  html elements created
+					historyItem.appendChild(historyItemHeader)
+					historyItemHeader.appendChild(historyItemBtns)
+					historyItemBtns.appendChild(seeRowQuote)
+					historyItemBtns.appendChild(deleteRowQuote)
+					historyItem.appendChild(historyItemFooter)
+					quoteTable.appendChild(historyItem)
+
+					// result++
+
+				})
+			})
+
 		console.log(`loaded saved elements`)
+
+
 	}
 
 	//  see a single saved quote
@@ -298,17 +285,18 @@ document.addEventListener("DOMContentLoaded", function () {
 	//  delete a single saved quote
 	function deleQuote(id) {
 
-		notifyEmpy()
-		//  get the  target's index
-		let index = quotes.findIndex(function (o) {
-			return o.id === id
-		})
 
-		// remove 1 element at the target's index
-		console.log(index)
-		quotes.splice(index, 1)
-		LoadListQuote()
-		console.log(`quote to delete`, id)
+
+		db.collection("Quote")
+			.doc(id)
+			.delete()
+			.then(function () {
+				console.log("Document successfully deleted!");
+			})
+			.catch(function (error) {
+				console.log("Error deleting doucment.", error);
+			});
+
 	}
 
 	//  hide message of saved quote
@@ -321,22 +309,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	// display message when history of saved quotes is empty
-	function notifyEmpy() {
+	function notifyEmpy(collection) {
 		const emptyNotification = document.querySelector(`#itsEmpty`)
 
-		if (quotes.length <= 1) {
+		if (collection < 1) {
 			emptyNotification.classList.remove(`hide`)
 			emptyNotification.classList.add(`itsEmpty`)
 			document.querySelector(`#orderBy`).disabled = true
 		}
+		// hide message about history of saved quotes is empty
+		else {
+			emptyNotification.classList.add(`hide`)
+			emptyNotification.classList.remove(`itsEmpty`)
+			document.querySelector(`#orderBy`).disabled = false
+		}
 	}
 
-	// hide message about history of saved quotes is empty
-	function hideEmpty() {
-		const emptyNotification = document.querySelector(`#itsEmpty`)
-		emptyNotification.classList.add(`hide`)
-		emptyNotification.classList.remove(`itsEmpty`)
-	}
 
 	// enable save button
 	function enableSave() {
@@ -552,5 +540,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// call  list the languages suported 
 	listLangSupported()
-
+	LoadListQuote()
 })
