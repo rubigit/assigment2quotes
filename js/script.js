@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	const help = document.querySelector(`.help`)
 	const helpSection = document.querySelector(`#helpSection`)
 
+	const containerSignUp = document.querySelector(`#containerSignUp`)
+	const containerSignIn = document.querySelector(`#containerSignIn`)
+
 
 
 	//list of language supported
@@ -172,10 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	}
-
-
-
-
 
 
 	//  load the list of quotes saved
@@ -537,6 +536,110 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	}
 
+
+
+
+
+	// Hide Login section and display Sign Up section
+	function displaysignUpSection() {
+		containerSignUp.classList.remove(`hide`)
+		containerSignIn.classList.add(`hide`)
+
+		containerSignIn.classList.remove(`containerSignIn`)
+		containerSignUp.classList.add(`containerSignUp`)
+	}
+
+
+	// Hide Sign Up section and display Login section
+	function hidesignUpSection() {
+		containerSignIn.classList.remove(`hide`)
+		containerSignUp.classList.add(`hide`)
+
+		containerSignUp.classList.remove(`containerSignUp`)
+		containerSignIn.classList.add(`containerSignIn`)
+
+		document.getElementById('formSignUp').reset();
+	}
+
+
+
+	// Create new account using Sign Up form
+	function createAccount(e) {
+		e.preventDefault();
+
+		const firstName = document.getElementById('firstName').value;
+		const lastName = document.getElementById('lastName').value;
+		const email = document.getElementById('email').value;
+		const userName = document.getElementById('userName').value;
+		const password = document.getElementById('password').value;
+
+		if (firstName.trim() != "" && lastName.trim() != "" && email.trim() != "" && userName.trim() != "" && password.trim() != "") {
+			let accountData = {
+				firstName: firstName,
+				lastName: lastName,
+				Email: email,
+				Username: userName,
+				Password: password
+			}
+
+			console.log(`First Name: ${firstName}`)
+			console.log(`Last Name: ${lastName}`)
+			console.log(`Email: ${email}`)
+			console.log(`Username: ${userName}`)
+			console.log(`Password: ${password}`)
+			// submit the data using POST method
+
+			console.log(`Account created successfully!`)
+
+			hidesignUpSection();
+
+			document.querySelector('.accCreate-alert').style.display = 'block';
+
+			//Hide alert after 3 seconds
+			setTimeout(function () {
+				document.querySelector('.accCreate-alert').style.display = 'none';
+			}, 3000);
+
+		} else {
+			document.querySelector(`.firstname`).classList.add(`alertFieldEmpty`)
+			document.querySelector(`.lastname`).classList.add(`alertFieldEmpty`)
+			document.querySelector(`.email`).classList.add(`alertFieldEmpty`)
+			document.querySelector(`#userName`).classList.add(`alertFieldEmpty`)
+			document.querySelector(`#password`).classList.add(`alertFieldEmpty`)
+
+			setTimeout(function () {
+				document.querySelector(`.firstname`).classList.remove(`alertFieldEmpty`)
+				document.querySelector(`.lastname`).classList.remove(`alertFieldEmpty`)
+				document.querySelector(`.email`).classList.remove(`alertFieldEmpty`)
+				document.querySelector(`#userName`).classList.remove(`alertFieldEmpty`)
+				document.querySelector(`#password`).classList.remove(`alertFieldEmpty`)
+			}, 3000);
+
+		}
+
+
+
+
+		//save message
+		// saveData(firstName, lastName, email, userName, password);
+
+		//show alert
+		// const accCreateAlert = document.querySelector('.accCreate-alert');
+
+
+
+
+	}
+	// ===================================================================================
+
+
+
+
+
+
+
+
+
 	// call functions through events
 	generateBtn.addEventListener(`click`, quoteAPI)
 	generateBtn.addEventListener(`click`, clearCuoteForm)
@@ -561,7 +664,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	help.addEventListener(`click`, displayHelp)
 	document.querySelector(`.userIcon`).addEventListener(`click`, toggleSignout)
 	document.querySelector(`.signOut`).addEventListener(`click`, displaysignUserSection)
-	document.querySelector(`#signIn`).addEventListener(`click`, hidesignUserSection)
+	document.querySelector(`.signIn`).addEventListener(`click`, hidesignUserSection)
+	document.querySelector(`.signUp`).addEventListener(`click`, displaysignUpSection)
+	document.querySelector(`#cancel`).addEventListener(`click`, hidesignUpSection)
+	document.querySelector(`.createAcc`).addEventListener(`click`, createAccount)
+
 
 
 	// call  list the languages suported 

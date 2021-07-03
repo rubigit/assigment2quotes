@@ -158,13 +158,93 @@
 			<labelc id="histolabel" class="histolabel">History</label>
 		</div>
 		<section id="userloginsection" class="userloginsection">
-			<p>Here is the "sign in/sign up" section </p>
-			<p>The buttons sign in and sign out should call the function: hidesignUserSection()</p>
-			<p>to display the "quote and history" section and hide this "sign in/sign up" section</p>
-			<br>
-			<p>The defaul layout is made for small screens (smallest 320px)</p>
-			<p>The layout for larger screens is in the media query: @media screen and (min-width: 50em)</p>
-			<button id="signIn">signIn</button>
+
+
+			<!--Header with the logo - small size  -->
+			<div class="div-container">
+				<header class="quoteHeader">
+					<section class="logoName">
+						<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
+						<h1 class="title"><span>Random</span><span>quotes</span></h1>
+					</section>
+
+
+
+				</header>
+				<!-- Container to the main logo and login/signup forms -->
+				<div class="div-body">
+					<!-- Animated logo container -->
+					<div class="div-logo">
+						<button class="btn-logo">
+							<img src="img/logo.svg" alt="" class="btn-logo-container">
+						</button>
+					</div>
+					<!-- Login form -->
+					<div id="containerSignIn" class="containerSignIn">
+						<form action="" class="form-login">
+							<!-- Hidden alert message: Account created! -->
+							<div class="accCreate-alert hide"><span>Your account was sucessfully created!</span></div>
+							<!-- Hidden alert message: Invalid credentials! -->
+							<div class="invalidCredentials-alert hide"><span>Login/password does not exist/match!</span>
+							</div>
+							<div class="logfieldwraper">
+								<label for="username">Username:</label>
+								<input type="text" class="username" required>
+
+							</div>
+							<div class="logfieldwraper">
+								<label for="password">Password:</label>
+								<input type="password" class="password" required>
+
+							</div>
+							<div class="button-box">
+								<input type="button" value="Login" class="signIn">
+								<input type="button" value="Sign Up" class="signUp">
+							</div>
+						</form>
+					</div>
+					<!-- Sign Up form -->
+					<div id="containerSignUp" class="hide">
+						<form action="" class="form-createAcc" id="formSignUp">
+							<div class="logfieldwraper">
+								<label for="firstname">First Name:</label>
+								<input type="text" class="firstname" placeholder="Type your first name" id="firstName"
+									required>
+
+							</div>
+							<div class="logfieldwraper">
+								<label for="lastname">Last Name:</label>
+								<input type="text" class="lastname" placeholder="Type your last name" id="lastName"
+									required>
+
+							</div>
+							<div class="logfieldwraper">
+								<label for="email">Email:</label>
+								<input type="email" class="email" placeholder="Type your email" id="email" required>
+
+							</div>
+							<div class="logfieldwraper">
+								<label for="username">Username:</label>
+								<input type="text" class="username" placeholder="Type your username" id="userName"
+									required>
+							</div>
+							<div class="logfieldwraper">
+								<label for="password">Password:</label>
+								<input type="password" class="password" placeholder="Type your password" id="password"
+									required>
+
+							</div>
+							<div class="button-box">
+								<input type="button" value="Cancel" class="login" id="cancel">
+								<input type="button" value="Create Account" class="createAcc" id="signIn">
+							</div>
+						</form>
+					</div>
+
+				</div>
+
+			</div>
+
 		</section>
 
 		<!-- help section  -->
@@ -224,7 +304,6 @@
 
 
 	<script src="./js/script.js"></script>
-	<script src="./scripts.js"></script>
 </body>
 
 </html>
