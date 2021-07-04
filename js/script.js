@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const containerSignUp = document.querySelector(`#containerSignUp`)
 	const containerSignIn = document.querySelector(`#containerSignIn`)
+	const uploadPic = document.querySelector(`#uploadPic`)
 
+	const generateSec = document.querySelector('#generate')
+	const resultSec = document.querySelector('#result')
+	const formCreateQuoteSec = document.querySelector('#form-CreateQuote')
+	const upPicSectionSec = document.querySelector('#upPicSection')
 
 
 	//list of language supported
@@ -617,23 +622,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		}
 
-
-
-
-		//save message
-		// saveData(firstName, lastName, email, userName, password);
-
-		//show alert
-		// const accCreateAlert = document.querySelector('.accCreate-alert');
-
-
-
-
 	}
-	// ===================================================================================
 
 
 
+	function showUpPictureSection() {
+
+		resultSec.classList.add(`hide`)
+		formCreateQuoteSec.classList.add(`hide`)
+		upPicSectionSec.classList.remove(`hide`)
+
+		resultSec.classList.remove(`result`)
+		formCreateQuoteSec.classList.remove(`form-CreateQuote`)
+		upPicSectionSec.classList.add(`upPicSection`)
+	}
 
 
 
@@ -669,9 +671,138 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.querySelector(`#cancel`).addEventListener(`click`, hidesignUpSection)
 	document.querySelector(`.createAcc`).addEventListener(`click`, createAccount)
 
-
+	uploadPic.addEventListener(`click`, showUpPictureSection)
 
 	// call  list the languages suported 
 	listLangSupported()
 	LoadListQuote()
+
+
+	//review
+	const fileButton = document.getElementById("fileButton");
+	const imageName = document.getElementById("imageName");
+	const submit = document.getElementById("submit");
+	const progress = document.getElementById("progress");
+	const gallery = document.getElementById("gallery");
+
+	// const db = firebase.firestore();
+
+	const fbFolder = "images";
+
+	let file = "";
+	let filename = "";
+	let extension = "";
+
+	fileButton.addEventListener("change", function (e) {
+		file = e.target.files[0];
+		filename = file.name.split(".").shift(); //"cat4"
+		extension = file.name.split(".").pop(); //"jpg"
+		imageName.value = filename;
+	});
+
+	submit.addEventListener("click", function () {
+		if (imageName.value) {
+			// Create a db id
+			const id = db.collection("Images").doc().id;
+
+			// Create a storage ref
+			const storageRef = firebase
+				.storage()
+				.ref(`${fbFolder}/${id}.${extension}`);
+
+			const uploadTask = storageRef.put(file);
+
+			uploadTask.on(
+				"state_changed",
+				function (snapshot) {
+					progress.value =
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				},
+				function (error) {
+					console.error(error);
+				},
+				function () {
+					console.log("done");
+					uploadTask.snapshot.ref
+						.getDownloadURL()
+						.then(function (downloadURL) {
+							db.collection("Images")
+								.doc(id)
+								.set({
+									name: imageName.value,
+									id,
+									image: downloadURL,
+									timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+								})
+								.then(function () {
+									console.log("Document successfully created!");
+									file = "";
+									filename = "";
+									extension = "";
+									imageName.value = "";
+									progress.value = "";
+
+									creatGallery();
+								})
+								.catch(function (error) {
+									console.error(error);
+								});
+						})
+						.catch(function (error) {
+							console.error(error);
+						});
+				}
+			);
+		}
+	});
+
+	function creatGallery() {
+		gallery.innerHTML = "";
+
+		const listRef = firebase.storage().ref(fbFolder);
+
+		listRef.listAll().then(function (res) {
+			res.items.forEach((itemRef) => {
+				itemRef.getDownloadURL().then(function (downlodURL) {
+					const div = document.createElement("div");
+					div.className = "img_wrapper";
+
+					const img = document.createElement("img");
+					img.src = downlodURL;
+					img.width = 50;
+					img.height = 50;
+
+					const span = document.createElement("span");
+					span.innerHTML = "x";
+					span.className = "delete_icon";
+					span.addEventListener("click", function () {
+						itemRef
+							.delete()
+							.then(function () {
+								console.log("Successfully deleted from storage");
+								db.collection("Images")
+									.doc(itemRef.name.split(".").shift())
+									.delete()
+									.then(function () {
+										console.log("Successfully deleted from db");
+										creatGallery()
+									})
+									.catch(function (error) {
+										console.error(error);
+									});
+							})
+							.catch(function (error) {
+								console.error(error);
+							});
+					});
+
+					div.append(span);
+					div.append(img);
+					gallery.append(div);
+				});
+			});
+		});
+	}
+
+	creatGallery();
 })

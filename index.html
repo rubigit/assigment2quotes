@@ -44,7 +44,7 @@
 			<div class="quotewraper">
 				<section id="quote-stion" class="quote-stion dispGrid">
 					<!-- Section to generate the quote -->
-					<section class="generate">
+					<section id="generate" class="generate">
 						<header class="quoteHeader">
 							<!-- container for supportedlanguages  -->
 							<div class=selectContainer>
@@ -65,6 +65,11 @@
 								<button type="button" value="createyoursBtn"
 									class="createyoursBtn btnInactive"></button>
 								<span class="tooltipSpan" id="tooltipMakeBtn">Make quotes</span>
+							</div>
+							<div class="tooltipbody">
+								<button type="button" value="uploadPic" id="uploadPic"
+									class="uploadPic btnInactive">Up</button>
+								<span class="tooltipSpan" id="tooltipUploadPic">Make quotes</span>
 							</div>
 
 						</header>
@@ -114,6 +119,15 @@
 							<input type=" text" name="" class="yourname" placeholder="&#42; Enter your name here...">
 						</div>
 					</form>
+
+					<section id="upPicSection" class="hide">
+						<p>up here</p>
+						<input type="file" accept=".jpg" id="fileButton" />
+						<progress max="100" value="0" id="progress"></progress>
+						Name: <input type="text" id="imageName" />
+						<button id="submit">Add</button>
+					</section>
+
 				</section>
 			</div>
 
@@ -274,12 +288,19 @@
 			</details>
 		</section>
 
+		<section class="gallerySection hide">
+			<div id="gallery" class="gallery">
+
+			</div>
+		</section>
+
 	</main>
 
 	<!-- DB- connection -->
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src=" https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-storage.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
