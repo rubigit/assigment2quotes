@@ -119,15 +119,26 @@
 							<input type=" text" name="" class="yourname" placeholder="&#42; Enter your name here...">
 						</div>
 					</form>
-
+					<!-- // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// star uploasd picture:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 					<section id="upPicSection" class="hide">
-						<p>up here</p>
-						<input type="file" accept=".jpg" id="fileButton" />
+						<p>Upload your picture quotes</p>
+						<input type="file" accept=".jpg" id="exploreFileBtn" />
 						<progress max="100" value="0" id="progress"></progress>
-						Name: <input type="text" id="imageName" />
-						<button id="submit">Add</button>
+						<label for="">Pictue name:</label>
+						<input type="text" id="picName" />
+						<button id="submit">Add picture</button>
+						<button type="button" value="openGallery" id="openGallery" class="openGallery">Open
+							galley</button>
 					</section>
-
+					<!-- // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// end uploasd picture:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 				</section>
 			</div>
 
@@ -288,12 +299,23 @@
 			</details>
 		</section>
 
-		<section class="gallerySection hide">
+
+		<!-- // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// star gallery section:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+		<section id="gallerySection" class="hide">
+			<button type="button" value="closeGall" id="closeGall" class="closeGall">Close</button>
 			<div id="gallery" class="gallery">
 
 			</div>
 		</section>
-
+		<!-- // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// end gallery section:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 	</main>
 
 	<!-- DB- connection -->

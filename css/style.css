@@ -1224,6 +1224,87 @@ background-color: rgba(0, 0, 0, 0.089);
 /* -------- } */
 
 
+/* // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ::::::::::::::// star upload picture / gallery section:::::::::::::::::::::
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+.upPicSection{
+	display: grid;
+	padding: var(--pad-gap);
+	gap: var(--pad-gap);
+}
+
+.gallery{
+	border:0.2em solid black;
+	display: grid;
+	gap: var(--pad-gap);
+	justify-content: center;
+}
+
+.gallerySection{
+	display: grid;
+	grid-template-columns: 1fr;
+	padding: var(--pad-gap);
+	justify-content: center;
+	border:0.2em solid greenyellow;
+	gap: var(--pad-gap);
+}
+
+
+
+.imgContainer{
+	display: grid;
+	grid-template-columns: 1fr;
+	border:0.2em solid rgb(233, 230, 40);
+	gap:var(--pad-gap);
+	position: relative;
+}
+
+.deleteGallPic{
+	color:red;
+	position: absolute;
+	background-color: rgb(240, 240, 240);
+	width: 1.5em;
+	height: 1.5em;
+	text-align: center;
+	padding: 0.15em 0;
+	border-radius: 50%;
+
+	top:0.5em;
+	right: 0.5em;
+}
+
+.imgGall{
+	
+	width: 17em;
+	height: 17em;
+	object-fit: cover;
+	object-position: center top;
+	border: 0.02em solid red;
+	overflow: hidden;
+}
+
+.closeGall{
+	width: fit-content;
+	justify-self: flex-end;
+}
+
+
+
+
+
+/* // :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ::::::::::::::// end upload picture / gallery section:::::::::::::::::::::
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+
+
+
+
 
 
 

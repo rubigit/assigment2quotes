@@ -524,12 +524,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// display help section 
 	function displayHelp() {
-		helpSection.classList.toggle(`hide`)
-		helpSection.classList.toggle(`helpSection`)
-		subcontainer.classList.toggle(`hide`)
-		openHistoContainer.classList.toggle(`hide`)
-		subcontainer.classList.toggle(`subcontainer`)
-		openHistoContainer.classList.toggle(`openHistoContainer`)
+
+		if (gallerySection.classList.contains(`hide`)) {
+			helpSection.classList.toggle(`hide`)
+			helpSection.classList.toggle(`helpSection`)
+			subcontainer.classList.toggle(`hide`)
+			openHistoContainer.classList.toggle(`hide`)
+			subcontainer.classList.toggle(`subcontainer`)
+			openHistoContainer.classList.toggle(`openHistoContainer`)
+		} else {
+			helpSection.classList.toggle(`hide`)
+			helpSection.classList.toggle(`helpSection`)
+			gallerySection.classList.toggle(`hide`)
+			gallerySection.classList.toggle(`gallerySection`)
+		}
+		// helpSection.classList.toggle(`hide`)
+		// helpSection.classList.toggle(`helpSection`)
+		// subcontainer.classList.toggle(`hide`)
+		// openHistoContainer.classList.toggle(`hide`)
+		// subcontainer.classList.toggle(`subcontainer`)
+		// openHistoContainer.classList.toggle(`openHistoContainer`)
 
 		if (helpSection.classList.contains(`helpSection`)) {
 			help.innerHTML = `x`
@@ -678,9 +692,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	LoadListQuote()
 
 
-	//review
-	const fileButton = document.getElementById("fileButton");
-	const imageName = document.getElementById("imageName");
+
+
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// start fireSTORE connection:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+	const exploreFileBtn = document.querySelector("#exploreFileBtn")
+	const picName = document.querySelector("#picName")
 	const submit = document.getElementById("submit");
 	const progress = document.getElementById("progress");
 	const gallery = document.getElementById("gallery");
@@ -693,15 +715,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	let filename = "";
 	let extension = "";
 
-	fileButton.addEventListener("change", function (e) {
+	exploreFileBtn.addEventListener("change", function (e) {
 		file = e.target.files[0];
 		filename = file.name.split(".").shift(); //"cat4"
 		extension = file.name.split(".").pop(); //"jpg"
-		imageName.value = filename;
+		picName.value = filename;
 	});
 
 	submit.addEventListener("click", function () {
-		if (imageName.value) {
+		if (picName.value) {
 			// Create a db id
 			const id = db.collection("Images").doc().id;
 
@@ -729,7 +751,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							db.collection("Images")
 								.doc(id)
 								.set({
-									name: imageName.value,
+									name: picName.value,
 									id,
 									image: downloadURL,
 									timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -739,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function () {
 									file = "";
 									filename = "";
 									extension = "";
-									imageName.value = "";
+									picName.value = "";
 									progress.value = "";
 
 									creatGallery();
@@ -756,6 +778,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
+
+
 	function creatGallery() {
 		gallery.innerHTML = "";
 
@@ -764,17 +788,17 @@ document.addEventListener("DOMContentLoaded", function () {
 		listRef.listAll().then(function (res) {
 			res.items.forEach((itemRef) => {
 				itemRef.getDownloadURL().then(function (downlodURL) {
-					const div = document.createElement("div");
-					div.className = "img_wrapper";
+					const imgContainer = document.createElement("div");
+					imgContainer.classList.add(`imgContainer`)
 
 					const img = document.createElement("img");
+					img.classList.add(`imgGall`)
 					img.src = downlodURL;
-					img.width = 50;
-					img.height = 50;
+
 
 					const span = document.createElement("span");
 					span.innerHTML = "x";
-					span.className = "delete_icon";
+					span.classList.add(`deleteGallPic`)
 					span.addEventListener("click", function () {
 						itemRef
 							.delete()
@@ -796,13 +820,69 @@ document.addEventListener("DOMContentLoaded", function () {
 							});
 					});
 
-					div.append(span);
-					div.append(img);
-					gallery.append(div);
+					imgContainer.append(span);
+					imgContainer.append(img);
+					gallery.append(imgContainer);
 				});
 			});
 		});
 	}
 
+
+
 	creatGallery();
+
+
+
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// end fireSTORE connection:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// start fuctions for gallery section:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+	const openGallery = document.querySelector(`#openGallery`)
+	const gallerySection = document.querySelector(`#gallerySection`)
+	const closeGall = document.querySelector(`#closeGall`)
+
+	function displayGallery() {
+		gallerySection.classList.remove(`hide`)
+		gallerySection.classList.add(`gallerySection`)
+
+		subcontainer.classList.add(`hide`)
+		openHistoContainer.classList.add(`hide`)
+		subcontainer.classList.remove(`subcontainer`)
+		openHistoContainer.classList.remove(`openHistoContainer`)
+	}
+
+	function closeGallery() {
+		subcontainer.classList.remove(`hide`)
+		openHistoContainer.classList.remove(`hide`)
+		subcontainer.classList.add(`subcontainer`)
+		openHistoContainer.classList.add(`openHistoContainer`)
+
+
+		gallerySection.classList.add(`hide`)
+		gallerySection.classList.remove(`gallerySection`)
+	}
+
+	closeGall.addEventListener(`click`, closeGallery)
+	openGallery.addEventListener(`click`, displayGallery)
+
+
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// ::::::::::::::// end fuctions for gallery section:::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 })
