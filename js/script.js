@@ -678,7 +678,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	clearForm.addEventListener(`mouseout`, function () { hideBtnTooltip(clearForm) })
 	help.addEventListener(`mouseout`, function () { hideBtnTooltip(help) })
 	help.addEventListener(`click`, displayHelp)
-	document.querySelector(`.userIcon`).addEventListener(`click`, toggleSignout)
+	// document.querySelector(`.userIcon`).addEventListener(`click`, toggleSignout)
 	document.querySelector(`.signOut`).addEventListener(`click`, displaysignUserSection)
 	document.querySelector(`.signIn`).addEventListener(`click`, hidesignUserSection)
 	document.querySelector(`.signUp`).addEventListener(`click`, displaysignUpSection)
