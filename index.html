@@ -13,7 +13,7 @@
 	<!-- main containter -->
 	<main class="mainly">
 		<!-- main meading and logo -->
-		<header id="mainHeader" class="hide">
+		<header id="mainHeader" class="mainHeader">
 			<section class="logoName">
 				<img class="logo" src="./img/logo.svg" alt="open and close quote characters" height="">
 				<h1 class="title"><span>Random</span><span>quotes</span></h1>
@@ -40,7 +40,7 @@
 		</header>
 
 		<!-- :::::: section to generate random quote and create own quotes :::::: -->
-		<div id="subcontainer" class="hide">
+		<div id="subcontainer" class="subcontainer">
 			<div class="quotewraper">
 				<section id="quote-stion" class="quote-stion dispGrid">
 					<!-- Section to generate the quote -->
@@ -67,9 +67,8 @@
 								<span class="tooltipSpan" id="tooltipMakeBtn">Make quotes</span>
 							</div>
 							<div class="tooltipbody">
-								<button type="button" value="uploadPic" id="uploadPic"
-									class="uploadPic btnInactive">Up</button>
-								<span class="tooltipSpan" id="tooltipUploadPic">Make quotes</span>
+								<button type="button" value="uploadPic" id="uploadPic" <span class="tooltipSpan"
+									id="tooltipUploadPic">Make quotes</span>
 							</div>
 
 						</header>
@@ -178,11 +177,11 @@
 			</section>
 		</div>
 		<!-- button to open History container -->
-		<div id="openHistoContainer" class="hide">
+		<div id="openHistoContainer" class="openHistoContainer">
 			<button id="openHistoBtn" class="openHistoBtn"></button>
 			<labelc id="histolabel" class="histolabel">History</label>
 		</div>
-		<section id="userloginsection" class="userloginsection">
+		<section id="userloginsection" class="hide">
 
 
 			<!--Header with the logo - small size  -->
@@ -223,7 +222,7 @@
 
 							</div>
 							<div class="button-box">
-								<input type="button" value="Login" class="signIn">
+								<input type="button" value="Logins" class="signIn">
 								<input type="button" value="Sign Up" class="signUp">
 							</div>
 						</form>

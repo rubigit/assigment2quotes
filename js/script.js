@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	const containerSignUp = document.querySelector(`#containerSignUp`)
 	const containerSignIn = document.querySelector(`#containerSignIn`)
-	const uploadPic = document.querySelector(`#uploadPic`)
+	// const uploadPic = document.querySelector(`#uploadPic`)
 
 	const generateSec = document.querySelector('#generate')
 	const resultSec = document.querySelector('#result')
@@ -685,7 +685,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.querySelector(`#cancel`).addEventListener(`click`, hidesignUpSection)
 	document.querySelector(`.createAcc`).addEventListener(`click`, createAccount)
 
-	uploadPic.addEventListener(`click`, showUpPictureSection)
+	// uploadPic.addEventListener(`click`, showUpPictureSection)
 
 	// call  list the languages suported 
 	listLangSupported()
